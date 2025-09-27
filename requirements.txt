@@ -1,0 +1,26 @@
+# Core dependencies
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic>=2.7.0
+pydantic-settings>=2.1.0
+python-dotenv==1.0.0
+
+# MongoDB
+motor==3.3.2
+pymongo==4.6.1
+
+# Ollama integration (for LLM)
+ollama==0.1.7
+httpx==0.25.2
+
+# Utilities
+python-json-logger==2.0.7
+tenacity==8.2.3  # For retries
+
+# Optional - Install these separately if needed:
+# redis==5.0.1  # For caching
+# chromadb==0.4.22  # For RAG vector database
+# sentence-transformers==2.2.2  # For embeddings
+# transformers==4.36.2  # For Hugging Face models
+# torch>=2.2.0  # For deep learning
+# faiss-cpu>=1.8.0  # For vector similarity

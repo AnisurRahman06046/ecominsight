@@ -1,0 +1,587 @@
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Failed to connect to Redis: name 'redis' is not defined. Cache disabled.", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as analytical, KPI: None, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Collection not initialized", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "No RAG documents found, falling back to LLM", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing LLM-generated pipeline on products", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "LLM query failed: Database objects do not implement truth value testing or bool(). Please compare with None instead: database is not None", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_classifier", "message": "Matched KPI: product_count with params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as kpi, KPI: product_count, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing KPI pipeline on product", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Query processing failed: 1 validation error for QueryResponse\ndata\n  Input should be a valid dictionary [type=dict_type, input_value=[{'count': 141}], input_type=list]\n    For further information visit https://errors.pydantic.dev/2.11/v/dict_type", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_classifier", "message": "Matched KPI: product_count with params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as kpi, KPI: product_count, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing KPI pipeline on product", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Query processing failed: 1 validation error for QueryResponse\ndata\n  Input should be a valid dictionary [type=dict_type, input_value=[{'count': 141}], input_type=list]\n    For further information visit https://errors.pydantic.dev/2.11/v/dict_type", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_classifier", "message": "Matched KPI: product_count with params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as kpi, KPI: product_count, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing KPI pipeline on product", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Query processing failed: 1 validation error for QueryResponse\ndata\n  Input should be a valid dictionary [type=dict_type, input_value=[{'count': 141}], input_type=list]\n    For further information visit https://errors.pydantic.dev/2.11/v/dict_type", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_classifier", "message": "Matched KPI: product_count with params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as kpi, KPI: product_count, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing KPI pipeline on product", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_classifier", "message": "Matched KPI: order_count with params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as kpi, KPI: order_count, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing KPI pipeline on order", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_classifier", "message": "Matched KPI: customer_count with params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as kpi, KPI: customer_count, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing KPI pipeline on customer", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_classifier", "message": "Matched KPI: total_sales with params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as kpi, KPI: total_sales, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing KPI pipeline on order", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as unknown, KPI: None, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Query generation failed: ", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing LLM-generated pipeline on orders", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as unknown, KPI: None, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing LLM-generated pipeline on order", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Aggregation failed: Invalid $project :: caused by :: '{order' starts with an invalid character for a user variable name, full error: {'ok': 0.0, 'errmsg': \"Invalid $project :: caused by :: '{order' starts with an invalid character for a user variable name\", 'code': 9, 'codeName': 'FailedToParse', '$clusterTime': {'clusterTime': Timestamp(1758785075, 29), 'signature': {'hash': b'^\\x91\\xa3\\xa2^\\x01\\xd5\\xc5\\xd5%U0\\x87)\\xf9Tm\\xda\\xd4\\x11', 'keyId': 7506627343255863298}}, 'operationTime': Timestamp(1758785075, 29)}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "LLM query failed: Invalid $project :: caused by :: '{order' starts with an invalid character for a user variable name, full error: {'ok': 0.0, 'errmsg': \"Invalid $project :: caused by :: '{order' starts with an invalid character for a user variable name\", 'code': 9, 'codeName': 'FailedToParse', '$clusterTime': {'clusterTime': Timestamp(1758785075, 29), 'signature': {'hash': b'^\\x91\\xa3\\xa2^\\x01\\xd5\\xc5\\xd5%U0\\x87)\\xf9Tm\\xda\\xd4\\x11', 'keyId': 7506627343255863298}}, 'operationTime': Timestamp(1758785075, 29)}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as unknown, KPI: None, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing LLM-generated pipeline on order", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_classifier", "message": "Matched KPI: order_count with params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as kpi, KPI: order_count, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing KPI pipeline on order", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_classifier", "message": "Matched KPI: order_count with params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as kpi, KPI: order_count, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing KPI pipeline on order", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as unknown, KPI: None, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing LLM-generated pipeline on order", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Answer generation failed: ", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as unknown, KPI: None, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing LLM-generated pipeline on order", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Template formatting failed: 'result'", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as unknown, KPI: None, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Query generation failed: Missing required fields in LLM response", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Full error details: ValueError: Missing required fields in LLM response", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Query generation failed: Missing required fields in LLM response", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Full error details: ValueError: Missing required fields in LLM response", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Query generation failed: Missing required fields in LLM response", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Full error details: ValueError: Missing required fields in LLM response", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "LLM query failed: RetryError[<Future at 0x7f91b7468cb0 state=finished raised ValueError>]", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_classifier", "message": "Matched KPI: order_count with params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as kpi, KPI: order_count, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing KPI pipeline on order", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as unknown, KPI: None, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Query generation failed: Missing required fields in LLM response", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Full error details: ValueError: Missing required fields in LLM response", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Query generation failed: Missing required fields in LLM response", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Full error details: ValueError: Missing required fields in LLM response", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Query generation failed: Missing required fields in LLM response", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Full error details: ValueError: Missing required fields in LLM response", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "LLM query failed: RetryError[<Future at 0x7f919c2a0cb0 state=finished raised ValueError>]", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "taskName": "Task-2", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as unknown, KPI: None, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing LLM-generated pipeline on order", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as unknown, KPI: None, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing LLM-generated pipeline on order", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_classifier", "message": "Matched KPI: order_count with params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as kpi, KPI: order_count, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing KPI pipeline on order", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_classifier", "message": "Matched KPI: total_sales with params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as kpi, KPI: total_sales, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing KPI pipeline on order", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as analytical, KPI: None, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Collection not initialized", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "No RAG documents found, falling back to LLM", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing LLM-generated pipeline on order", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_classifier", "message": "Matched KPI: product_count with params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as kpi, KPI: product_count, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing KPI pipeline on product", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as analytical, KPI: None, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Collection not initialized", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "No RAG documents found, falling back to LLM", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing LLM-generated pipeline on product", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_classifier", "message": "Matched KPI: low_stock with params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as kpi, KPI: low_stock, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing KPI pipeline on inventory", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_classifier", "message": "Matched KPI: low_stock with params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as kpi, KPI: low_stock, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing KPI pipeline on inventory", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_classifier", "message": "Matched KPI: low_stock with params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as kpi, KPI: low_stock, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing KPI pipeline on inventory", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_classifier", "message": "Matched KPI: customer_count with params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as kpi, KPI: customer_count, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing KPI pipeline on customer", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as unknown, KPI: None, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing LLM-generated pipeline on customer", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Aggregation failed: $options needs a $regex, full error: {'ok': 0.0, 'errmsg': '$options needs a $regex', 'code': 2, 'codeName': 'BadValue', '$clusterTime': {'clusterTime': Timestamp(1758801022, 2), 'signature': {'hash': b'#]h\\xcf\\xddy\\xdd\\xa3\\xdf\\xc7\\xa9;\\x17eA\\xc2\\xaavf\\xb8', 'keyId': 7506627343255863298}}, 'operationTime': Timestamp(1758801022, 2)}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "LLM query failed: $options needs a $regex, full error: {'ok': 0.0, 'errmsg': '$options needs a $regex', 'code': 2, 'codeName': 'BadValue', '$clusterTime': {'clusterTime': Timestamp(1758801022, 2), 'signature': {'hash': b'#]h\\xcf\\xddy\\xdd\\xa3\\xdf\\xc7\\xa9;\\x17eA\\xc2\\xaavf\\xb8', 'keyId': 7506627343255863298}}, 'operationTime': Timestamp(1758801022, 2)}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as unknown, KPI: None, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing LLM-generated pipeline on customer", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as unknown, KPI: None, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing LLM-generated pipeline on product", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
