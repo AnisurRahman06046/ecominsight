@@ -585,3 +585,690 @@
 {"name": "app.services.query_orchestrator", "message": "Executing LLM-generated pipeline on customer", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
 {"name": "app.services.query_orchestrator", "message": "Intent classified as unknown, KPI: None, params: {}", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
 {"name": "app.services.query_orchestrator", "message": "Executing LLM-generated pipeline on product", "taskName": "starlette.middleware.base.BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.coro", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as analytical, KPI: None, params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Collection not initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "No RAG documents found, falling back to LLM", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Query generation failed: Server error '500 Internal Server Error' for url 'http://localhost:11434/api/generate'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Full error details: HTTPStatusError: Server error '500 Internal Server Error' for url 'http://localhost:11434/api/generate'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing LLM-generated pipeline on order", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as analytical, KPI: None, params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Collection not initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "No RAG documents found, falling back to LLM", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Query generation failed: Server error '500 Internal Server Error' for url 'http://localhost:11434/api/generate'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Full error details: HTTPStatusError: Server error '500 Internal Server Error' for url 'http://localhost:11434/api/generate'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing LLM-generated pipeline on order", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as conversational, KPI: None, params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_classifier", "message": "Matched KPI: total_sales with params: {'time_period': 'today'}", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as kpi, KPI: total_sales, params: {'time_period': 'today'}", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing KPI pipeline on order", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_classifier", "message": "Matched KPI: customer_count with params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as kpi, KPI: customer_count, params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing KPI pipeline on customer", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_classifier", "message": "Matched KPI: customer_count with params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as kpi, KPI: customer_count, params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing KPI pipeline on customer", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_classifier", "message": "Matched KPI: customer_count with params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as kpi, KPI: customer_count, params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing KPI pipeline on customer", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_classifier", "message": "Matched KPI: product_count with params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as kpi, KPI: product_count, params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing KPI pipeline on product", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Failed to extract database schema: 'MongoDB' object has no attribute 'db'", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Failed to load schema: 'MongoDB' object has no attribute 'db'", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 0 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 0 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Manually refreshing database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 0 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 0 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as conversational, KPI: None, params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_classifier", "message": "Matched KPI: product_count with params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as kpi, KPI: product_count, params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing KPI pipeline on product", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 1", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Manually refreshing database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_classifier", "message": "Matched KPI: product_count with params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as kpi, KPI: product_count, params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing KPI pipeline on product", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_classifier", "message": "Matched KPI: customer_count with params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as kpi, KPI: customer_count, params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing KPI pipeline on customer", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as analytical, KPI: None, params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Collection not initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "No RAG documents found, falling back to LLM", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Query generation failed: Server error '500 Internal Server Error' for url 'http://localhost:11434/api/generate'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Full error details: HTTPStatusError: Server error '500 Internal Server Error' for url 'http://localhost:11434/api/generate'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing LLM-generated pipeline on order", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as analytical, KPI: None, params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Collection not initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "No RAG documents found, falling back to LLM", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Query generation failed: Server error '500 Internal Server Error' for url 'http://localhost:11434/api/generate'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Full error details: HTTPStatusError: Server error '500 Internal Server Error' for url 'http://localhost:11434/api/generate'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing LLM-generated pipeline on order", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as analytical, KPI: None, params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Collection not initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "No RAG documents found, falling back to LLM", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Query generation failed: Server error '500 Internal Server Error' for url 'http://localhost:11434/api/generate'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Full error details: HTTPStatusError: Server error '500 Internal Server Error' for url 'http://localhost:11434/api/generate'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing LLM-generated pipeline on order", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Manually refreshing database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_classifier", "message": "Matched KPI: total_sales with params: {'time_period': 'today'}", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as kpi, KPI: total_sales, params: {'time_period': 'today'}", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing KPI pipeline on order", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 2", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 3", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as analytical, KPI: None, params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Collection not initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "No RAG documents found, falling back to LLM", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Primary collections: ['category'], Related: []", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Relevant collections for query: ['category']", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Query generation failed: Server error '500 Internal Server Error' for url 'http://localhost:11434/api/generate'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Full error details: HTTPStatusError: Server error '500 Internal Server Error' for url 'http://localhost:11434/api/generate'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing LLM-generated pipeline on order", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as analytical, KPI: None, params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Collection not initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "No RAG documents found, falling back to LLM", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Primary collections: ['category'], Related: []", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Relevant collections for query: ['category']", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Query generation failed: Server error '500 Internal Server Error' for url 'http://localhost:11434/api/generate'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Full error details: HTTPStatusError: Server error '500 Internal Server Error' for url 'http://localhost:11434/api/generate'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing LLM-generated pipeline on order", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as analytical, KPI: None, params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Collection not initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "No RAG documents found, falling back to LLM", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Primary collections: ['category'], Related: []", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Relevant collections for query: ['category']", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Query generation failed: Server error '500 Internal Server Error' for url 'http://localhost:11434/api/generate'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Full error details: HTTPStatusError: Server error '500 Internal Server Error' for url 'http://localhost:11434/api/generate'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing LLM-generated pipeline on order", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 4", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as analytical, KPI: None, params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Collection not initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "No RAG documents found, falling back to LLM", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Primary collections: ['category'], Related: []", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Relevant collections for query: ['category']", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Query generation failed: Missing required fields in LLM response: ['pipeline', 'collection', 'answer_template']", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Full error details: ValueError: Missing required fields in LLM response: ['pipeline', 'collection', 'answer_template']", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing LLM-generated pipeline on order", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 4", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 4", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as analytical, KPI: None, params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Collection not initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "No RAG documents found, falling back to LLM", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Primary collections: ['category'], Related: []", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Relevant collections for query: ['category']", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Query generation failed: ", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Full error details: ReadTimeout: ", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing LLM-generated pipeline on order", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 4", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 4", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 4", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Function orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 4", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Function orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 4", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as analytical, KPI: None, params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Collection not initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "No RAG documents found, falling back to LLM", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Primary collections: ['category'], Related: []", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Relevant collections for query: ['category']", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Query generation failed: ", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Full error details: ReadTimeout: ", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing LLM-generated pipeline on order", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Intent classified as analytical, KPI: None, params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Collection not initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "No RAG documents found, falling back to LLM", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Primary collections: ['category'], Related: []", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Relevant collections for query: ['category']", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Raw LLM output (first 500 chars): {\"pipeline\": [\n    {\"$unwind\": \"$categories\"},\n    {\"$project\": {\n        \"_id\": 0,\n        \"categories\": \"$categories\"\n    }},\n    {\"$group\": {\n        \"_id\": \"$_id\",\n        \"categories\": {\n            \"$push\": \"$categories\"\n        },\n        \"count\": {\n            \"$sum\": 1\n        }\n    }}\n]}", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Query generation failed: Missing required fields in LLM response: ['collection', 'answer_template']", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Full error details: ValueError: Missing required fields in LLM response: ['collection', 'answer_template']", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Executing LLM-generated pipeline on order", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_router", "message": "Matched intent: category_count with params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Intent: category_count, Params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Calling tool: count_categories with params: {}", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Aggregation failed: Error parsing maxTimeMS as an int: not a number <nil> %!s(<nil>)\n\tat cloud-auth-common@v0.0.0-20250625151307-01fa446ea032/bson/bsonutil.go:110\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/commands_crud.go:704\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1003\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:723\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1582\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1189\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1079\n\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/proxy_session.go:392\n\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/proxy_session.go:114\n\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/session.go:220\n\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/server.go:449\n\tat src/runtime/asm_arm64.s:1223. Got type: <nil>, full error: {'ok': 0, 'errmsg': 'Error parsing maxTimeMS as an int: not a number <nil> %!s(<nil>)\\n\\tat cloud-auth-common@v0.0.0-20250625151307-01fa446ea032/bson/bsonutil.go:110\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/commands_crud.go:704\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1003\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:723\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1582\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1189\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1079\\n\\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/proxy_session.go:392\\n\\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/proxy_session.go:114\\n\\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/session.go:220\\n\\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/server.go:449\\n\\tat src/runtime/asm_arm64.s:1223. Got type: <nil>', 'code': 8000, 'codeName': 'AtlasError'}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Intent handling failed: Error parsing maxTimeMS as an int: not a number <nil> %!s(<nil>)\n\tat cloud-auth-common@v0.0.0-20250625151307-01fa446ea032/bson/bsonutil.go:110\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/commands_crud.go:704\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1003\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:723\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1582\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1189\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1079\n\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/proxy_session.go:392\n\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/proxy_session.go:114\n\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/session.go:220\n\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/server.go:449\n\tat src/runtime/asm_arm64.s:1223. Got type: <nil>, full error: {'ok': 0, 'errmsg': 'Error parsing maxTimeMS as an int: not a number <nil> %!s(<nil>)\\n\\tat cloud-auth-common@v0.0.0-20250625151307-01fa446ea032/bson/bsonutil.go:110\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/commands_crud.go:704\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1003\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:723\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1582\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1189\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1079\\n\\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/proxy_session.go:392\\n\\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/proxy_session.go:114\\n\\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/session.go:220\\n\\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/server.go:449\\n\\tat src/runtime/asm_arm64.s:1223. Got type: <nil>', 'code': 8000, 'codeName': 'AtlasError'}", "exc_info": "Traceback (most recent call last):\n  File \"/home/munim/anis/projects/ecominsight/app/services/function_orchestrator.py\", line 99, in _handle_intent\n    tool_result = await tool_function(shop_id, **params)\n  File \"/home/munim/anis/projects/ecominsight/app/services/database_tools.py\", line 88, in count_categories\n    result = await mongodb.execute_aggregation(\"category\", pipeline)\n  File \"/home/munim/anis/projects/ecominsight/app/core/database.py\", line 55, in execute_aggregation\n    results = await cursor.to_list(length=None)\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/motor/core.py\", line 1683, in _to_list\n    result = get_more_result.result()\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/motor/core.py\", line 1908, in _on_started\n    pymongo_cursor = future.result()\n  File \"/usr/lib/python3.10/concurrent/futures/thread.py\", line 58, in run\n    result = self.fn(*self.args, **self.kwargs)\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/pymongo/collection.py\", line 2720, in aggregate\n    return self._aggregate(\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/pymongo/_csot.py\", line 107, in csot_wrapper\n    return func(self, *args, **kwargs)\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/pymongo/collection.py\", line 2627, in _aggregate\n    return self.__database.client._retryable_read(\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/pymongo/mongo_client.py\", line 1492, in _retryable_read\n    return self._retry_internal(\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/pymongo/_csot.py\", line 107, in csot_wrapper\n    return func(self, *args, **kwargs)\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/pymongo/mongo_client.py\", line 1462, in _retry_internal\n    ).run()\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/pymongo/mongo_client.py\", line 2315, in run\n    return self._read() if self._is_read else self._write()\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/pymongo/mongo_client.py\", line 2445, in _read\n    return self._func(self._session, self._server, conn, read_pref)  # type: ignore\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/pymongo/aggregation.py\", line 164, in get_cursor\n    result = conn.command(\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/pymongo/helpers.py\", line 322, in inner\n    return func(*args, **kwargs)\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/pymongo/pool.py\", line 968, in command\n    return command(\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/pymongo/network.py\", line 192, in command\n    helpers._check_command_response(\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/pymongo/helpers.py\", line 230, in _check_command_response\n    raise OperationFailure(errmsg, code, response, max_wire_version)\npymongo.errors.OperationFailure: Error parsing maxTimeMS as an int: not a number <nil> %!s(<nil>)\n\tat cloud-auth-common@v0.0.0-20250625151307-01fa446ea032/bson/bsonutil.go:110\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/commands_crud.go:704\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1003\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:723\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1582\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1189\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1079\n\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/proxy_session.go:392\n\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/proxy_session.go:114\n\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/session.go:220\n\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/server.go:449\n\tat src/runtime/asm_arm64.s:1223. Got type: <nil>, full error: {'ok': 0, 'errmsg': 'Error parsing maxTimeMS as an int: not a number <nil> %!s(<nil>)\\n\\tat cloud-auth-common@v0.0.0-20250625151307-01fa446ea032/bson/bsonutil.go:110\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/commands_crud.go:704\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1003\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:723\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1582\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1189\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1079\\n\\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/proxy_session.go:392\\n\\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/proxy_session.go:114\\n\\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/session.go:220\\n\\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/server.go:449\\n\\tat src/runtime/asm_arm64.s:1223. Got type: <nil>', 'code': 8000, 'codeName': 'AtlasError'}", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_router", "message": "Matched intent: category_count with params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Intent: category_count, Params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Calling tool: count_categories with params: {}", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Aggregation failed: Error parsing maxTimeMS as an int: not a number <nil> %!s(<nil>)\n\tat cloud-auth-common@v0.0.0-20250625151307-01fa446ea032/bson/bsonutil.go:110\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/commands_crud.go:704\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1003\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:723\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1582\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1189\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1079\n\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/proxy_session.go:392\n\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/proxy_session.go:114\n\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/session.go:220\n\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/server.go:449\n\tat src/runtime/asm_arm64.s:1223. Got type: <nil>, full error: {'ok': 0, 'errmsg': 'Error parsing maxTimeMS as an int: not a number <nil> %!s(<nil>)\\n\\tat cloud-auth-common@v0.0.0-20250625151307-01fa446ea032/bson/bsonutil.go:110\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/commands_crud.go:704\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1003\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:723\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1582\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1189\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1079\\n\\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/proxy_session.go:392\\n\\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/proxy_session.go:114\\n\\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/session.go:220\\n\\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/server.go:449\\n\\tat src/runtime/asm_arm64.s:1223. Got type: <nil>', 'code': 8000, 'codeName': 'AtlasError'}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Intent handling failed: Error parsing maxTimeMS as an int: not a number <nil> %!s(<nil>)\n\tat cloud-auth-common@v0.0.0-20250625151307-01fa446ea032/bson/bsonutil.go:110\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/commands_crud.go:704\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1003\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:723\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1582\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1189\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1079\n\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/proxy_session.go:392\n\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/proxy_session.go:114\n\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/session.go:220\n\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/server.go:449\n\tat src/runtime/asm_arm64.s:1223. Got type: <nil>, full error: {'ok': 0, 'errmsg': 'Error parsing maxTimeMS as an int: not a number <nil> %!s(<nil>)\\n\\tat cloud-auth-common@v0.0.0-20250625151307-01fa446ea032/bson/bsonutil.go:110\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/commands_crud.go:704\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1003\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:723\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1582\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1189\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1079\\n\\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/proxy_session.go:392\\n\\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/proxy_session.go:114\\n\\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/session.go:220\\n\\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/server.go:449\\n\\tat src/runtime/asm_arm64.s:1223. Got type: <nil>', 'code': 8000, 'codeName': 'AtlasError'}", "exc_info": "Traceback (most recent call last):\n  File \"/home/munim/anis/projects/ecominsight/app/services/function_orchestrator.py\", line 99, in _handle_intent\n    tool_result = await tool_function(shop_id, **params)\n  File \"/home/munim/anis/projects/ecominsight/app/services/database_tools.py\", line 88, in count_categories\n    result = await mongodb.execute_aggregation(\"category\", pipeline)\n  File \"/home/munim/anis/projects/ecominsight/app/core/database.py\", line 55, in execute_aggregation\n    results = await cursor.to_list(length=None)\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/motor/core.py\", line 1683, in _to_list\n    result = get_more_result.result()\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/motor/core.py\", line 1908, in _on_started\n    pymongo_cursor = future.result()\n  File \"/usr/lib/python3.10/concurrent/futures/thread.py\", line 58, in run\n    result = self.fn(*self.args, **self.kwargs)\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/pymongo/collection.py\", line 2720, in aggregate\n    return self._aggregate(\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/pymongo/_csot.py\", line 107, in csot_wrapper\n    return func(self, *args, **kwargs)\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/pymongo/collection.py\", line 2627, in _aggregate\n    return self.__database.client._retryable_read(\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/pymongo/mongo_client.py\", line 1492, in _retryable_read\n    return self._retry_internal(\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/pymongo/_csot.py\", line 107, in csot_wrapper\n    return func(self, *args, **kwargs)\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/pymongo/mongo_client.py\", line 1462, in _retry_internal\n    ).run()\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/pymongo/mongo_client.py\", line 2315, in run\n    return self._read() if self._is_read else self._write()\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/pymongo/mongo_client.py\", line 2445, in _read\n    return self._func(self._session, self._server, conn, read_pref)  # type: ignore\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/pymongo/aggregation.py\", line 164, in get_cursor\n    result = conn.command(\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/pymongo/helpers.py\", line 322, in inner\n    return func(*args, **kwargs)\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/pymongo/pool.py\", line 968, in command\n    return command(\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/pymongo/network.py\", line 192, in command\n    helpers._check_command_response(\n  File \"/home/munim/anis/projects/ecominsight/.venv/lib/python3.10/site-packages/pymongo/helpers.py\", line 230, in _check_command_response\n    raise OperationFailure(errmsg, code, response, max_wire_version)\npymongo.errors.OperationFailure: Error parsing maxTimeMS as an int: not a number <nil> %!s(<nil>)\n\tat cloud-auth-common@v0.0.0-20250625151307-01fa446ea032/bson/bsonutil.go:110\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/commands_crud.go:704\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1003\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:723\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1582\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1189\n\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1079\n\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/proxy_session.go:392\n\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/proxy_session.go:114\n\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/session.go:220\n\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/server.go:449\n\tat src/runtime/asm_arm64.s:1223. Got type: <nil>, full error: {'ok': 0, 'errmsg': 'Error parsing maxTimeMS as an int: not a number <nil> %!s(<nil>)\\n\\tat cloud-auth-common@v0.0.0-20250625151307-01fa446ea032/bson/bsonutil.go:110\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/commands_crud.go:704\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1003\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:723\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1582\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1189\\n\\tat eec1b83dd54cba3a9af9d87bdef559e8/atlasproxy/session_proxy.go:1079\\n\\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/proxy_session.go:392\\n\\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/proxy_session.go:114\\n\\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/session.go:220\\n\\tat 10gen/mongonet@v0.0.0-20250630154432-dd69cb321965/server.go:449\\n\\tat src/runtime/asm_arm64.s:1223. Got type: <nil>', 'code': 8000, 'codeName': 'AtlasError'}", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Function orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 4", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_router", "message": "Matched intent: category_count with params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Intent: category_count, Params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Calling tool: count_categories with params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Tool result: {'count': 48, 'shop_id': 10, 'collection': 'category'}", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_router", "message": "Matched intent: category_count with params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Intent: category_count, Params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Calling tool: count_categories with params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Tool result: {'count': 48, 'shop_id': 10, 'collection': 'category'}", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_router", "message": "Matched intent: category_count with params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Intent: category_count, Params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Calling tool: count_categories with params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Tool result: {'count': 48, 'shop_id': 10, 'collection': 'category'}", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Function orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 4", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_router", "message": "Matched intent: category_count with params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Intent: category_count, Params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Calling tool: count_categories with params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Tool result: {'count': 48, 'shop_id': 10, 'collection': 'category'}", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Function orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 4", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Function orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 4", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Function orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 4", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Failed to initialize RAG service: 'NoneType' object has no attribute 'get_or_create_collection'", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Function orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.hybrid_orchestrator", "message": "Hybrid orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 4", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_router", "message": "Matched intent: category_count with params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Intent: category_count, Params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Calling tool: count_categories with params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Tool result: {'count': 48, 'shop_id': 10, 'collection': 'category'}", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_router", "message": "Matched intent: category_count with params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Intent: category_count, Params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Calling tool: count_categories with params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Tool result: {'count': 48, 'shop_id': 10, 'collection': 'category'}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "LLM hallucinated count. Expected 48, got: As per the given data, we have four categories (shops) and one collection (category).", "@timestamp": null, "severity": null}
+{"name": "app.services.intent_router", "message": "Matched intent: category_count with params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Intent: category_count, Params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Calling tool: count_categories with params: {}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Tool result: {'count': 48, 'shop_id': 10, 'collection': 'category'}", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "LLM hallucinated count. Expected 48, got: Yes, you have four categories: \"categoory\" is listed in the \"shop_id\" field as a single integer value of 10.", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}

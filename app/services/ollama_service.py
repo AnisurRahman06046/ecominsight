@@ -18,71 +18,81 @@ class OllamaService:
         self.base_url = settings.ollama_host
         self.model = settings.ollama_model
         self.client = httpx.AsyncClient(timeout=settings.ollama_timeout)
-        self.system_prompt = self._build_system_prompt()
+        self.schema_manager = None
+        self.system_prompt = None
 
     def _build_system_prompt(self) -> str:
-        """Build the system prompt for MongoDB query generation."""
-        return """You are a MongoDB aggregation expert. You MUST return ONLY valid JSON with exactly these fields:
+        """Build the system prompt for MongoDB query generation using dynamic schema."""
+        if not self.schema_manager or not self.schema_manager.get_formatted_schema():
+            return """You are a MongoDB aggregation expert. You MUST return ONLY valid JSON with exactly these fields:
 - "pipeline": array of MongoDB aggregation stages
-- "collection": string (order, product, customer, or order_product)
+- "collection": string (name of the collection)
 - "answer_template": string template for formatting results
 
-Collections:
-- order: {id, shop_id, user_id, subtotal, grand_total, status, created_at}
-- order_product: {id, order_id, product_id, name, quantity, price, total_price}
-- product: {id, shop_id, name, status, created_at}
-- customer: {id, shop_id, first_name, last_name, email, created_at}
-
 CRITICAL RULES:
-1. shop_id is INTEGER: {"shop_id": 10}
-2. ONLY return JSON - no text before or after
-3. Use simple pipelines - avoid complex operations
-4. For "recent" queries, use limit and sort by created_at descending
+1. ONLY return JSON - no text before or after
+2. Use simple pipelines - avoid complex operations
+3. For "recent" queries, use limit and sort by created_at descending
 
 REQUIRED JSON FORMAT:
 {
   "pipeline": [...],
-  "collection": "order",
+  "collection": "collection_name",
   "answer_template": "Found {count} results"
-}
+}"""
+
+        schema_context = self.schema_manager.get_formatted_schema()
+
+        return f"""You are a MongoDB aggregation expert. You MUST return ONLY valid JSON with exactly these fields:
+- "pipeline": array of MongoDB aggregation stages
+- "collection": string (name of the collection from schema below)
+- "answer_template": string template for formatting results
+
+{schema_context}
+
+CRITICAL RULES:
+1. Use EXACT field names and types from the schema above
+2. For multi-tenant collections (has shop_id), ALWAYS filter by shop_id
+3. ONLY return JSON - no text before or after
+4. Use simple pipelines - avoid complex operations
+5. For "recent" queries, use limit and sort by created_at descending
+6. Respect data types: use integers for numeric IDs, strings where shown
+
+REQUIRED JSON FORMAT:
+{{
+  "pipeline": [...],
+  "collection": "collection_name",
+  "answer_template": "Found {{count}} results"
+}}
 
 EXAMPLES:
 
 Recent orders:
-{
-  "pipeline": [{"$match": {"shop_id": 10}}, {"$sort": {"created_at": -1}}, {"$limit": 10}],
-  "collection": "order",
-  "answer_template": "Found {count} recent orders"
-}
+{{
+  "pipeline": [{{"$match": {{"shop_id": 10}}}}, {{"$sort": {{"created_at": -1}}}}, {{"$limit": 10}}],
+  "collection": "orders",
+  "answer_template": "Found {{count}} recent orders"
+}}
 
-Count orders:
-{
-  "pipeline": [{"$match": {"shop_id": 10}}, {"$count": "total"}],
-  "collection": "order",
-  "answer_template": "Found {total} orders"
-}
+Count with filter:
+{{
+  "pipeline": [{{"$match": {{"shop_id": 10, "status": "completed"}}}}, {{"$count": "total"}}],
+  "collection": "orders",
+  "answer_template": "Found {{total}} orders"
+}}"""
 
-Orders with multiple items:
-{
-  "pipeline": [
-    {"$match": {"shop_id": 10}},
-    {"$lookup": {"from": "order_product", "localField": "id", "foreignField": "order_id", "as": "items"}},
-    {"$addFields": {"item_count": {"$size": "$items"}}},
-    {"$match": {"item_count": {"$gt": 3}}},
-    {"$limit": 10}
-  ],
-  "collection": "order",
-  "answer_template": "Found orders with more than 3 items"
-}"""
-
-    async def initialize(self):
+    async def initialize(self, schema_manager=None):
         """Initialize the Ollama service."""
         try:
-            # Test connection
+            if schema_manager:
+                self.schema_manager = schema_manager
+                logger.info("Schema manager attached to Ollama service")
+
+            self.system_prompt = self._build_system_prompt()
+
             models = await self.list_models()
             logger.info(f"Ollama connected. Available models: {len(models)}")
 
-            # Check if required model is available
             if not any(self.model in m.get("name", "") for m in models):
                 logger.warning(f"Model {self.model} not found. Pulling...")
                 await self.pull_model(self.model)
@@ -93,6 +103,69 @@ Orders with multiple items:
     async def close(self):
         """Close the HTTP client."""
         await self.client.aclose()
+
+    def _get_relevant_collections(self, question: str) -> List[str]:
+        """Identify relevant collections based on question keywords and relationships."""
+        question_lower = question.lower()
+
+        collection_keywords = {
+            "order": ["order", "purchase", "transaction", "sale", "sold", "revenue", "payment"],
+            "product": ["product", "item", "inventory", "stock", "sku"],
+            "customer": ["customer", "user", "client", "buyer"],
+            "category": ["category", "categories", "type", "classification"],
+            "order_product": ["order item", "order detail", "line item"],
+        }
+
+        primary_collections = []
+        for collection, keywords in collection_keywords.items():
+            if any(keyword in question_lower for keyword in keywords):
+                primary_collections.append(collection)
+
+        if not primary_collections:
+            primary_collections = ["order", "product", "customer"]
+
+        all_relevant = set(primary_collections)
+
+        if self.schema_manager:
+            for collection in primary_collections:
+                related = self.schema_manager.get_related_collections(collection)
+                all_relevant.update(related)
+
+        logger.info(f"Primary collections: {primary_collections}, Related: {list(all_relevant - set(primary_collections))}")
+
+        return list(all_relevant)
+
+    def _build_dynamic_system_prompt(self, relevant_collections: List[str]) -> str:
+        """Build system prompt with only relevant collections."""
+        if not self.schema_manager or not self.schema_manager.get_schema():
+            return self._build_system_prompt()
+
+        schema = self.schema_manager.get_schema()
+
+        filtered_schema = {
+            "database_name": schema.get("database_name"),
+            "collections": {k: v for k, v in schema["collections"].items() if k in relevant_collections}
+        }
+
+        from app.services.schema_extractor import schema_extractor
+        schema_text = schema_extractor.format_schema_for_llm(filtered_schema)
+
+        return f"""You are a MongoDB query generator. Return ONLY valid JSON, no other text.
+
+SCHEMA:
+{schema_text}
+
+OUTPUT FORMAT (copy this structure exactly):
+{{
+  "collection": "collection_name",
+  "pipeline": [{{"$match": {{"shop_id": 10}}}}, {{"$limit": 10}}],
+  "answer_template": "Found results"
+}}
+
+RULES:
+- Always filter by shop_id first
+- Use simple $match, $count, $limit, $sort stages only
+- No text before or after the JSON"""
 
     @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=4, max=10))
     async def generate_query(
@@ -105,21 +178,25 @@ Orders with multiple items:
             Dict with pipeline, collection, and answer_template
         """
         try:
-            user_prompt = f"""Shop ID: {shop_id}
-Question: {question}
-{f"Context: {json.dumps(context)}" if context else ""}
+            relevant_collections = self._get_relevant_collections(question)
+            logger.info(f"Relevant collections for query: {relevant_collections}")
 
-Generate a MongoDB aggregation pipeline to answer this question."""
+            dynamic_prompt = self._build_dynamic_system_prompt(relevant_collections)
+
+            user_prompt = f"""Question: {question}
+Shop ID: {shop_id}
+
+Generate MongoDB query as JSON only."""
 
             response = await self.client.post(
                 f"{self.base_url}/api/generate",
                 json={
                     "model": self.model,
-                    "system": self.system_prompt,
+                    "system": dynamic_prompt,
                     "prompt": user_prompt,
                     "stream": False,
                     "format": "json",
-                    "temperature": 0.1,  # Low temperature for consistency
+                    "temperature": 0.1,
                 },
             )
 
@@ -128,6 +205,7 @@ Generate a MongoDB aggregation pipeline to answer this question."""
 
             # Parse the response
             generated_text = result.get("response", "{}").strip()
+            logger.info(f"Raw LLM output (first 500 chars): {generated_text[:500]}")
 
             # Clean up the response - remove any markdown formatting or extra text
             if "```json" in generated_text:
@@ -164,7 +242,7 @@ Generate a MongoDB aggregation pipeline to answer this question."""
 
         except json.JSONDecodeError as e:
             logger.error(f"Failed to parse LLM response: {e}")
-            logger.error(f"Raw LLM response: {generated_text}")
+            logger.error(f"Raw LLM response: {result.get('response', 'No response')[:500]}")
             # Return a fallback simple query
             return {
                 "pipeline": [{"$match": {"shop_id": int(shop_id)}}, {"$limit": 10}],

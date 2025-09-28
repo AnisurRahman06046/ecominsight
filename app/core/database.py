@@ -51,7 +51,10 @@ class MongoDB:
 
         try:
             coll = self.database[collection]
-            cursor = coll.aggregate(pipeline, maxTimeMS=timeout * 1000 if timeout else None)
+            options = {}
+            if timeout:
+                options['maxTimeMS'] = timeout * 1000
+            cursor = coll.aggregate(pipeline, **options)
             results = await cursor.to_list(length=None)
             return results
         except Exception as e:

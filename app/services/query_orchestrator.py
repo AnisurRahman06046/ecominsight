@@ -74,7 +74,11 @@ class QueryOrchestrator:
         result = None
 
         # Step 3: Route based on intent
-        if intent_type == IntentType.KPI and settings.use_template_first:
+        if intent_type == IntentType.CONVERSATIONAL:
+            # Conversational: Return friendly response
+            result = await self._process_conversational_query(question)
+
+        elif intent_type == IntentType.KPI and settings.use_template_first:
             # Fast path: Use predefined KPI template
             result = await self._process_kpi_query(shop_id, kpi_name, params, question)
 
@@ -104,6 +108,34 @@ class QueryOrchestrator:
             )
 
         return result
+
+    async def _process_conversational_query(self, question: str) -> Dict[str, Any]:
+        """Process conversational/greeting queries."""
+        question_lower = question.lower()
+
+        responses = {
+            "greeting": "Hello! I'm your e-commerce analytics assistant. I can help you analyze your sales data, orders, customers, and products. What would you like to know?",
+            "how_are_you": "I'm doing great, thank you! I'm here to help you analyze your e-commerce data. What insights are you looking for today?",
+            "thanks": "You're welcome! Let me know if you need anything else.",
+            "goodbye": "Goodbye! Feel free to come back if you need any analytics insights."
+        }
+
+        if any(word in question_lower for word in ["hi", "hello", "hey", "greetings", "good morning", "good afternoon", "good evening"]):
+            answer = responses["greeting"]
+        elif "how are you" in question_lower or "how's it going" in question_lower or "what's up" in question_lower:
+            answer = responses["how_are_you"]
+        elif "thank" in question_lower:
+            answer = responses["thanks"]
+        elif any(word in question_lower for word in ["bye", "goodbye", "see you"]):
+            answer = responses["goodbye"]
+        else:
+            answer = responses["greeting"]
+
+        return {
+            "answer": answer,
+            "data": [],
+            "metadata": {}
+        }
 
     async def _process_kpi_query(
         self,

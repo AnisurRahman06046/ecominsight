@@ -11,7 +11,10 @@ from app.core.config import settings
 from app.core.database import mongodb
 from app.models.requests import QueryRequest, QueryResponse, HealthResponse
 from app.services.query_orchestrator import QueryOrchestrator
+from app.services.function_orchestrator import function_orchestrator
+from app.services.hybrid_orchestrator import hybrid_orchestrator
 from app.services.ollama_service import OllamaService
+from app.services.schema_manager import schema_manager
 from app.utils.logger import setup_logging
 
 # Setup logging
@@ -31,12 +34,21 @@ async def lifespan(app: FastAPI):
         logger.error("Failed to connect to MongoDB")
         raise Exception("Database connection failed")
 
+    # Initialize schema manager first
+    logger.info("Initializing schema manager...")
+    await schema_manager.initialize()
+    app.state.schema_manager = schema_manager
+
     # Initialize services
     app.state.orchestrator = QueryOrchestrator()
+    app.state.function_orchestrator = function_orchestrator
+    app.state.hybrid_orchestrator = hybrid_orchestrator
     app.state.ollama = OllamaService()
 
     await app.state.orchestrator.initialize()
-    await app.state.ollama.initialize()
+    await app.state.function_orchestrator.initialize()
+    await app.state.hybrid_orchestrator.initialize()
+    await app.state.ollama.initialize(schema_manager=schema_manager)
 
     logger.info("Application started successfully")
     yield
@@ -84,7 +96,10 @@ async def root():
         "version": settings.version,
         "endpoints": {
             "/health": "Health check",
-            "/api/ask": "Process natural language query",
+            "/api/ask": "Process natural language query (LLM-generated queries)",
+            "/api/ask-v2": "Process natural language query (Rule-based function calling)",
+            "/api/ask-v3": "Process natural language query (ML-based hybrid)",
+            "/api/schema": "View database schema",
             "/docs": "Interactive API documentation",
         },
     }
@@ -131,6 +146,29 @@ async def health_check(request: Request):
     )
 
 
+@app.get("/api/schema")
+async def get_schema(request: Request):
+    """Get the extracted database schema."""
+    try:
+        schema_mgr = request.app.state.schema_manager
+        return schema_mgr.get_schema_summary()
+    except Exception as e:
+        logger.error(f"Failed to get schema: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/schema/refresh")
+async def refresh_schema(request: Request):
+    """Force refresh the database schema."""
+    try:
+        schema_mgr = request.app.state.schema_manager
+        await schema_mgr.refresh_schema()
+        return {"message": "Schema refreshed successfully", "summary": schema_mgr.get_schema_summary()}
+    except Exception as e:
+        logger.error(f"Failed to refresh schema: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.post("/api/ask", response_model=QueryResponse)
 async def process_query(request: Request, query: QueryRequest):
     """
@@ -171,6 +209,93 @@ async def process_query(request: Request, query: QueryRequest):
 
     except Exception as e:
         logger.error(f"Query processing failed: {e}")
+        raise HTTPException(status_code=500, detail=f"Query processing failed: {str(e)}")
+
+
+@app.post("/api/ask-v2", response_model=QueryResponse)
+async def process_query_v2(request: Request, query: QueryRequest):
+    """
+    Process a natural language query using function calling approach.
+
+    The system will:
+    1. Classify intent using rule-based patterns
+    2. Call specific database function/tool for that intent
+    3. Use LLM only to format the response in natural language
+    4. Return formatted answer
+
+    This is more efficient and accurate than LLM-generated queries.
+    """
+    start_time = time.time()
+
+    try:
+        orchestrator = request.app.state.function_orchestrator
+
+        result = await orchestrator.process_query(
+            shop_id=query.shop_id,
+            question=query.question,
+            context=query.context,
+            use_cache=query.use_cache,
+        )
+
+        processing_time = time.time() - start_time
+
+        return QueryResponse(
+            shop_id=query.shop_id,
+            question=query.question,
+            answer=result["answer"],
+            data=result.get("data"),
+            query_type=result["query_type"],
+            processing_time=processing_time,
+            cached=result.get("cached", False),
+            metadata=result.get("metadata"),
+        )
+
+    except Exception as e:
+        logger.error(f"Query processing failed: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Query processing failed: {str(e)}")
+
+
+@app.post("/api/ask-v3", response_model=QueryResponse)
+async def process_query_v3(request: Request, query: QueryRequest):
+    """
+    Process a natural language query using ML-based hybrid approach.
+
+    The system will:
+    1. Try rule-based classification first (fast)
+    2. If rules don't match, use ML model to classify intent
+    3. Call specific database function for that intent
+    4. Return formatted answer
+
+    This combines the speed of rules with flexibility of ML.
+    """
+    start_time = time.time()
+
+    try:
+        orchestrator = request.app.state.hybrid_orchestrator
+
+        result = await orchestrator.process_query(
+            shop_id=query.shop_id,
+            question=query.question,
+            context=query.context,
+            use_cache=query.use_cache,
+            use_ml=True,
+        )
+
+        processing_time = time.time() - start_time
+
+        return QueryResponse(
+            shop_id=query.shop_id,
+            question=query.question,
+            answer=result["answer"],
+            data=result.get("data"),
+            query_type=result["query_type"],
+            processing_time=processing_time,
+            cached=result.get("cached", False),
+            metadata=result.get("metadata"),
+        )
+
+    except Exception as e:
+        logger.error(f"Query processing failed: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=f"Query processing failed: {str(e)}")
 
 

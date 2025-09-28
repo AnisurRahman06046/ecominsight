@@ -13,6 +13,7 @@ class IntentType(Enum):
 
     KPI = "kpi"  # Known KPI query
     ANALYTICAL = "analytical"  # Why/how questions
+    CONVERSATIONAL = "conversational"  # Greetings, small talk
     UNKNOWN = "unknown"  # Needs LLM
 
 
@@ -35,6 +36,15 @@ class IntentClassifier:
             "correlation",
             "forecast",
             "predict",
+        ]
+        self.conversational_patterns = [
+            r"^(hi|hello|hey|greetings|good morning|good afternoon|good evening)",
+            r"how are you",
+            r"what's up",
+            r"how's it going",
+            r"nice to meet you",
+            r"thank you|thanks",
+            r"bye|goodbye|see you",
         ]
 
     def _load_kpi_patterns(self) -> Dict[str, Dict[str, Any]]:
@@ -154,6 +164,10 @@ class IntentClassifier:
         """
         question_lower = question.lower()
 
+        # Check if it's conversational first
+        if self._is_conversational(question_lower):
+            return IntentType.CONVERSATIONAL, None, {}
+
         # Check if it's an analytical question
         if self._is_analytical(question_lower):
             return IntentType.ANALYTICAL, None, {}
@@ -166,6 +180,13 @@ class IntentClassifier:
 
         # Default to unknown (needs LLM)
         return IntentType.UNKNOWN, None, {}
+
+    def _is_conversational(self, question: str) -> bool:
+        """Check if question is conversational/greeting."""
+        for pattern in self.conversational_patterns:
+            if re.search(pattern, question):
+                return True
+        return False
 
     def _is_analytical(self, question: str) -> bool:
         """Check if question is analytical."""
