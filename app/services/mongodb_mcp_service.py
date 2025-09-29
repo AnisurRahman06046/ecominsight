@@ -428,6 +428,140 @@ class MongoDBMCPService:
                 "error": str(e)
             }
 
+    async def get_best_selling_products(
+        self,
+        shop_id: int,
+        limit: int = 10,
+        filter: Optional[Dict[str, Any]] = None
+    ) -> Dict[str, Any]:
+        """
+        Get best selling products by analyzing order_product collection.
+        Joins with order collection to filter by shop_id.
+
+        Args:
+            shop_id: Shop ID to filter by
+            limit: Number of products to return
+            filter: Optional filter for orders
+
+        Returns:
+            Dict with top selling products
+        """
+        try:
+            # First approach: Try direct aggregation on order_product if it has shop_id
+            pipeline = []
+
+            # Try to filter by shop_id if field exists
+            match_stage = {"shop_id": shop_id} if shop_id else {}
+            if filter:
+                match_stage.update(filter)
+
+            if match_stage:
+                pipeline.append({"$match": match_stage})
+
+            # Group by product_id and count/sum
+            pipeline.extend([
+                {
+                    "$group": {
+                        "_id": "$product_id",
+                        "total_quantity": {"$sum": "$quantity"},
+                        "total_revenue": {"$sum": {"$multiply": ["$price", "$quantity"]}},
+                        "order_count": {"$sum": 1}
+                    }
+                },
+                {"$sort": {"total_quantity": -1}},
+                {"$limit": limit}
+            ])
+
+            # Try to get product details
+            pipeline.append({
+                "$lookup": {
+                    "from": "product",
+                    "localField": "_id",
+                    "foreignField": "id",
+                    "as": "product_info"
+                }
+            })
+
+            result = await mongodb.execute_aggregation("order_product", pipeline)
+
+            # If no results, try alternative approach with join
+            if not result:
+                # Alternative: Join order_product with order first
+                pipeline = [
+                    # First get orders for this shop
+                    {"$match": {"shop_id": shop_id}},
+
+                    # Lookup order products
+                    {
+                        "$lookup": {
+                            "from": "order_product",
+                            "localField": "id",
+                            "foreignField": "order_id",
+                            "as": "products"
+                        }
+                    },
+
+                    # Unwind products
+                    {"$unwind": "$products"},
+
+                    # Group by product_id
+                    {
+                        "$group": {
+                            "_id": "$products.product_id",
+                            "total_quantity": {"$sum": "$products.quantity"},
+                            "total_revenue": {"$sum": {"$multiply": ["$products.price", "$products.quantity"]}},
+                            "order_count": {"$sum": 1}
+                        }
+                    },
+
+                    {"$sort": {"total_quantity": -1}},
+                    {"$limit": limit},
+
+                    # Get product details
+                    {
+                        "$lookup": {
+                            "from": "product",
+                            "localField": "_id",
+                            "foreignField": "id",
+                            "as": "product_info"
+                        }
+                    }
+                ]
+
+                result = await mongodb.execute_aggregation("order", pipeline)
+
+            # Format results
+            formatted_result = []
+            for r in result:
+                product_data = {
+                    "product_id": r["_id"],
+                    "total_quantity": r.get("total_quantity", 0),
+                    "total_revenue": r.get("total_revenue", 0),
+                    "order_count": r.get("order_count", 0)
+                }
+
+                if r.get("product_info"):
+                    product = r["product_info"][0]
+                    product_data["name"] = product.get("name", "")
+                    product_data["sku"] = product.get("sku", "")
+                    product_data["price"] = product.get("price", 0)
+
+                formatted_result.append(product_data)
+
+            return {
+                "success": True,
+                "products": formatted_result,
+                "count": len(formatted_result),
+                "message": f"Top {len(formatted_result)} best selling products"
+            }
+
+        except Exception as e:
+            logger.error(f"Get best selling products failed: {e}")
+            return {
+                "success": False,
+                "error": str(e)
+            }
+
     async def get_top_customers_by_spending(
         self,
         shop_id: int,

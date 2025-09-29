@@ -290,14 +290,16 @@ Example for "total revenue": {{"tool": "calculate_sum", "parameters": {{"collect
 
         # Product sales analysis - best selling products
         if ("best" in question_lower or "top" in question_lower or "most" in question_lower) and any(word in question_lower for word in ["selling", "sold", "popular"]) and "product" in question_lower:
-            # This needs product sales aggregation - use group_and_count on order items
+            limit = 10
+            # Extract number if present
+            import re
+            numbers = re.findall(r'\d+', question_lower)
+            if numbers:
+                limit = int(numbers[0])
             return {
-                "tool": "group_and_count",
-                "parameters": {
-                    "collection": "order_product",  # Use order_product collection
-                    "group_by": "product_id"
-                },
-                "confidence": 0.8
+                "tool": "get_best_selling_products",
+                "parameters": {"limit": limit},
+                "confidence": 0.95
             }
 
         # Group by queries - check for specific group keywords
@@ -560,6 +562,13 @@ Example for "total revenue": {{"tool": "calculate_sum", "parameters": {{"collect
                     filter=params.get("filter", {})
                 )
 
+            elif tool_name == "get_best_selling_products":
+                return await mongodb_mcp.get_best_selling_products(
+                    shop_id=shop_id,
+                    limit=params.get("limit", 10),
+                    filter=params.get("filter", {})
+                )
+
             elif tool_name == "get_top_customers_by_spending":
                 return await mongodb_mcp.get_top_customers_by_spending(
                     shop_id=shop_id,
@@ -617,6 +626,18 @@ Example for "total revenue": {{"tool": "calculate_sum", "parameters": {{"collect
                 avg = results[0].get("average", 0)
                 return f"Average: ${avg:,.2f}"
             return "Could not calculate average."
+
+        elif tool_name == "get_best_selling_products":
+            products = result.get("products", [])
+            if products:
+                top_list = []
+                for i, p in enumerate(products[:10], 1):
+                    name = p.get("name", f"Product {p.get('product_id', 'Unknown')}")
+                    quantity = p.get("total_quantity", 0)
+                    revenue = p.get("total_revenue", 0)
+                    top_list.append(f"{i}. {name}: {quantity} sold (${revenue:,.2f})")
+                return "Best selling products:\n" + "\n".join(top_list)
+            return "No product sales data found."
 
         elif tool_name == "get_top_customers_by_spending":
             customers = result.get("customers", [])
