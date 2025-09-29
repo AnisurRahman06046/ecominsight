@@ -406,6 +406,28 @@ class MongoDBMCPService:
                 "error": str(e)
             }
 
+    async def get_collections(self) -> Dict[str, Any]:
+        """
+        Get list of all available collections.
+
+        Returns:
+            Dict with list of collections
+        """
+        try:
+            collections = await mongodb.list_collections()
+            return {
+                "success": True,
+                "collections": collections,
+                "count": len(collections),
+                "message": f"Found {len(collections)} collections"
+            }
+        except Exception as e:
+            logger.error(f"Get collections failed: {e}")
+            return {
+                "success": False,
+                "error": str(e)
+            }
+
     async def get_top_customers_by_spending(
         self,
         shop_id: int,

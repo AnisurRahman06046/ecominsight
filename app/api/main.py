@@ -146,6 +146,13 @@ async def health_check(request: Request):
     )
 
 
+@app.get("/api/collections")
+async def list_collections():
+    """List all available collections."""
+    from app.services.mongodb_mcp_service import mongodb_mcp
+    result = await mongodb_mcp.get_collections()
+    return result
+
 @app.get("/api/schema")
 async def get_schema(request: Request):
     """Get the extracted database schema."""

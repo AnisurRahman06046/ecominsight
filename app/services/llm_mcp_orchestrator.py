@@ -147,12 +147,90 @@ Example for "total revenue": {{"tool": "calculate_sum", "parameters": {{"collect
             # Fallback to keyword-based tool selection
             return self._keyword_tool_selection(question)
 
+    def _extract_filters(self, question: str) -> Dict[str, Any]:
+        """
+        Extract filter conditions from natural language.
+        """
+        import re
+        filters = {}
+        question_lower = question.lower()
+
+        # Extract comparison operators
+        # Greater than patterns
+        gt_patterns = [
+            r'more than (\d+)',
+            r'greater than (\d+)',
+            r'over (\d+)',
+            r'above (\d+)',
+            r'>\s*(\d+)'
+        ]
+
+        # Less than patterns
+        lt_patterns = [
+            r'less than (\d+)',
+            r'under (\d+)',
+            r'below (\d+)',
+            r'<\s*(\d+)'
+        ]
+
+        # Between patterns
+        between_pattern = r'between (\d+) and (\d+)'
+
+        # Check for amount/price fields - but exclude aggregation queries
+        if any(word in question_lower for word in ['price', 'amount', 'total', 'value', 'delivery charge', 'charge']) and \
+           not any(word in question_lower for word in ['total revenue', 'total sales', 'sum']):
+            field = 'grand_total'  # default
+            if 'delivery' in question_lower:
+                field = 'delivery_charge'
+            elif 'subtotal' in question_lower:
+                field = 'subtotal'
+
+            for pattern in gt_patterns:
+                match = re.search(pattern, question_lower)
+                if match:
+                    filters[field] = {"$gt": float(match.group(1))}
+                    break
+
+            for pattern in lt_patterns:
+                match = re.search(pattern, question_lower)
+                if match:
+                    filters[field] = {"$lt": float(match.group(1))}
+                    break
+
+            match = re.search(between_pattern, question_lower)
+            if match:
+                filters[field] = {
+                    "$gte": float(match.group(1)),
+                    "$lte": float(match.group(2))
+                }
+
+        # Extract status filters
+        if 'pending' in question_lower:
+            filters['status'] = 'Pending'
+        elif 'confirmed' in question_lower:
+            filters['status'] = 'Confirmed'
+        elif 'delivered' in question_lower:
+            filters['status'] = 'Delivered'
+        elif 'canceled' in question_lower or 'cancelled' in question_lower:
+            filters['status'] = 'Canceled'
+
+        # Extract payment status
+        if 'paid' in question_lower and 'unpaid' not in question_lower:
+            filters['payment_status'] = 'paid'
+        elif 'unpaid' in question_lower:
+            filters['payment_status'] = 'unpaid'
+
+        return filters
+
     def _keyword_tool_selection(self, question: str) -> Dict[str, Any]:
         """
         Enhanced keyword-based tool selection with confidence scoring.
         Returns tool decision with confidence level.
         """
         question_lower = question.lower()
+
+        # Extract filters that might be needed
+        extracted_filters = self._extract_filters(question)
 
         # HIGH CONFIDENCE (0.9) - Very specific patterns
 
@@ -210,6 +288,18 @@ Example for "total revenue": {{"tool": "calculate_sum", "parameters": {{"collect
                 "confidence": 0.95
             }
 
+        # Product sales analysis - best selling products
+        if ("best" in question_lower or "top" in question_lower or "most" in question_lower) and any(word in question_lower for word in ["selling", "sold", "popular"]) and "product" in question_lower:
+            # This needs product sales aggregation - use group_and_count on order items
+            return {
+                "tool": "group_and_count",
+                "parameters": {
+                    "collection": "order_product",  # Use order_product collection
+                    "group_by": "product_id"
+                },
+                "confidence": 0.8
+            }
+
         # Group by queries - check for specific group keywords
         if any(phrase in question_lower for phrase in ["group", "breakdown", "distribution", "by status", "by category"]):
             group_field = "status"  # default
@@ -239,8 +329,9 @@ Example for "total revenue": {{"tool": "calculate_sum", "parameters": {{"collect
 
         # MEDIUM CONFIDENCE (0.6) - Less specific patterns
 
-        # List/Find queries
-        if any(word in question_lower for word in ["list", "show", "find", "get", "display"]):
+        # List/Find queries WITH FILTERS - also check for filter keywords
+        if any(word in question_lower for word in ["list", "show", "find", "get", "display", "orders with", "products with"]) or \
+           (extracted_filters and any(word in question_lower for word in ["order", "product", "customer"])):
             collection = "order"
             confidence = 0.6
 
@@ -263,14 +354,25 @@ Example for "total revenue": {{"tool": "calculate_sum", "parameters": {{"collect
                 sort_by = "created_at"
                 confidence += 0.1
 
+            # If we have filters, increase confidence
+            if extracted_filters:
+                confidence = 0.85
+
+            params = {
+                "collection": collection,
+                "limit": 10
+            }
+
+            if sort_by:
+                params["sort_by"] = sort_by
+                params["sort_order"] = -1
+
+            if extracted_filters:
+                params["filter"] = extracted_filters
+
             return {
                 "tool": "find_documents",
-                "parameters": {
-                    "collection": collection,
-                    "limit": 10,
-                    "sort_by": sort_by,
-                    "sort_order": -1 if sort_by else None
-                },
+                "parameters": params,
                 "confidence": confidence
             }
 
