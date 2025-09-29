@@ -24,62 +24,94 @@ class OllamaService:
     def _build_system_prompt(self) -> str:
         """Build the system prompt for MongoDB query generation using dynamic schema."""
         if not self.schema_manager or not self.schema_manager.get_formatted_schema():
-            return """You are a MongoDB aggregation expert. You MUST return ONLY valid JSON with exactly these fields:
-- "pipeline": array of MongoDB aggregation stages
-- "collection": string (name of the collection)
-- "answer_template": string template for formatting results
+            return """You MUST return ONLY a JSON object with these EXACT three fields:
+1. "collection" - string with collection name (use "order" as default)
+2. "pipeline" - array of MongoDB aggregation stages
+3. "answer_template" - string template for the answer
 
-CRITICAL RULES:
-1. ONLY return JSON - no text before or after
-2. Use simple pipelines - avoid complex operations
-3. For "recent" queries, use limit and sort by created_at descending
-
-REQUIRED JSON FORMAT:
+Your response MUST be ONLY this JSON - nothing else:
 {
-  "pipeline": [...],
-  "collection": "collection_name",
+  "collection": "order",
+  "pipeline": [{"$match": {"shop_id": 1}}, {"$limit": 10}],
   "answer_template": "Found {count} results"
-}"""
+}
+
+CRITICAL: Use "pipeline" NOT "pipe", include ALL three fields"""
 
         schema_context = self.schema_manager.get_formatted_schema()
 
-        return f"""You are a MongoDB aggregation expert. You MUST return ONLY valid JSON with exactly these fields:
-- "pipeline": array of MongoDB aggregation stages
-- "collection": string (name of the collection from schema below)
-- "answer_template": string template for formatting results
+        return f"""You MUST return ONLY a JSON object with these EXACT three fields:
+1. "collection" - string with collection name from schema
+2. "pipeline" - array of MongoDB aggregation stages
+3. "answer_template" - string template for the answer
 
 {schema_context}
 
-CRITICAL RULES:
-1. Use EXACT field names and types from the schema above
-2. For multi-tenant collections (has shop_id), ALWAYS filter by shop_id
-3. ONLY return JSON - no text before or after
-4. Use simple pipelines - avoid complex operations
-5. For "recent" queries, use limit and sort by created_at descending
-6. Respect data types: use integers for numeric IDs, strings where shown
+EXAMPLE PATTERNS TO FOLLOW:
 
-REQUIRED JSON FORMAT:
+For counting:
 {{
-  "pipeline": [...],
-  "collection": "collection_name",
-  "answer_template": "Found {{count}} results"
-}}
-
-EXAMPLES:
-
-Recent orders:
-{{
-  "pipeline": [{{"$match": {{"shop_id": 10}}}}, {{"$sort": {{"created_at": -1}}}}, {{"$limit": 10}}],
-  "collection": "orders",
-  "answer_template": "Found {{count}} recent orders"
-}}
-
-Count with filter:
-{{
-  "pipeline": [{{"$match": {{"shop_id": 10, "status": "completed"}}}}, {{"$count": "total"}}],
-  "collection": "orders",
+  "collection": "order",
+  "pipeline": [
+    {{"$match": {{"shop_id": 1}}}},
+    {{"$count": "total"}}
+  ],
   "answer_template": "Found {{total}} orders"
-}}"""
+}}
+
+For filtering with conditions (greater than):
+{{
+  "collection": "order",
+  "pipeline": [
+    {{"$match": {{"shop_id": 1, "grand_total": {{"$gt": 1000}}}}}}
+  ],
+  "answer_template": "Found {{count}} orders over $1000"
+}}
+
+For grouping and counting:
+{{
+  "collection": "order",
+  "pipeline": [
+    {{"$match": {{"shop_id": 1}}}},
+    {{"$group": {{
+      "_id": "$status",
+      "count": {{"$sum": 1}}
+    }}}}
+  ],
+  "answer_template": "Orders grouped by status"
+}}
+
+For top N with sorting:
+{{
+  "collection": "order",
+  "pipeline": [
+    {{"$match": {{"shop_id": 1}}}},
+    {{"$sort": {{"grand_total": -1}}}},
+    {{"$limit": 5}}
+  ],
+  "answer_template": "Top 5 orders by value"
+}}
+
+For calculating totals:
+{{
+  "collection": "order",
+  "pipeline": [
+    {{"$match": {{"shop_id": 1}}}},
+    {{"$group": {{
+      "_id": null,
+      "total_revenue": {{"$sum": "$grand_total"}},
+      "count": {{"$sum": 1}}
+    }}}}
+  ],
+  "answer_template": "Total revenue: {{total_revenue}}"
+}}
+
+CRITICAL RULES:
+- ALWAYS start with {{"$match": {{"shop_id": <number>}}}}
+- Use MongoDB operators: $gt, $lt, $gte, $lte, $eq, $ne for comparisons
+- Use $group for aggregations with $sum, $avg, $max, $min
+- Use $sort before $limit for "top N" queries
+- Return ONLY JSON, no explanations"""
 
     async def initialize(self, schema_manager=None):
         """Initialize the Ollama service."""
@@ -150,22 +182,40 @@ Count with filter:
         from app.services.schema_extractor import schema_extractor
         schema_text = schema_extractor.format_schema_for_llm(filtered_schema)
 
-        return f"""You are a MongoDB query generator. Return ONLY valid JSON, no other text.
+        return f"""You are a MongoDB query generator. Analyze the question and generate appropriate MongoDB pipeline.
 
 SCHEMA:
 {schema_text}
 
-OUTPUT FORMAT (copy this structure exactly):
+REQUIRED OUTPUT FORMAT - Return ONLY this JSON structure:
 {{
-  "collection": "collection_name",
-  "pipeline": [{{"$match": {{"shop_id": 10}}}}, {{"$limit": 10}}],
-  "answer_template": "Found results"
+  "collection": "<collection_name>",
+  "pipeline": [<array of stages>],
+  "answer_template": "<template string>"
 }}
 
-RULES:
-- Always filter by shop_id first
-- Use simple $match, $count, $limit, $sort stages only
-- No text before or after the JSON"""
+QUERY PATTERNS:
+
+1. For "count" questions use $count:
+   {{"$match": {{"shop_id": 1}}}}, {{"$count": "total"}}
+
+2. For "greater than/less than" use comparison operators:
+   {{"$match": {{"shop_id": 1, "field": {{"$gt": value}}}}}}
+
+3. For "group by" use $group:
+   {{"$group": {{"_id": "$field", "count": {{"$sum": 1}}}}}}
+
+4. For "top N" use $sort + $limit:
+   {{"$sort": {{"field": -1}}}}, {{"$limit": 5}}
+
+5. For "sum/average" use $group with operators:
+   {{"$group": {{"_id": null, "total": {{"$sum": "$field"}}}}}}
+
+CRITICAL:
+- ALWAYS use "pipeline" (not "pipe")
+- ALWAYS include all 3 fields
+- ALWAYS start with $match for shop_id
+- Return ONLY JSON, no text"""
 
     @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=4, max=10))
     async def generate_query(
@@ -177,28 +227,92 @@ RULES:
         Returns:
             Dict with pipeline, collection, and answer_template
         """
+        shop_id_int = int(shop_id) if shop_id.isdigit() else 10
+
+        # First, use LLM for intent classification
+        try:
+            from app.services.llm_intent_classifier import llm_intent_classifier
+
+            # Get intent classification from LLM
+            intent_data = await llm_intent_classifier.classify_intent(question, shop_id)
+
+            # Generate pipeline based on intent
+            if intent_data and intent_data.get("primary_collection"):
+                result = await llm_intent_classifier.generate_pipeline_from_intent(intent_data, shop_id_int)
+                logger.info(f"Using LLM intent-based query for: {question}")
+                logger.info(f"Intent: {intent_data}")
+                return result
+        except Exception as e:
+            logger.debug(f"LLM intent classification failed: {e}")
+
+        # Second, try using the template-based approach as fallback
+        try:
+            from app.services.query_templates import smart_query_builder
+
+            template_result = smart_query_builder.build_query(question, shop_id_int)
+
+            # Check if template gave a meaningful result (not default)
+            if len(template_result.get("pipeline", [])) > 2 or \
+               any(stage for stage in template_result.get("pipeline", [])
+                   if "$group" in stage or "$count" in stage or "$sort" in stage):
+                logger.info(f"Using template-based query for: {question}")
+                return template_result
+        except Exception as e:
+            logger.debug(f"Template approach failed, falling back to raw LLM: {e}")
+
+        # Final fallback to raw LLM generation
         try:
             relevant_collections = self._get_relevant_collections(question)
             logger.info(f"Relevant collections for query: {relevant_collections}")
 
             dynamic_prompt = self._build_dynamic_system_prompt(relevant_collections)
 
+            # Convert shop_id to integer for the prompt
+            shop_id_int = int(shop_id) if shop_id.isdigit() else 10
+
             user_prompt = f"""Question: {question}
-Shop ID: {shop_id}
+Shop ID: {shop_id_int} (use this exact integer value in $match)
 
-Generate MongoDB query as JSON only."""
+Return ONLY the JSON object with collection, pipeline, and answer_template fields."""
 
-            response = await self.client.post(
-                f"{self.base_url}/api/generate",
-                json={
-                    "model": self.model,
-                    "system": dynamic_prompt,
-                    "prompt": user_prompt,
-                    "stream": False,
-                    "format": "json",
-                    "temperature": 0.1,
-                },
-            )
+            # Try improved prompt first
+            try:
+                from app.services.improved_llm_prompts import get_mongodb_generation_prompt
+
+                # Get schema context
+                schema_text = ""
+                if self.schema_manager:
+                    schema_text = self.schema_manager.get_formatted_schema()
+
+                improved_prompt = get_mongodb_generation_prompt(
+                    schema_context=schema_text,
+                    question=question,
+                    shop_id=shop_id_int
+                )
+
+                response = await self.client.post(
+                    f"{self.base_url}/api/generate",
+                    json={
+                        "model": self.model,
+                        "prompt": improved_prompt,
+                        "stream": False,
+                        "format": "json",
+                        "temperature": 0.05,  # Lower temperature for more consistent output
+                    },
+                )
+            except:
+                # Fallback to original prompt
+                response = await self.client.post(
+                    f"{self.base_url}/api/generate",
+                    json={
+                        "model": self.model,
+                        "system": dynamic_prompt,
+                        "prompt": user_prompt,
+                        "stream": False,
+                        "format": "json",
+                        "temperature": 0.1,
+                    },
+                )
 
             response.raise_for_status()
             result = response.json()

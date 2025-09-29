@@ -299,6 +299,51 @@ async def process_query_v3(request: Request, query: QueryRequest):
         raise HTTPException(status_code=500, detail=f"Query processing failed: {str(e)}")
 
 
+@app.post("/api/mcp/ask", response_model=QueryResponse)
+async def mcp_query(request: QueryRequest):
+    """
+    Process natural language query using MCP (Model Context Protocol) tools.
+
+    This approach uses LLM to select and call specific MongoDB tools
+    instead of generating raw MongoDB queries.
+    """
+    try:
+        from app.services.llm_mcp_orchestrator import llm_mcp_orchestrator
+
+        # Convert shop_id to integer
+        shop_id = int(request.shop_id)
+
+        # Process using MCP orchestrator
+        result = await llm_mcp_orchestrator.process_query(
+            question=request.question,
+            shop_id=shop_id
+        )
+
+        # Convert result to QueryResponse format
+        if result.get("success"):
+            return QueryResponse(
+                shop_id=request.shop_id,
+                question=request.question,
+                answer=result.get("answer", "Query completed"),
+                data=result.get("data", []),
+                query_type="mcp",
+                processing_time=0.0,  # TODO: Add timing
+                cached=False,
+                metadata=result.get("metadata", {})
+            )
+        else:
+            raise HTTPException(
+                status_code=500,
+                detail=result.get("error", "MCP query failed")
+            )
+
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=f"Invalid shop_id: {str(e)}")
+    except Exception as e:
+        logger.error(f"MCP query failed: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"MCP query failed: {str(e)}")
+
+
 @app.get("/api/models")
 async def list_models(request: Request):
     """List available Ollama models."""

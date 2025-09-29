@@ -36,7 +36,7 @@ class Settings(BaseSettings):
 
     # Query processing
     use_intent_classifier: bool = True
-    use_template_first: bool = True
+    use_template_first: bool = False  # Changed to False to prefer LLM
     use_rag_for_analytics: bool = True
     max_query_timeout: int = 30
 
