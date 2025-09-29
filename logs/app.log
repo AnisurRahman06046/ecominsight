@@ -4308,3 +4308,28 @@
 {"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
 {"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
 {"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "chromadb.telemetry.product.posthog", "message": "Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given", "@timestamp": null, "severity": null}
+{"name": "chromadb.telemetry.product.posthog", "message": "Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Added 9 documents to vector store", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Added 9 initial documents to vector store", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "RAG service initialized with 9 documents", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Function orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.hybrid_orchestrator", "message": "Hybrid orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 7", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
