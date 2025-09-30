@@ -10,6 +10,7 @@ import httpx
 import time
 
 from app.core.config import settings
+from app.core.database import mongodb
 from app.services.mongodb_mcp_service import mongodb_mcp
 from app.services.hf_response_generator import hf_response_generator
 from app.services.query_logger import query_logger
@@ -42,12 +43,25 @@ class LLMMCPOrchestrator:
         start_time = time.time()
 
         try:
-            # FIRST: Try keyword-based tool selection (more reliable)
+            # FIRST: Check if this is a complex multi-part query
+            complex_result = await self._try_complex_query_pattern(question, shop_id, start_time)
+            if complex_result:
+                return complex_result
+
+            # Standard processing: Try keyword-based tool selection (more reliable)
             tool_decision = self._keyword_tool_selection(question)
 
-            # ONLY if keyword matching fails completely, try LLM
+            # ONLY if keyword matching fails completely, try Ollama then LLM
             if not tool_decision or tool_decision.get("confidence", 0) < 0.3:
-                logger.info("Keyword matching uncertain, trying LLM")
+                logger.info("Keyword matching uncertain, trying Ollama quick generation")
+
+                # Try Ollama with short timeout (10s)
+                ollama_result = await self._try_ollama_generation(question, shop_id, start_time)
+                if ollama_result and ollama_result.get("success"):
+                    return ollama_result
+
+                # If Ollama fails/times out, use fallback LLM decision
+                logger.info("Ollama failed, trying LLM tool decision")
                 tool_decision = await self._get_tool_decision(question, shop_id)
 
             if not tool_decision or not tool_decision.get("tool"):
@@ -150,6 +164,318 @@ class LLMMCPOrchestrator:
                 "success": False,
                 "error": str(e)
             }
+
+    async def _try_complex_query_pattern(
+        self,
+        question: str,
+        shop_id: int,
+        start_time: float
+    ) -> Optional[Dict[str, Any]]:
+        """
+        Detect and handle complex multi-part queries with custom pipelines.
+        """
+        question_lower = question.lower()
+
+        # Pattern: Products by revenue + customer frequency + payment distribution + delivery filter
+        if all([
+            any(w in question_lower for w in ["product", "products"]),
+            any(w in question_lower for w in ["revenue", "generated"]),
+            any(w in question_lower for w in ["customer", "customers"]),
+            any(w in question_lower for w in ["placed", "orders", "order"]),
+            any(w in question_lower for w in ["percentage", "percent", "paid", "unpaid"])
+        ]):
+            logger.info("Detected complex products-revenue-customers-payment pattern")
+
+            # Extract parameters
+            import re
+
+            # Get min orders
+            min_orders = 3
+            order_match = re.search(r'(\d+)\s+orders?', question_lower)
+            if order_match:
+                min_orders = int(order_match.group(1))
+
+            # Get delivery charge filter
+            dc_filter = {}
+            dc_match = re.search(r'delivery\s+charge[s]?\s+(above|over|greater than|>)\s+(\d+)', question_lower)
+            if dc_match:
+                dc_filter = {"$gt": float(dc_match.group(2))}
+
+            # Build complex aggregation pipeline
+            pipeline = [
+                # Step 1: Start with orders
+                {"$match": {"shop_id": shop_id}},
+
+                # Step 2: Group by customer to find those with min_orders+
+                {
+                    "$group": {
+                        "_id": "$user_id",
+                        "order_count": {"$sum": 1},
+                        "orders": {"$push": "$$ROOT"}
+                    }
+                },
+                {"$match": {"order_count": {"$gte": min_orders}}},
+
+                # Step 3: Unwind orders back
+                {"$unwind": "$orders"},
+                {"$replaceRoot": {"newRoot": "$orders"}},
+
+                # Step 4: Apply delivery charge filter if specified
+                *([{"$match": {"delivery_charge": dc_filter}}] if dc_filter else []),
+
+                # Step 5: Lookup order products
+                {
+                    "$lookup": {
+                        "from": "order_product",
+                        "localField": "id",
+                        "foreignField": "order_id",
+                        "as": "products"
+                    }
+                },
+
+                # Step 6: Unwind products
+                {"$unwind": "$products"},
+
+                # Step 7: Group by product for revenue
+                {
+                    "$group": {
+                        "_id": "$products.product_id",
+                        "total_revenue": {
+                            "$sum": {"$multiply": ["$products.price", "$products.quantity"]}
+                        },
+                        "total_quantity": {"$sum": "$products.quantity"},
+                        "order_count": {"$sum": 1}
+                    }
+                },
+
+                # Step 8: Sort by revenue
+                {"$sort": {"total_revenue": -1}},
+                {"$limit": 10},
+
+                # Step 9: Lookup product details
+                {
+                    "$lookup": {
+                        "from": "product",
+                        "localField": "_id",
+                        "foreignField": "id",
+                        "as": "product_info"
+                    }
+                },
+                {"$unwind": {"path": "$product_info", "preserveNullAndEmptyArrays": True}}
+            ]
+
+            try:
+                # Execute product revenue query
+                result = await mongodb.execute_aggregation("order", pipeline)
+
+                # Also get payment distribution
+                payment_pipeline = [
+                    {"$match": {"shop_id": shop_id}},
+                    {
+                        "$group": {
+                            "_id": "$user_id",
+                            "order_count": {"$sum": 1},
+                            "orders": {"$push": "$$ROOT"}
+                        }
+                    },
+                    {"$match": {"order_count": {"$gte": min_orders}}},
+                    {"$unwind": "$orders"},
+                    {"$replaceRoot": {"newRoot": "$orders"}},
+                    *([{"$match": {"delivery_charge": dc_filter}}] if dc_filter else []),
+                    {
+                        "$group": {
+                            "_id": "$payment_status",
+                            "count": {"$sum": 1}
+                        }
+                    },
+                    {
+                        "$group": {
+                            "_id": None,
+                            "statuses": {"$push": {"status": "$_id", "count": "$count"}},
+                            "total": {"$sum": "$count"}
+                        }
+                    },
+                    {"$unwind": "$statuses"},
+                    {
+                        "$project": {
+                            "_id": 0,
+                            "status": "$statuses.status",
+                            "count": "$statuses.count",
+                            "percentage": {
+                                "$multiply": [
+                                    {"$divide": ["$statuses.count", "$total"]},
+                                    100
+                                ]
+                            }
+                        }
+                    }
+                ]
+
+                payment_result = await mongodb.execute_aggregation("order", payment_pipeline)
+
+                # Format answer
+                answer_parts = []
+
+                # Products
+                if result:
+                    answer_parts.append("Top products by revenue:")
+                    for i, item in enumerate(result[:5], 1):
+                        name = item.get("product_info", {}).get("name", f"Product {item['_id']}")
+                        revenue = item.get("total_revenue", 0)
+                        qty = item.get("total_quantity", 0)
+                        answer_parts.append(f"  {i}. {name}: ${revenue:,.2f} ({qty} units)")
+
+                # Payment distribution
+                if payment_result:
+                    answer_parts.append("\nPayment distribution:")
+                    for item in payment_result:
+                        status = item.get("status", "unknown")
+                        count = item.get("count", 0)
+                        pct = item.get("percentage", 0)
+                        answer_parts.append(f"  {status}: {count} orders ({pct:.1f}%)")
+
+                answer = "\n".join(answer_parts) if answer_parts else "No results found"
+
+                response_time = time.time() - start_time
+
+                query_logger.log_query(
+                    question=question,
+                    shop_id=shop_id,
+                    answer=answer,
+                    tool_used="complex_pipeline",
+                    intent="complex_analytical",
+                    confidence=0.9,
+                    success=True,
+                    response_time=response_time,
+                    data={"products": result, "payment_dist": payment_result}
+                )
+
+                return {
+                    "success": True,
+                    "answer": answer,
+                    "data": result,
+                    "metadata": {
+                        "tool_used": "complex_pipeline",
+                        "min_orders_filter": min_orders,
+                        "delivery_charge_filter": dc_filter,
+                        "payment_distribution": payment_result,
+                        "confidence": 0.9
+                    }
+                }
+
+            except Exception as e:
+                logger.error(f"Complex query execution failed: {e}")
+                return None
+
+        # Pattern 2: Top customers with additional filters
+        elif all([
+            any(w in question_lower for w in ["customer", "customers", "top customer"]),
+            any(w in question_lower for w in ["spending", "spent", "revenue", "purchase"])
+        ]) and any(w in question_lower for w in ["product", "category", "region", "year", "month"]):
+            logger.info("Detected complex customers-spending-filter pattern")
+
+            # This is a complex customer query that needs custom handling
+            # For now, use best effort with existing tools
+            pass
+
+        # Pattern 3: Product analysis with trends
+        elif all([
+            any(w in question_lower for w in ["product", "products"]),
+            any(w in question_lower for w in ["trend", "growth", "decline", "increase", "decrease", "comparison", "compare"])
+        ]):
+            logger.info("Detected product trend analysis pattern")
+            # Needs time-series aggregation - complex pattern
+            pass
+
+        # Pattern 4: Time-based queries (month/year comparisons)
+        elif any(phrase in question_lower for phrase in [
+            "last month", "this month", "last year", "this year",
+            "monthly", "yearly", "year over year", "yoy",
+            "quarter", "seasonal"
+        ]):
+            logger.info("Detected temporal analysis pattern")
+            # Needs date grouping and comparisons
+            pass
+
+        return None
+
+    async def _try_ollama_generation(
+        self,
+        question: str,
+        shop_id: int,
+        start_time: float
+    ) -> Optional[Dict[str, Any]]:
+        """
+        Try to use Ollama to generate MongoDB pipeline for unseen queries.
+        Uses a simple, fast approach with minimal prompting.
+        """
+        try:
+            schema_context = """
+Collections: order (shop_id, user_id, grand_total, delivery_charge, status, payment_status, created_at)
+            product (id, shop_id, name, price, category_id)
+            order_product (order_id, product_id, quantity, price)
+            customer (id, shop_id, first_name, last_name, email)
+"""
+
+            prompt = f"""{schema_context}
+
+Question: {question}
+Shop ID: {shop_id}
+
+Generate MongoDB aggregation pipeline as JSON array. Start with [{{"$match": {{"shop_id": {shop_id}}}}}]
+Pipeline:"""
+
+            response = await self.client.post(
+                f"{self.base_url}/api/generate",
+                json={
+                    "model": "tinyllama:1.1b",
+                    "prompt": prompt,
+                    "stream": False,
+                    "temperature": 0.1
+                },
+                timeout=10.0  # 10 second timeout
+            )
+
+            if response.status_code == 200:
+                result = response.json()
+                generated = result.get("response", "")
+
+                # Try to extract JSON array
+                import re
+                import json as json_lib
+
+                if "[" in generated:
+                    start = generated.find("[")
+                    end = generated.rfind("]") + 1
+                    pipeline_str = generated[start:end]
+
+                    try:
+                        pipeline = json_lib.loads(pipeline_str)
+                        if isinstance(pipeline, list) and len(pipeline) > 0:
+                            logger.info(f"Ollama generated pipeline: {pipeline}")
+
+                            # Execute pipeline
+                            exec_result = await mongodb.execute_aggregation("order", pipeline)
+
+                            response_time = time.time() - start_time
+
+                            return {
+                                "success": True,
+                                "answer": f"Found {len(exec_result)} results",
+                                "data": exec_result,
+                                "metadata": {
+                                    "tool_used": "ollama_pipeline",
+                                    "pipeline": pipeline,
+                                    "confidence": 0.6
+                                }
+                            }
+                    except:
+                        pass
+
+        except Exception as e:
+            logger.warning(f"Ollama generation failed: {e}")
+
+        return None
 
     async def _get_tool_decision(self, question: str, shop_id: int) -> Dict[str, Any]:
         """

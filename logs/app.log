@@ -6969,3 +6969,268 @@
 {"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
 {"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
 {"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "chromadb.telemetry.product.posthog", "message": "Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given", "@timestamp": null, "severity": null}
+{"name": "chromadb.telemetry.product.posthog", "message": "Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Added 9 documents to vector store", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Added 9 initial documents to vector store", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "RAG service initialized with 9 documents", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Function orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.hybrid_orchestrator", "message": "Hybrid orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Failed to list models: All connection attempts failed", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 0", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Model mistral:7b-instruct not found. Pulling...", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Failed to pull model mistral:7b-instruct: All connection attempts failed", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Failed to initialize Ollama: All connection attempts failed", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "Trying to load google/flan-t5-base...", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "HF Response Generator initialized with google/flan-t5-base", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "Enhanced response: Orders with delivery charges above 15 generated the most revenue in orders with delivery charges abo", "@timestamp": null, "severity": null}
+{"name": "app.services.query_logger", "message": "Query logged: Which products generated the most revenue in order... | Success: True", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "chromadb.telemetry.product.posthog", "message": "Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given", "@timestamp": null, "severity": null}
+{"name": "chromadb.telemetry.product.posthog", "message": "Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Added 9 documents to vector store", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Added 9 initial documents to vector store", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "RAG service initialized with 9 documents", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Function orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.hybrid_orchestrator", "message": "Hybrid orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Failed to list models: All connection attempts failed", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 0", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Model mistral:7b-instruct not found. Pulling...", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Failed to pull model mistral:7b-instruct: All connection attempts failed", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Failed to initialize Ollama: All connection attempts failed", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "chromadb.telemetry.product.posthog", "message": "Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given", "@timestamp": null, "severity": null}
+{"name": "chromadb.telemetry.product.posthog", "message": "Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Added 9 documents to vector store", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Added 9 initial documents to vector store", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "RAG service initialized with 9 documents", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Function orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.hybrid_orchestrator", "message": "Hybrid orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Failed to list models: All connection attempts failed", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 0", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Model mistral:7b-instruct not found. Pulling...", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Failed to pull model mistral:7b-instruct: All connection attempts failed", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Failed to initialize Ollama: All connection attempts failed", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "chromadb.telemetry.product.posthog", "message": "Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given", "@timestamp": null, "severity": null}
+{"name": "chromadb.telemetry.product.posthog", "message": "Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Added 9 documents to vector store", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Added 9 initial documents to vector store", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "RAG service initialized with 9 documents", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Function orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.hybrid_orchestrator", "message": "Hybrid orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Failed to list models: All connection attempts failed", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 0", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Model mistral:7b-instruct not found. Pulling...", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Failed to pull model mistral:7b-instruct: All connection attempts failed", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Failed to initialize Ollama: All connection attempts failed", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Failed to list models: All connection attempts failed", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "Trying to load google/flan-t5-base...", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "HF Response Generator initialized with google/flan-t5-base", "@timestamp": null, "severity": null}
+{"name": "app.services.llm_mcp_orchestrator", "message": "Detected complex products-revenue-customers-payment pattern", "@timestamp": null, "severity": null}
+{"name": "app.services.query_logger", "message": "Query logged: Which products generated the most revenue in order... | Success: True", "@timestamp": null, "severity": null}
+{"name": "app.services.llm_mcp_orchestrator", "message": "Detected complex products-revenue-customers-payment pattern", "@timestamp": null, "severity": null}
+{"name": "app.services.query_logger", "message": "Query logged: Which products generated the most revenue in order... | Success: True", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "chromadb.telemetry.product.posthog", "message": "Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given", "@timestamp": null, "severity": null}
+{"name": "chromadb.telemetry.product.posthog", "message": "Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Added 9 documents to vector store", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Added 9 initial documents to vector store", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "RAG service initialized with 9 documents", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Function orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.hybrid_orchestrator", "message": "Hybrid orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 7", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "chromadb.telemetry.product.posthog", "message": "Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given", "@timestamp": null, "severity": null}
+{"name": "chromadb.telemetry.product.posthog", "message": "Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Added 9 documents to vector store", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Added 9 initial documents to vector store", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "RAG service initialized with 9 documents", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Function orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.hybrid_orchestrator", "message": "Hybrid orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 7", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "Trying to load google/flan-t5-base...", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "HF Response Generator initialized with google/flan-t5-base", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "Enhanced response: There are 174 orders in your cart.", "@timestamp": null, "severity": null}
+{"name": "app.services.query_logger", "message": "Query logged: How many orders are there?... | Success: True", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "Enhanced response: There are 174 orders in your cart.", "@timestamp": null, "severity": null}
+{"name": "app.services.query_logger", "message": "Query logged: How many orders are there?... | Success: True", "@timestamp": null, "severity": null}
+{"name": "app.services.llm_mcp_orchestrator", "message": "Detected complex products-revenue-customers-payment pattern", "@timestamp": null, "severity": null}
+{"name": "app.services.query_logger", "message": "Query logged: Which products generated the most revenue in order... | Success: True", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "Enhanced response: Customers who bought fire extinguisher products", "@timestamp": null, "severity": null}
+{"name": "app.services.query_logger", "message": "Query logged: Show me customers who bought fire extinguisher pro... | Success: True", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "Enhanced response: The conversion rate of pending orders to confirmed orders is 10 / 10", "@timestamp": null, "severity": null}
+{"name": "app.services.query_logger", "message": "Query logged: What is the conversion rate of pending orders to c... | Success: True", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "Enhanced response: The ratio between delivered and canceled shipments is 10 / 10", "@timestamp": null, "severity": null}
+{"name": "app.services.query_logger", "message": "Query logged: Calculate the ratio between delivered and canceled... | Success: True", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "Enhanced response: The number of orders is 174 orders.", "@timestamp": null, "severity": null}
+{"name": "app.services.query_logger", "message": "Query logged: How many orders?... | Success: True", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "Enhanced response: Item count is 174 and revenue is $235,706.00.", "@timestamp": null, "severity": null}
+{"name": "app.services.query_logger", "message": "Query logged: Total revenue... | Success: True", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "Enhanced response: The top 5 products by sales are: 1. CE Certificate Loom Anti fall Webbing Retractable Fall Arrester ", "@timestamp": null, "severity": null}
+{"name": "app.services.query_logger", "message": "Query logged: Top 5 products by sales... | Success: True", "@timestamp": null, "severity": null}
+{"name": "app.services.llm_mcp_orchestrator", "message": "Detected complex products-revenue-customers-payment pattern", "@timestamp": null, "severity": null}
+{"name": "app.services.query_logger", "message": "Query logged: Which products generated the most revenue in order... | Success: True", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "Enhanced response: The average order value is $1,354.63.", "@timestamp": null, "severity": null}
+{"name": "app.services.query_logger", "message": "Query logged: Show me average order value... | Success: True", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "chromadb.telemetry.product.posthog", "message": "Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given", "@timestamp": null, "severity": null}
+{"name": "chromadb.telemetry.product.posthog", "message": "Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Added 9 documents to vector store", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "Added 9 initial documents to vector store", "@timestamp": null, "severity": null}
+{"name": "app.services.rag_service", "message": "RAG service initialized with 9 documents", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Loading Hugging Face models for intelligent formatting...", "@timestamp": null, "severity": null}
+{"name": "app.services.intelligent_formatter", "message": "Intelligent formatter initialized successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.query_orchestrator", "message": "Query orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.function_orchestrator", "message": "Function orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.cache_service", "message": "Cache disabled or Redis URL not configured", "@timestamp": null, "severity": null}
+{"name": "app.services.hybrid_orchestrator", "message": "Hybrid orchestrator initialized", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 7", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "Trying to load google/flan-t5-base...", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "HF Response Generator initialized with google/flan-t5-base", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "Enhanced response: There are 174 orders in your cart.", "@timestamp": null, "severity": null}
+{"name": "app.services.query_logger", "message": "Query logged: How many orders are there?... | Success: True", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 7", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Starting Ecommerce Insights Server...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Successfully connected to MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Initializing schema manager...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Loading database schema...", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_extractor", "message": "Found 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.schema_manager", "message": "Schema loaded successfully: 109 collections", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Schema manager attached to Ollama service", "@timestamp": null, "severity": null}
+{"name": "app.services.ollama_service", "message": "Ollama connected. Available models: 7", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Application started successfully", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "Trying to load google/flan-t5-base...", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "HF Response Generator initialized with google/flan-t5-base", "@timestamp": null, "severity": null}
+{"name": "app.services.llm_mcp_orchestrator", "message": "Detected complex products-revenue-customers-payment pattern", "@timestamp": null, "severity": null}
+{"name": "app.services.query_logger", "message": "Query logged: Which products generated the most revenue in order... | Success: True", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "Enhanced response: There are 174 orders in your cart.", "@timestamp": null, "severity": null}
+{"name": "app.services.query_logger", "message": "Query logged: How many orders are there?... | Success: True", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "Enhanced response: The total revenue is $235,706.00.", "@timestamp": null, "severity": null}
+{"name": "app.services.query_logger", "message": "Query logged: What is the total revenue?... | Success: True", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "Enhanced response: High Quality Non-Slip Nylon Safety Breathable PVC Dot Coated Gloves Men Women: 14 sold, $4,200.00 re", "@timestamp": null, "severity": null}
+{"name": "app.services.query_logger", "message": "Query logged: Show me top 5 best selling products... | Success: True", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "Enhanced response: The average order value is $1,354.63.", "@timestamp": null, "severity": null}
+{"name": "app.services.query_logger", "message": "Query logged: Average order value... | Success: True", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "Enhanced response: There are 0 customers who spent more than 5000 total.", "@timestamp": null, "severity": null}
+{"name": "app.services.query_logger", "message": "Query logged: Show me customers who spent more than 5000 total a... | Success: True", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "Enhanced response: The payment status has the most orders and the total revenue for each payment status is $235,706.00.", "@timestamp": null, "severity": null}
+{"name": "app.services.query_logger", "message": "Query logged: Which payment status has the most orders and what ... | Success: True", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "Enhanced response: Counted 9 orders matching your criteria.", "@timestamp": null, "severity": null}
+{"name": "app.services.query_logger", "message": "Query logged: Compare confirmed versus canceled orders... | Success: True", "@timestamp": null, "severity": null}
+{"name": "app.services.hf_response_generator", "message": "Enhanced response: High strength webbing retractable structure fall safety device fall protection Okinawa snap hook for", "@timestamp": null, "severity": null}
+{"name": "app.services.query_logger", "message": "Query logged: What are the top 3 most expensive products in the ... | Success: True", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutting down...", "@timestamp": null, "severity": null}
+{"name": "app.core.database", "message": "Disconnected from MongoDB", "@timestamp": null, "severity": null}
+{"name": "app.api.main", "message": "Shutdown complete", "@timestamp": null, "severity": null}
