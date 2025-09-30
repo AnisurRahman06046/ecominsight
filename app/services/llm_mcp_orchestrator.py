@@ -7,9 +7,12 @@ import json
 import logging
 from typing import Dict, Any, Optional
 import httpx
+import time
 
 from app.core.config import settings
 from app.services.mongodb_mcp_service import mongodb_mcp
+from app.services.hf_response_generator import hf_response_generator
+from app.services.query_logger import query_logger
 
 logger = logging.getLogger(__name__)
 
@@ -36,6 +39,8 @@ class LLMMCPOrchestrator:
         Returns:
             Dict with answer and data
         """
+        start_time = time.time()
+
         try:
             # FIRST: Try keyword-based tool selection (more reliable)
             tool_decision = self._keyword_tool_selection(question)
@@ -46,6 +51,21 @@ class LLMMCPOrchestrator:
                 tool_decision = await self._get_tool_decision(question, shop_id)
 
             if not tool_decision or not tool_decision.get("tool"):
+                response_time = time.time() - start_time
+
+                # Log failed query
+                query_logger.log_query(
+                    question=question,
+                    shop_id=shop_id,
+                    answer="",
+                    tool_used="none",
+                    intent="unknown",
+                    confidence=0.0,
+                    success=False,
+                    response_time=response_time,
+                    error="Could not determine appropriate tool"
+                )
+
                 return {
                     "success": False,
                     "error": "Could not determine appropriate tool"
@@ -56,24 +76,76 @@ class LLMMCPOrchestrator:
 
             # Format the answer
             if result.get("success"):
-                answer = self._format_answer(result, tool_decision, question)
+                # Use HF response generator for natural language
+                answer = hf_response_generator.generate_response(
+                    data=result,
+                    question=question,
+                    tool_name=tool_decision.get("tool")
+                )
+
+                response_time = time.time() - start_time
+
+                # Log successful query
+                query_logger.log_query(
+                    question=question,
+                    shop_id=shop_id,
+                    answer=answer,
+                    tool_used=tool_decision["tool"],
+                    intent="analytical",  # Could be enhanced with intent classification
+                    confidence=tool_decision.get("confidence", 0.5),
+                    success=True,
+                    response_time=response_time,
+                    data=result
+                )
+
                 return {
                     "success": True,
                     "answer": answer,
                     "data": result.get("documents") or result.get("result") or result.get("groups") or result.get("customers"),
                     "metadata": {
                         "tool_used": tool_decision["tool"],
-                        "parameters": tool_decision.get("parameters", {})
+                        "parameters": tool_decision.get("parameters", {}),
+                        "confidence": tool_decision.get("confidence", 0.5)
                     }
                 }
             else:
+                response_time = time.time() - start_time
+
+                # Log failed query
+                query_logger.log_query(
+                    question=question,
+                    shop_id=shop_id,
+                    answer="",
+                    tool_used=tool_decision.get("tool", "unknown"),
+                    intent="analytical",
+                    confidence=tool_decision.get("confidence", 0.5),
+                    success=False,
+                    response_time=response_time,
+                    error=result.get("error", "Tool execution failed")
+                )
+
                 return {
                     "success": False,
                     "error": result.get("error", "Tool execution failed")
                 }
 
         except Exception as e:
+            response_time = time.time() - start_time
             logger.error(f"MCP query processing failed: {e}")
+
+            # Log exception
+            query_logger.log_query(
+                question=question,
+                shop_id=shop_id,
+                answer="",
+                tool_used="unknown",
+                intent="unknown",
+                confidence=0.0,
+                success=False,
+                response_time=response_time,
+                error=str(e)
+            )
+
             return {
                 "success": False,
                 "error": str(e)
@@ -234,20 +306,20 @@ Example for "total revenue": {{"tool": "calculate_sum", "parameters": {{"collect
 
         # HIGH CONFIDENCE (0.9) - Very specific patterns
 
-        # Count queries - be very specific
-        if any(phrase in question_lower for phrase in ["how many", "number of", "count of"]):
+        # Count queries - improved to catch "count all" patterns
+        if any(phrase in question_lower for phrase in ["how many", "number of", "count of", "count all", "total number"]):
             confidence = 0.9
             if "product" in question_lower:
-                return {"tool": "count_documents", "parameters": {"collection": "product"}, "confidence": confidence}
+                return {"tool": "count_documents", "parameters": {"collection": "product", "filter": extracted_filters}, "confidence": confidence}
             elif "customer" in question_lower:
-                return {"tool": "count_documents", "parameters": {"collection": "customer"}, "confidence": confidence}
+                return {"tool": "count_documents", "parameters": {"collection": "customer", "filter": extracted_filters}, "confidence": confidence}
             elif "order" in question_lower:
-                return {"tool": "count_documents", "parameters": {"collection": "order"}, "confidence": confidence}
+                return {"tool": "count_documents", "parameters": {"collection": "order", "filter": extracted_filters}, "confidence": confidence}
             elif "categor" in question_lower:  # catches category/categories
                 return {"tool": "count_documents", "parameters": {"collection": "category"}, "confidence": confidence}
             else:
                 # Default to orders with lower confidence
-                return {"tool": "count_documents", "parameters": {"collection": "order"}, "confidence": 0.6}
+                return {"tool": "count_documents", "parameters": {"collection": "order", "filter": extracted_filters}, "confidence": 0.6}
 
         # Revenue/Sum queries - very specific
         if any(phrase in question_lower for phrase in ["total revenue", "total sales", "sum of", "total amount", "revenue"]):
@@ -274,42 +346,52 @@ Example for "total revenue": {{"tool": "calculate_sum", "parameters": {{"collect
                 "confidence": 0.9
             }
 
-        # Top customers by spending - very specific
-        if ("top" in question_lower or "best" in question_lower) and "customer" in question_lower and any(word in question_lower for word in ["spending", "spent", "revenue", "purchase"]):
+        # Top customers - improved to catch more patterns
+        if ("top" in question_lower or "best" in question_lower or "highest" in question_lower) and "customer" in question_lower:
             limit = 5
             # Extract number if present
             import re
             numbers = re.findall(r'\d+', question_lower)
             if numbers:
                 limit = int(numbers[0])
+            # High confidence even without "spending" keyword
+            confidence = 0.95 if any(word in question_lower for word in ["spending", "spent", "revenue", "purchase"]) else 0.90
             return {
                 "tool": "get_top_customers_by_spending",
                 "parameters": {"limit": limit},
-                "confidence": 0.95
+                "confidence": confidence
             }
 
-        # Product sales analysis - best selling products
-        if ("best" in question_lower or "top" in question_lower or "most" in question_lower) and any(word in question_lower for word in ["selling", "sold", "popular"]) and "product" in question_lower:
+        # Product sales analysis - improved to catch "top products"
+        if ("best" in question_lower or "top" in question_lower or "most" in question_lower or "highest" in question_lower) and "product" in question_lower:
             limit = 10
             # Extract number if present
             import re
             numbers = re.findall(r'\d+', question_lower)
             if numbers:
                 limit = int(numbers[0])
+            # High confidence even without "selling" keyword
+            confidence = 0.95 if any(word in question_lower for word in ["selling", "sold", "popular"]) else 0.90
             return {
                 "tool": "get_best_selling_products",
                 "parameters": {"limit": limit},
-                "confidence": 0.95
+                "confidence": confidence
             }
 
-        # Group by queries - check for specific group keywords
-        if any(phrase in question_lower for phrase in ["group", "breakdown", "distribution", "by status", "by category"]):
+        # Group by queries - improved to catch more patterns
+        if any(phrase in question_lower for phrase in ["group", "breakdown", "distribution", "by status", "by category", "by payment", "count by", "orders by"]):
             group_field = "status"  # default
             collection = "order"  # default
+            confidence = 0.85
 
             if "status" in question_lower:
                 group_field = "status"
                 collection = "order"
+                confidence = 0.90
+            elif "payment" in question_lower:
+                group_field = "payment_status"
+                collection = "order"
+                confidence = 0.90
             elif "category" in question_lower:
                 group_field = "category_id"
                 collection = "product" if "product" in question_lower else "order"
@@ -326,7 +408,7 @@ Example for "total revenue": {{"tool": "calculate_sum", "parameters": {{"collect
                     "collection": collection,
                     "group_by": group_field
                 },
-                "confidence": 0.85
+                "confidence": confidence
             }
 
         # MEDIUM CONFIDENCE (0.6) - Less specific patterns
@@ -378,6 +460,25 @@ Example for "total revenue": {{"tool": "calculate_sum", "parameters": {{"collect
                 "confidence": confidence
             }
 
+        # Year-based queries - NEW: catch "2024", "this year", etc.
+        import re
+        year_match = re.search(r'\b(20\d{2})\b', question_lower)
+        if year_match or "this year" in question_lower or "from year" in question_lower:
+            # For specific years like "2024" or "this year"
+            confidence = 0.85
+            # Use find_documents with date filter (more flexible)
+            return {
+                "tool": "find_documents",
+                "parameters": {
+                    "collection": "order",
+                    "filter": extracted_filters,
+                    "sort_by": "created_at",
+                    "sort_order": -1,
+                    "limit": 10
+                },
+                "confidence": confidence
+            }
+
         # Date range queries
         if any(word in question_lower for word in ["last", "past", "recent", "today", "yesterday", "this week", "this month"]):
             days = 7  # default
@@ -395,7 +496,7 @@ Example for "total revenue": {{"tool": "calculate_sum", "parameters": {{"collect
             elif "month" in question_lower:
                 days = 30
                 confidence = 0.85
-            elif "year" in question_lower:
+            elif "year" in question_lower and "this" not in question_lower:
                 days = 365
                 confidence = 0.85
 

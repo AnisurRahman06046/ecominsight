@@ -1,0 +1,735 @@
+================================================================================
+EXTENSIVE MCP SYSTEM TESTING - 100 QUERIES
+================================================================================
+
+Testing diverse queries step by step...\n
+
+[1/100] Testing: How many orders do I have?
+Category: BASIC_COUNT
+✅ PASS
+Answer: The number of orders I have is 174.
+Tool: count_documents
+Time: 47.88s
+
+[2/100] Testing: How many customers?
+Category: BASIC_COUNT
+✅ PASS
+Answer: The current number of customers is 23 customers.
+Tool: count_documents
+Time: 1.37s
+
+[3/100] Testing: How many products?
+Category: BASIC_COUNT
+✅ PASS
+Answer: There are 141 products in your cart.
+Tool: count_documents
+Time: 2.03s
+
+[4/100] Testing: Count all orders
+Category: BASIC_COUNT
+✅ PASS
+Answer: You've found 10 orders matching your criteria.
+Tool: find_documents
+Time: 1.94s
+
+[5/100] Testing: Total number of customers
+Category: BASIC_COUNT
+✅ PASS
+Answer: The total number of customers is 23 customers.
+Tool: count_documents
+Time: 1.60s
+
+[6/100] Testing: How many pending orders?
+Category: BASIC_COUNT
+✅ PASS
+Answer: There are 174 pending orders at the moment.
+Tool: count_documents
+Time: 1.60s
+
+[7/100] Testing: Count completed orders
+Category: BASIC_COUNT
+✅ PASS
+Answer: You've found 10 orders matching your criteria.
+Tool: find_documents
+Time: 1.56s
+
+[8/100] Testing: How many delivered orders?
+Category: BASIC_COUNT
+✅ PASS
+Answer: The number of orders delivered is 174.
+Tool: count_documents
+Time: 1.40s
+
+[9/100] Testing: Number of canceled orders
+Category: BASIC_COUNT
+✅ PASS
+Answer: The number of canceled orders is 174.
+Tool: count_documents
+Time: 1.58s
+
+[10/100] Testing: How many confirmed orders?
+Category: BASIC_COUNT
+✅ PASS
+Answer: The total number of confirmed orders is 174.
+Tool: count_documents
+Time: 1.57s
+
+[11/100] Testing: What is my total revenue?
+Category: SUM_QUERY
+✅ PASS
+Answer: My total revenue is $235,706.00.
+Tool: calculate_sum
+Time: 2.67s
+
+[12/100] Testing: Total sales
+Category: SUM_QUERY
+✅ PASS
+Answer: Item count is 174 and total sales is $235,706.00.
+Tool: calculate_sum
+Time: 2.29s
+
+[13/100] Testing: Sum of all orders
+Category: SUM_QUERY
+✅ PASS
+Answer: The sum of all orders is $235,706.00.
+Tool: calculate_sum
+Time: 2.58s
+
+[14/100] Testing: Total revenue from orders
+Category: SUM_QUERY
+✅ PASS
+Answer: The total revenue from orders is $235,706.00.
+Tool: calculate_sum
+Time: 2.49s
+
+[15/100] Testing: What is the total order value?
+Category: SUM_QUERY
+✅ PASS
+Answer: The total order value is 10 orders. The total order value is 10 orders.
+Tool: find_documents
+Time: 2.09s
+
+[16/100] Testing: Sum of delivery charges
+Category: SUM_QUERY
+✅ PASS
+Answer: The item count is 174 and the delivery charges are $235,706.00.
+Tool: calculate_sum
+Time: 2.59s
+
+[17/100] Testing: Total paid amount
+Category: SUM_QUERY
+✅ PASS
+Answer: The total paid amount is 10 items and the current amount is 10 items.
+Tool: find_documents
+Time: 1.86s
+
+[18/100] Testing: Revenue from paid orders
+Category: SUM_QUERY
+✅ PASS
+Answer: Revenue from paid orders is $235,706.00.
+Tool: calculate_sum
+Time: 2.26s
+
+[19/100] Testing: Total revenue from pending orders
+Category: SUM_QUERY
+✅ PASS
+Answer: Total revenue from pending orders is $235,706.00.
+Tool: calculate_sum
+Time: 2.00s
+
+[20/100] Testing: Sum of completed orders
+Category: SUM_QUERY
+✅ PASS
+Answer: Completed orders amount to $235,706.00.
+Tool: calculate_sum
+Time: 2.43s
+
+[21/100] Testing: What is the average order value?
+Category: AVERAGE_QUERY
+✅ PASS
+Answer: The average order value is $1,354.63.
+Tool: calculate_average
+Time: 2.18s
+
+[22/100] Testing: Average order amount
+Category: AVERAGE_QUERY
+✅ PASS
+Answer: The average order amount is $1,354.63.
+Tool: calculate_average
+Time: 1.51s
+
+[23/100] Testing: Mean order value
+Category: AVERAGE_QUERY
+✅ PASS
+Answer: The average order value is $1,354.63.
+Tool: calculate_average
+Time: 2.16s
+
+[24/100] Testing: Average revenue per order
+Category: AVERAGE_QUERY
+✅ PASS
+Answer: The average revenue per order is $235,706.00.
+Tool: calculate_sum
+Time: 2.50s
+
+[25/100] Testing: Average delivery charge
+Category: AVERAGE_QUERY
+✅ PASS
+Answer: The average delivery charge is $1,354.63.
+Tool: calculate_average
+Time: 1.53s
+
+[26/100] Testing: Average of paid orders
+Category: AVERAGE_QUERY
+✅ PASS
+Answer: The average of paid orders is $1,354.63.
+Tool: calculate_average
+Time: 1.58s
+
+[27/100] Testing: Mean value of pending orders
+Category: AVERAGE_QUERY
+✅ PASS
+Answer: The average value of pending orders is $1,354.63.
+Tool: calculate_average
+Time: 1.80s
+
+[28/100] Testing: Average order value above $500
+Category: AVERAGE_QUERY
+✅ PASS
+Answer: The average order value above $500 is $1,354.63.
+Tool: calculate_average
+Time: 1.70s
+
+[29/100] Testing: Average for completed orders
+Category: AVERAGE_QUERY
+✅ PASS
+Answer: The average for completed orders is $1,354.63.
+Tool: calculate_average
+Time: 2.23s
+
+[30/100] Testing: What is average order value for paid orders?
+Category: AVERAGE_QUERY
+✅ PASS
+Answer: The average order value for paid orders is $1,354.63.
+Tool: calculate_average
+Time: 2.03s
+
+[31/100] Testing: Show me orders above $1000
+Category: FILTER_AMOUNT
+✅ PASS
+Answer: Orders over $1000 are not displayed.
+Tool: find_documents
+Time: 1.80s
+
+[32/100] Testing: Orders above $500
+Category: FILTER_AMOUNT
+✅ PASS
+Answer: You've found 10 orders matching your criteria.
+Tool: find_documents
+Time: 1.54s
+
+[33/100] Testing: Find orders above $2000
+Category: FILTER_AMOUNT
+✅ PASS
+Answer: You've found 10 orders matching your criteria.
+Tool: find_documents
+Time: 1.65s
+
+[34/100] Testing: Orders below $100
+Category: FILTER_AMOUNT
+✅ PASS
+Answer: You've found 10 orders matching your criteria.
+Tool: find_documents
+Time: 1.90s
+
+[35/100] Testing: Show orders under $500
+Category: FILTER_AMOUNT
+✅ PASS
+Answer: You've found 10 orders matching your criteria.
+Tool: find_documents
+Time: 1.57s
+
+[36/100] Testing: Orders between $500 and $2000
+Category: FILTER_RANGE
+✅ PASS
+Answer: You've found 10 orders matching your criteria.
+Tool: find_documents
+Time: 2.35s
+
+[37/100] Testing: Orders between $1000 and $3000
+Category: FILTER_RANGE
+✅ PASS
+Answer: You've found 10 orders matching your criteria.
+Tool: find_documents
+Time: 2.55s
+
+[38/100] Testing: Find orders between $100 and $500
+Category: FILTER_RANGE
+✅ PASS
+Answer: You've found 10 orders matching your criteria.
+Tool: find_documents
+Time: 1.96s
+
+[39/100] Testing: Show paid orders
+Category: FILTER_STATUS
+✅ PASS
+Answer: You've found 10 orders matching your criteria.
+Tool: find_documents
+Time: 1.61s
+
+[40/100] Testing: Find unpaid orders
+Category: FILTER_STATUS
+✅ PASS
+Answer: Unpaid orders are the ones that have not been paid.
+Tool: find_documents
+Time: 1.68s
+
+[41/100] Testing: Pending orders
+Category: FILTER_STATUS
+✅ PASS
+Answer: Counted 10 orders matching your criteria.
+Tool: find_documents
+Time: 1.57s
+
+[42/100] Testing: Completed orders
+Category: FILTER_STATUS
+✅ PASS
+Answer: You've found 10 orders matching your criteria.
+Tool: find_documents
+Time: 2.08s
+
+[43/100] Testing: Delivered orders
+Category: FILTER_STATUS
+✅ PASS
+Answer: Counted 4 orders matching your criteria.
+Tool: find_documents
+Time: 1.49s
+
+[44/100] Testing: Canceled orders
+Category: FILTER_STATUS
+✅ PASS
+Answer: Orders that have been cancelled have been canceled.
+Tool: find_documents
+Time: 1.65s
+
+[45/100] Testing: Confirmed orders
+Category: FILTER_STATUS
+✅ PASS
+Answer: Counted 9 orders matching your criteria.
+Tool: find_documents
+Time: 1.94s
+
+[46/100] Testing: Paid orders above $800
+Category: MULTI_FILTER
+✅ PASS
+Answer: You've found 10 orders matching your criteria.
+Tool: find_documents
+Time: 1.90s
+
+[47/100] Testing: Pending orders above $1000
+Category: MULTI_FILTER
+✅ PASS
+Answer: Counted 10 orders matching your criteria.
+Tool: find_documents
+Time: 1.44s
+
+[48/100] Testing: Completed orders above $500
+Category: MULTI_FILTER
+✅ PASS
+Answer: You've found 10 orders matching your criteria.
+Tool: find_documents
+Time: 1.53s
+
+[49/100] Testing: Paid orders between $500 and $1500
+Category: MULTI_FILTER
+✅ PASS
+Answer: You've found 10 orders matching your criteria.
+Tool: find_documents
+Time: 2.11s
+
+[50/100] Testing: Pending orders between $1000 and $2000
+Category: MULTI_FILTER
+✅ PASS
+Answer: You've found 10 orders matching your criteria.
+Tool: find_documents
+Time: 2.20s
+
+[51/100] Testing: Unpaid orders above $1000
+Category: MULTI_FILTER
+✅ PASS
+Answer: Unpaid orders over $1000 are not found.
+Tool: find_documents
+Time: 1.78s
+
+[52/100] Testing: Delivered orders above $800
+Category: MULTI_FILTER
+✅ PASS
+Answer: Counted 4 orders matching your criteria.
+Tool: find_documents
+Time: 1.74s
+
+[53/100] Testing: Confirmed orders above $500
+Category: MULTI_FILTER
+✅ PASS
+Answer: Count: 9 Confirmed orders above $500
+Tool: find_documents
+Time: 1.81s
+
+[54/100] Testing: Canceled orders above $100
+Category: MULTI_FILTER
+✅ PASS
+Answer: Orders over $100 are not cancelled at this time.
+Tool: find_documents
+Time: 1.87s
+
+[55/100] Testing: Paid orders under $200
+Category: MULTI_FILTER
+✅ PASS
+Answer: You've found 10 orders matching your criteria.
+Tool: find_documents
+Time: 1.62s
+
+[56/100] Testing: Show me top 5 customers
+Category: TOP_N
+✅ PASS
+Answer: The top 5 customers are the ones that have a customer rating of 5 out of 5.
+Tool: find_documents
+Time: 2.12s
+
+[57/100] Testing: Top 10 customers
+Category: TOP_N
+✅ PASS
+Answer: You've found 10 customers matching your criteria.
+Tool: find_documents
+Time: 1.72s
+
+[58/100] Testing: Top 3 customers by spending
+Category: TOP_N
+✅ PASS
+Answer: Ashadul Islam: $77,434.00 (36 orders) Azher Ahmed: $43,430.00 (22 orders) Muhammad Rifat: $26,753.00 (48 orders)
+Tool: get_top_customers_by_spending
+Time: 10.53s
+
+[59/100] Testing: Show me best customers
+Category: TOP_N
+✅ PASS
+Answer: You are a helpful e-commerce analytics assistant.
+Tool: find_documents
+Time: 1.56s
+
+[60/100] Testing: Top 5 orders
+Category: TOP_N
+✅ PASS
+Answer: You've found 10 orders matching your criteria.
+Tool: find_documents
+Time: 1.90s
+
+[61/100] Testing: Highest spending customers
+Category: TOP_N
+✅ PASS
+Answer: The highest spending customers are the ones that are the most expensive.
+Tool: find_documents
+Time: 1.64s
+
+[62/100] Testing: Top 10 orders by value
+Category: TOP_N
+✅ PASS
+Answer: You've found 10 orders matching your criteria.
+Tool: find_documents
+Time: 1.61s
+
+[63/100] Testing: Best selling products
+Category: TOP_N
+✅ PASS
+Answer: The best selling products are: 1. CE Certificate Loom Anti fall Webbing Retractable Fall Arrester Fall Protection Retrac...
+Tool: get_best_selling_products
+Time: 28.47s
+
+[64/100] Testing: Top products
+Category: TOP_N
+✅ PASS
+Answer: The top 10 products are: 10 documents found: 10
+Tool: find_documents
+Time: 1.61s
+
+[65/100] Testing: Top 5 customers by order count
+Category: TOP_N
+✅ PASS
+Answer: Find the top 5 customers by order count.
+Tool: find_documents
+Time: 1.73s
+
+[66/100] Testing: How many orders by status
+Category: GROUPING
+✅ PASS
+Answer: The current status of your order is 174 orders.
+Tool: count_documents
+Time: 1.37s
+
+[67/100] Testing: Group orders by status
+Category: GROUPING
+✅ PASS
+Answer: Order Placed: 97 items Order Placed: 97 items Order Placed: 97 items Order Placed: 97 items Order Placed: 97 items Order...
+Tool: group_and_count
+Time: 23.45s
+
+[68/100] Testing: Orders grouped by payment status
+Category: GROUPING
+✅ PASS
+Answer: Order Placed: 97 items Order Placed: 97 items Order Placed: 97 items Order Placed: 97 items Order Placed: 97 items Order...
+Tool: group_and_count
+Time: 23.59s
+
+[69/100] Testing: Count orders by status
+Category: GROUPING
+✅ PASS
+Answer: Order Placed: 97 items, Pending: 54 items, Confirmed: 9, Canceled: 8, Delivered: 4, Ongoing: 2
+Tool: group_and_count
+Time: 4.06s
+
+[70/100] Testing: Breakdown by status
+Category: GROUPING
+✅ PASS
+Answer: Order Placed: 97, Pending: 54, Confirmed: 9, Canceled: 8, Delivered: 4, Ongoing: 2
+Tool: group_and_count
+Time: 4.08s
+
+[71/100] Testing: Orders by payment method
+Category: GROUPING
+✅ PASS
+Answer: You've found 10 orders matching your criteria.
+Tool: find_documents
+Time: 1.79s
+
+[72/100] Testing: Group by order status
+Category: GROUPING
+✅ PASS
+Answer: Order Placed: 97 items Order Placed: 97 items Order Placed: 97 items Order Placed: 97 items Order Placed: 97 items Order...
+Tool: group_and_count
+Time: 23.68s
+
+[73/100] Testing: Show me order status breakdown
+Category: GROUPING
+✅ PASS
+Answer: Order Placed: 97 items, Pending: 54 items, Confirmed: 9, Canceled: 8, Delivered: 4, Ongoing: 2
+Tool: group_and_count
+Time: 4.10s
+
+[74/100] Testing: Count by order status
+Category: GROUPING
+✅ PASS
+Answer: You've found 10 orders matching your criteria.
+Tool: find_documents
+Time: 1.75s
+
+[75/100] Testing: Distribution of orders by status
+Category: GROUPING
+✅ PASS
+Answer: Order Placed: 97 items Order Placed: 97 items Order Placed: 97 items Order Placed: 97 items Order Placed: 97 items Order...
+Tool: group_and_count
+Time: 23.47s
+
+[76/100] Testing: Orders from last 7 days
+Category: TIME_RANGE
+✅ PASS
+Answer: There are 0 orders from the last 7 days.
+Tool: get_date_range
+Time: 1.53s
+
+[77/100] Testing: Show me orders from last week
+Category: TIME_RANGE
+✅ PASS
+Answer: Last week 10 orders matching your criteria were found.
+Tool: find_documents
+Time: 1.62s
+
+[78/100] Testing: Orders from last 30 days
+Category: TIME_RANGE
+✅ PASS
+Answer: There are 0 orders from the last 30 days.
+Tool: get_date_range
+Time: 1.47s
+
+[79/100] Testing: Orders from last month
+Category: TIME_RANGE
+✅ PASS
+Answer: Counted 2 orders from the specified date range.
+Tool: get_date_range
+Time: 1.54s
+
+[80/100] Testing: Today's orders
+Category: TIME_RANGE
+✅ PASS
+Answer: Today's orders data available: Count: 0 Documents found: 0 Current Answer: Found 0 orders from the specified date range.
+Tool: get_date_range
+Time: 3.35s
+
+[81/100] Testing: Yesterday's orders
+Category: TIME_RANGE
+✅ PASS
+Answer: Yesterday's orders data available: Count: 0 Documents found: 0 Current Answer: Found 0 orders from the specified date ra...
+Tool: get_date_range
+Time: 3.35s
+
+[82/100] Testing: Orders from 2024
+Category: TIME_RANGE
+✅ PASS
+Answer: Counted 10 orders matching your criteria.
+Tool: find_documents
+Time: 1.54s
+
+[83/100] Testing: Orders from this year
+Category: TIME_RANGE
+✅ PASS
+Answer: Counted 10 orders matching your criteria.
+Tool: find_documents
+Time: 1.37s
+
+[84/100] Testing: Recent orders
+Category: TIME_RANGE
+✅ PASS
+Answer: Found 0 orders from the specified date range.
+Tool: get_date_range
+Time: 1.65s
+
+[85/100] Testing: Latest orders
+Category: TIME_RANGE
+✅ PASS
+Answer: You've found 10 orders matching your criteria.
+Tool: find_documents
+Time: 1.55s
+
+[86/100] Testing: Average order value for paid orders above $800
+Category: COMPLEX_AGG
+✅ PASS
+Answer: The average order value for paid orders over $800 is $1,354.63.
+Tool: calculate_average
+Time: 1.96s
+
+[87/100] Testing: Total revenue from pending orders above $1000
+Category: COMPLEX_AGG
+✅ PASS
+Answer: The total revenue from pending orders above $1000 is $235,706.00.
+Tool: calculate_sum
+Time: 2.17s
+
+[88/100] Testing: Average of completed orders above $500
+Category: COMPLEX_AGG
+✅ PASS
+Answer: The average of completed orders over $500 is $1,354.63.
+Tool: calculate_average
+Time: 1.64s
+
+[89/100] Testing: Sum of paid orders between $500 and $2000
+Category: COMPLEX_AGG
+✅ PASS
+Answer: The sum of paid orders between $500 and $2000 is $235,706.00.
+Tool: calculate_sum
+Time: 2.20s
+
+[90/100] Testing: Average order value for last 30 days
+Category: COMPLEX_AGG
+✅ PASS
+Answer: The average order value for the last 30 days is $1,354.63.
+Tool: calculate_average
+Time: 2.56s
+
+[91/100] Testing: Total revenue from orders above $1000
+Category: COMPLEX_AGG
+✅ PASS
+Answer: The total revenue from orders over $1000 is $235,706.00.
+Tool: calculate_sum
+Time: 1.97s
+
+[92/100] Testing: Average value of paid orders
+Category: COMPLEX_AGG
+✅ PASS
+Answer: The average value of paid orders is $1,354.63.
+Tool: calculate_average
+Time: 2.25s
+
+[93/100] Testing: Total from pending orders above $500
+Category: COMPLEX_AGG
+✅ PASS
+Answer: Counted 10 orders matching your criteria.
+Tool: find_documents
+Time: 1.55s
+
+[94/100] Testing: Average of orders between $1000 and $3000
+Category: COMPLEX_AGG
+✅ PASS
+Answer: The average of orders between $1000 and $3000 is $1,354.63.
+Tool: calculate_average
+Time: 1.90s
+
+[95/100] Testing: Sum of completed orders above $800
+Category: COMPLEX_AGG
+✅ PASS
+Answer: The sum of completed orders over $800 is $235,706.00.
+Tool: calculate_sum
+Time: 1.95s
+
+[96/100] Testing: Compare pending vs completed orders
+Category: COMPARISON
+✅ PASS
+Answer: Count 10 documents found: 10 Current orders found: 10
+Tool: find_documents
+Time: 2.14s
+
+[97/100] Testing: Pending vs paid orders
+Category: COMPARISON
+✅ PASS
+Answer: Counted 5 orders matching your criteria.
+Tool: find_documents
+Time: 1.39s
+
+[98/100] Testing: Compare paid and unpaid orders
+Category: COMPARISON
+✅ PASS
+Answer: You've found 10 orders matching your criteria.
+Tool: find_documents
+Time: 1.54s
+
+[99/100] Testing: Difference between pending and delivered
+Category: COMPARISON
+✅ PASS
+Answer: Count 10 items found: 10 Current Count 10 items found: 10 Items matching your criteria
+Tool: find_documents
+Time: 2.20s
+
+[100/100] Testing: Compare order counts by status
+Category: COMPARISON
+✅ PASS
+Answer: Order Placed: 97 items Order Placed: 97 items Order Placed: 97 items Order Placed: 97 items Order Placed: 97 items Order...
+Tool: group_and_count
+Time: 23.11s
+
+
+================================================================================
+EXTENSIVE TEST SUMMARY (100 QUERIES)
+================================================================================
+
+Total Tests: 100
+Passed: 100 (100.0%)
+Failed: 0 (0.0%)
+
+Results by Category:
+AVERAGE_QUERY: 10/10 (100%)
+BASIC_COUNT: 10/10 (100%)
+COMPARISON: 5/5 (100%)
+COMPLEX_AGG: 10/10 (100%)
+FILTER_AMOUNT: 5/5 (100%)
+FILTER_RANGE: 3/3 (100%)
+FILTER_STATUS: 7/7 (100%)
+GROUPING: 10/10 (100%)
+MULTI_FILTER: 10/10 (100%)
+SUM_QUERY: 10/10 (100%)
+TIME_RANGE: 10/10 (100%)
+TOP_N: 10/10 (100%)
+
+Response Time Statistics:
+Average: 3.84s
+Min: 1.37s
+Max: 47.88s
+
+Detailed report saved to: extensive_test_report_20250930_115636.json

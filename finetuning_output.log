@@ -1,0 +1,28 @@
+======================================================================
+FLAN-T5 FINE-TUNING FOR ECOMINSIGHT
+======================================================================
+
+1. Loading model and tokenizer: google/flan-t5-base
+✓ Model and tokenizer loaded
+
+2. Loading training data from: query_logs/finetuning_data.jsonl
+✓ Loaded 114 training examples
+
+3. Splitting data into train/validation sets
+✓ Training examples: 102
+✓ Validation examples: 12
+
+4. Tokenizing data...
+Map:   0%|          | 0/102 [00:00<?, ? examples/s]Map: 100%|██████████| 102/102 [00:00<00:00, 3322.45 examples/s]
+Map:   0%|          | 0/12 [00:00<?, ? examples/s]Map: 100%|██████████| 12/12 [00:00<00:00, 1684.68 examples/s]
+✓ Data tokenized
+
+5. Setting up training configuration
+✓ Training configuration set
+
+6. Initializing trainer
+✓ Trainer initialized
+
+7. Starting fine-tuning (this may take a while)...
+======================================================================
+  0%|          | 0/130 [00:00<?, ?it/s]
