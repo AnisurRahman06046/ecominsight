@@ -2,10 +2,13 @@
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from contextlib import asynccontextmanager
 import time
 import logging
 from datetime import datetime
+from pathlib import Path
 
 from app.core.config import settings
 from app.core.database import mongodb
@@ -67,6 +70,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Mount static files
+static_dir = Path(__file__).parent.parent.parent / "static"
+if static_dir.exists():
+    app.mount("/static", StaticFiles(directory=str(static_dir)), name="static")
+
 
 @app.middleware("http")
 async def add_process_time_header(request: Request, call_next):
@@ -78,9 +86,13 @@ async def add_process_time_header(request: Request, call_next):
     return response
 
 
-@app.get("/")
-async def root():
-    """Root endpoint."""
+@app.get("/", include_in_schema=False)
+async def serve_ui():
+    """Serve the query testing UI."""
+    static_dir = Path(__file__).parent.parent.parent / "static"
+    index_file = static_dir / "index.html"
+    if index_file.exists():
+        return FileResponse(str(index_file))
     return {
         "name": settings.app_name,
         "version": settings.version,
