@@ -180,6 +180,38 @@ async def refresh_schema(request: Request):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/shops")
+async def get_shops():
+    """Get list of all shops with their IDs and names."""
+    try:
+        # Query the shop collection for all unique shops
+        pipeline = [
+            {"$project": {"id": 1, "name": 1, "slug": 1, "_id": 0}},
+            {"$sort": {"id": 1}}
+        ]
+
+        shops = await mongodb.execute_aggregation("shop", pipeline)
+
+        if not shops:
+            # Fallback: Get unique shop_ids from order collection if shop collection is empty
+            logger.warning("Shop collection empty, getting shop IDs from orders")
+            pipeline = [
+                {"$group": {"_id": "$shop_id"}},
+                {"$sort": {"_id": 1}},
+                {"$project": {"id": "$_id", "name": {"$concat": ["Shop ", {"$toString": "$_id"}]}, "_id": 0}}
+            ]
+            shops = await mongodb.execute_aggregation("order", pipeline)
+
+        return {
+            "success": True,
+            "shops": shops,
+            "count": len(shops)
+        }
+    except Exception as e:
+        logger.error(f"Failed to get shops: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.post("/api/mcp/ask", response_model=QueryResponse)
 async def mcp_query(request: QueryRequest):
     """
@@ -219,9 +251,17 @@ async def mcp_query(request: QueryRequest):
                 metadata=result.get("metadata", {})
             )
         else:
-            raise HTTPException(
-                status_code=500,
-                detail=result.get("error", "MCP query failed")
+            # Return user-friendly error message without raising exception
+            # This returns 200 status with error info in the response
+            return QueryResponse(
+                shop_id=request.shop_id,
+                question=request.question,
+                answer=result.get("answer", "I apologize, but I'm having trouble processing your request."),
+                data=[],
+                query_type="mcp",
+                processing_time=processing_time,
+                cached=False,
+                metadata={"error": True, "message": result.get("error", "Query failed")}
             )
 
     except ValueError as e:

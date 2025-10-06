@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EcomInsight Query Tester</title>
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <style>
         * {
             margin: 0;
@@ -316,8 +318,10 @@
 
         <div class="card">
             <div class="input-group">
-                <label for="shopId">Shop ID</label>
-                <input type="number" id="shopId" value="10" placeholder="Enter shop ID (e.g., 10)">
+                <label for="shopSelect">Select Shop</label>
+                <select id="shopSelect" style="width: 100%;">
+                    <option value="">Loading shops...</option>
+                </select>
             </div>
 
             <div class="input-group">
@@ -387,11 +391,11 @@
         }
 
         async function submitQuery() {
-            const shopId = document.getElementById('shopId').value;
+            const shopId = document.getElementById('shopSelect').value;
             const query = document.getElementById('query').value;
 
             if (!shopId || !query) {
-                alert('Please enter both Shop ID and Query');
+                alert('Please select a shop and enter a query');
                 return;
             }
 
@@ -485,6 +489,49 @@
                 submitQuery();
             }
         });
+
+        // Load shops on page load
+        async function loadShops() {
+            try {
+                const response = await fetch('/api/shops');
+                const data = await response.json();
+
+                if (data.success && data.shops) {
+                    const shopSelect = document.getElementById('shopSelect');
+                    shopSelect.innerHTML = '<option value="">Select a shop...</option>';
+
+                    data.shops.forEach(shop => {
+                        const option = document.createElement('option');
+                        option.value = shop.id;
+                        option.textContent = `${shop.id} - ${shop.name}`;
+                        shopSelect.appendChild(option);
+                    });
+
+                    // Set default shop (ID 10)
+                    shopSelect.value = '10';
+
+                    // Initialize Select2 for search functionality
+                    $('#shopSelect').select2({
+                        placeholder: 'Search and select a shop...',
+                        allowClear: true,
+                        width: '100%'
+                    });
+                } else {
+                    console.error('Failed to load shops');
+                }
+            } catch (error) {
+                console.error('Error loading shops:', error);
+                document.getElementById('shopSelect').innerHTML = '<option value="10">10 - Default Shop</option>';
+            }
+        }
+
+        // Load shops when page loads
+        loadShops();
     </script>
+
+    <!-- jQuery (required for Select2) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </body>
 </html>
