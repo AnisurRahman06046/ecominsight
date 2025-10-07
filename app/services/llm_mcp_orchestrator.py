@@ -1478,7 +1478,8 @@ Example for "total revenue": {{"tool": "calculate_sum", "parameters": {{"collect
                     collection=params.get("collection", "order"),
                     shop_id=shop_id,
                     group_by=group_by,
-                    filter=filter_param
+                    filter=filter_param,
+                    sort_order=params.get("sort_order", -1)
                 )
 
             elif tool_name == "calculate_sum":

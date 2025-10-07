@@ -72,6 +72,12 @@ class HFParameterExtractor:
                 params["filters"].update(numeric_filter)
                 logger.info(f"Extracted numeric filter: {numeric_filter}")
 
+            # Extract sort order (for group_and_count, top/best queries)
+            sort_order = self._extract_sort_order(query_lower)
+            if sort_order is not None:
+                params["sort_order"] = sort_order
+                logger.info(f"Extracted sort order: {sort_order}")
+
             # Validate and set defaults
             params = self._validate_parameters(params, tool_name)
 
@@ -271,6 +277,39 @@ class HFParameterExtractor:
             filters["grand_total"] = {"$gte": min_val, "$lte": max_val}
 
         return filters if filters else None
+
+    def _extract_sort_order(self, query: str) -> Optional[int]:
+        """
+        Extract sort order from query dynamically.
+        Returns:
+            -1 for descending (highest/most/best/top - default)
+            1 for ascending (lowest/least/fewest/worst/bottom)
+            None if no clear preference
+        """
+        # Keywords indicating ascending order (low to high)
+        ascending_keywords = [
+            "lowest", "least", "minimum", "min", "fewest", "smallest",
+            "worst", "bottom", "poorest", "weakest", "slowest"
+        ]
+
+        # Keywords indicating descending order (high to low)
+        descending_keywords = [
+            "highest", "most", "maximum", "max", "best", "top",
+            "largest", "biggest", "greatest", "strongest", "fastest"
+        ]
+
+        # Check descending FIRST to catch "best" before "worst" in phrases like "best performing"
+        has_descending = any(keyword in query for keyword in descending_keywords)
+        has_ascending = any(keyword in query for keyword in ascending_keywords)
+
+        # If both are found (e.g., "best vs worst"), prioritize descending as it's usually primary intent
+        if has_descending:
+            return -1  # Descending (highest first)
+        elif has_ascending:
+            return 1  # Ascending (lowest first)
+
+        # No explicit preference - return None to use tool's default
+        return None
 
     def _validate_parameters(self, params: Dict[str, Any], tool_name: str) -> Dict[str, Any]:
         """Validate and set defaults for parameters."""

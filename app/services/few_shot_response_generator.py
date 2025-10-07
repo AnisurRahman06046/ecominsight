@@ -131,13 +131,13 @@ Natural answer:"""
         try:
             # For list-based tools and calculations, return formatted data directly
             # No need for Flan-T5 to rephrase structured data
-            if tool_name in ["get_best_selling_products", "get_top_customers_by_spending", "calculate_average", "calculate_sum"]:
-                direct_response = self._extract_data_context(data, tool_name)
+            if tool_name in ["get_best_selling_products", "get_top_customers_by_spending", "calculate_average", "calculate_sum", "group_and_count"]:
+                direct_response = self._extract_data_context(data, tool_name, question)
                 logger.info(f"Direct response (no Flan-T5): '{direct_response[:100]}'")
                 return direct_response
 
             # Extract data context
-            data_summary = self._extract_data_context(data, tool_name)
+            data_summary = self._extract_data_context(data, tool_name, question)
 
             # Build instruction prompt (improved to prevent echoing)
             prompt = self._build_few_shot_prompt(question, data_summary)
@@ -216,7 +216,7 @@ Natural answer:"""
 
         return True
 
-    def _extract_data_context(self, data: Dict[str, Any], tool_name: str) -> str:
+    def _extract_data_context(self, data: Dict[str, Any], tool_name: str, question: str = "") -> str:
         """Extract data context for prompt."""
 
         # Count queries
@@ -294,6 +294,67 @@ Natural answer:"""
                         product_list.append(f"{i}. {name} - Sold: {quantity:.0f} units, Revenue: ${revenue:,.2f}")
                     return "Top selling products:\n" + "\n".join(product_list)
             return "No products found"
+
+        # Group and count (time-based or field-based grouping)
+        elif tool_name == "group_and_count":
+            groups = data.get("groups", [])
+            if groups:
+                # Check if user wants just the top result ("which X has highest Y")
+                question_lower = question.lower()
+                wants_top_only = any(pattern in question_lower for pattern in [
+                    "which", "what", "highest", "most", "best", "top", "largest", "biggest",
+                    "lowest", "least", "worst", "fewest", "smallest", "bottom"
+                ]) and not any(pattern in question_lower for pattern in [
+                    "breakdown", "distribution", "all", "list", "show all"
+                ])
+
+                if wants_top_only and len(groups) > 0:
+                    # Return only the top result
+                    top_group = groups[0]
+                    group_id = top_group.get("_id")
+                    count = top_group.get("count", 0)
+
+                    # Determine if user asked for lowest/highest
+                    is_lowest_query = any(kw in question_lower for kw in [
+                        "lowest", "least", "minimum", "fewest", "smallest", "worst", "bottom"
+                    ])
+                    superlative = "lowest" if is_lowest_query else "highest"
+
+                    # Format based on group type
+                    if isinstance(group_id, dict):
+                        # Time-based grouping (month/day)
+                        if "month" in group_id and "year" in group_id:
+                            month_names = ["", "January", "February", "March", "April", "May", "June",
+                                         "July", "August", "September", "October", "November", "December"]
+                            month_name = month_names[group_id["month"]]
+                            year = group_id["year"]
+                            return f"{month_name} {year} has the {superlative} orders with {count:,} orders."
+                        elif "day" in group_id:
+                            return f"{group_id['year']}-{group_id['month']:02d}-{group_id['day']:02d} has the {superlative} orders with {count:,}."
+                    else:
+                        # Simple field grouping
+                        return f"{group_id} has the {superlative} with {count:,} orders."
+                else:
+                    # Show full breakdown
+                    result_list = []
+                    for i, g in enumerate(groups[:10], 1):  # Limit to top 10
+                        group_id = g.get("_id")
+                        count = g.get("count", 0)
+
+                        if isinstance(group_id, dict):
+                            # Time-based
+                            if "month" in group_id and "year" in group_id:
+                                month_names = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                                             "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+                                month_name = month_names[group_id["month"]]
+                                result_list.append(f"{i}. {month_name} {group_id['year']}: {count:,} orders")
+                            elif "day" in group_id:
+                                result_list.append(f"{i}. {group_id['year']}-{group_id['month']:02d}-{group_id['day']:02d}: {count:,} orders")
+                        else:
+                            result_list.append(f"{i}. {group_id}: {count:,}")
+
+                    return "Breakdown:\n" + "\n".join(result_list)
+            return "No data found for grouping"
 
         # Generic
         else:

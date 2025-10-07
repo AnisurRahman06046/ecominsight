@@ -114,7 +114,8 @@ class MongoDBMCPService:
         collection: str,
         shop_id: str,
         group_by: str,
-        filter: Optional[Dict[str, Any]] = None
+        filter: Optional[Dict[str, Any]] = None,
+        sort_order: int = -1
     ) -> Dict[str, Any]:
         """
         Group documents by a field and count them.
@@ -124,6 +125,7 @@ class MongoDBMCPService:
             shop_id: Shop ID to filter by
             group_by: Field to group by
             filter: Optional filter conditions
+            sort_order: Sort order (-1 for descending/highest first, 1 for ascending/lowest first)
 
         Returns:
             Dict with grouped counts
@@ -155,15 +157,68 @@ class MongoDBMCPService:
             if filter:
                 pipeline[0]["$match"].update(filter)
 
-            pipeline.extend([
-                {
-                    "$group": {
-                        "_id": f"${group_by}",
-                        "count": {"$sum": 1}
-                    }
-                },
-                {"$sort": {"count": -1}}
-            ])
+            # Handle time-based grouping (month, day, year, week)
+            time_based_grouping = {
+                "month": {"$month": {"$toDate": "$created_at"}},
+                "year": {"$year": {"$toDate": "$created_at"}},
+                "day": {"$dayOfMonth": {"$toDate": "$created_at"}},
+                "week": {"$week": {"$toDate": "$created_at"}},
+            }
+
+            if group_by in time_based_grouping:
+                # Time-based grouping: extract date component
+                group_expr = time_based_grouping[group_by]
+
+                # For month/day, also include year for proper grouping
+                if group_by == "month":
+                    pipeline.extend([
+                        {
+                            "$group": {
+                                "_id": {
+                                    "year": {"$year": {"$toDate": "$created_at"}},
+                                    "month": {"$month": {"$toDate": "$created_at"}}
+                                },
+                                "count": {"$sum": 1}
+                            }
+                        },
+                        {"$sort": {"count": sort_order}}
+                    ])
+                elif group_by == "day":
+                    pipeline.extend([
+                        {
+                            "$group": {
+                                "_id": {
+                                    "year": {"$year": {"$toDate": "$created_at"}},
+                                    "month": {"$month": {"$toDate": "$created_at"}},
+                                    "day": {"$dayOfMonth": {"$toDate": "$created_at"}}
+                                },
+                                "count": {"$sum": 1}
+                            }
+                        },
+                        {"$sort": {"count": sort_order}}
+                    ])
+                else:
+                    # Year or week
+                    pipeline.extend([
+                        {
+                            "$group": {
+                                "_id": group_expr,
+                                "count": {"$sum": 1}
+                            }
+                        },
+                        {"$sort": {"count": sort_order}}
+                    ])
+            else:
+                # Field-based grouping (status, payment_status, etc.)
+                pipeline.extend([
+                    {
+                        "$group": {
+                            "_id": f"${group_by}",
+                            "count": {"$sum": 1}
+                        }
+                    },
+                    {"$sort": {"count": sort_order}}
+                ])
 
             result = await mongodb.execute_aggregation(collection, pipeline)
 

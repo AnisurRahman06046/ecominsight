@@ -175,6 +175,27 @@ class SemanticRouter:
                 "payment status breakdown",
                 "order distribution",
                 "categorize orders",
+                # Time-based grouping queries
+                "which month has the highest order",
+                "which month has the most orders",
+                "which month has the lowest order",
+                "which month has the fewest orders",
+                "worst performing month",
+                "best performing month",
+                "orders by month",
+                "monthly order breakdown",
+                "sales by month",
+                "revenue by month",
+                "which day has most orders",
+                "orders by day",
+                "daily order count",
+                "which year has highest sales",
+                "yearly sales breakdown",
+                "monthly sales distribution",
+                "order count by month",
+                "which month has the highest sales",
+                "breakdown by month",
+                "group by month",
             ],
             "find_documents": [
                 "list orders",
@@ -379,7 +400,17 @@ class SemanticRouter:
 
         # Extract group_by field
         if tool_name == "group_and_count":
-            if "status" in query_lower and "payment" not in query_lower:
+            # Time-based grouping
+            if "month" in query_lower or "monthly" in query_lower:
+                params["group_by"] = "month"
+            elif "day" in query_lower or "daily" in query_lower:
+                params["group_by"] = "day"
+            elif "year" in query_lower or "yearly" in query_lower:
+                params["group_by"] = "year"
+            elif "week" in query_lower or "weekly" in query_lower:
+                params["group_by"] = "week"
+            # Field-based grouping
+            elif "status" in query_lower and "payment" not in query_lower:
                 params["group_by"] = "status"
             elif "payment" in query_lower:
                 params["group_by"] = "payment_status"
