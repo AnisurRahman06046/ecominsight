@@ -9,17 +9,29 @@ import time
 import logging
 from datetime import datetime
 from pathlib import Path
+from bson import ObjectId
 
 from app.core.config import settings
 from app.core.database import mongodb
 from app.models.requests import QueryRequest, QueryResponse, HealthResponse
-from app.services.ollama_service import OllamaService
 from app.services.schema_manager import schema_manager
 from app.utils.logger import setup_logging
-
+from typing import Optional, Any, Dict, List
 # Setup logging
 setup_logging()
 logger = logging.getLogger(__name__)
+
+
+def convert_objectid_to_str(data: Any) -> Any:
+    """Recursively convert ObjectId to string in data structures."""
+    if isinstance(data, ObjectId):
+        return str(data)
+    elif isinstance(data, dict):
+        return {k: convert_objectid_to_str(v) for k, v in data.items()}
+    elif isinstance(data, list):
+        return [convert_objectid_to_str(item) for item in data]
+    else:
+        return data
 
 
 @asynccontextmanager
@@ -39,17 +51,12 @@ async def lifespan(app: FastAPI):
     await schema_manager.initialize()
     app.state.schema_manager = schema_manager
 
-    # Initialize Ollama service
-    app.state.ollama = OllamaService()
-    await app.state.ollama.initialize(schema_manager=schema_manager)
-
     logger.info("Application started successfully")
     yield
 
     # Shutdown
     logger.info("Shutting down...")
     await mongodb.disconnect()
-    await app.state.ollama.close()
     logger.info("Shutdown complete")
 
 
@@ -119,15 +126,6 @@ async def health_check(request: Request):
         services["mongodb"] = True
     except:
         services["mongodb"] = False
-
-    # Check Ollama
-    try:
-        models = await request.app.state.ollama.list_models()
-        services["ollama"] = True
-        services["models_available"] = len(models) > 0
-    except:
-        services["ollama"] = False
-        services["models_available"] = False
 
     # Check cache (if Redis is configured)
     if settings.redis_url:
@@ -227,8 +225,8 @@ async def mcp_query(request: QueryRequest):
     try:
         from app.services.llm_mcp_orchestrator import llm_mcp_orchestrator
 
-        # Convert shop_id to integer
-        shop_id = int(request.shop_id)
+        # Keep shop_id as string (matches database format)
+        shop_id = request.shop_id
 
         # Process using MCP orchestrator
         result = await llm_mcp_orchestrator.process_query(
@@ -238,17 +236,21 @@ async def mcp_query(request: QueryRequest):
 
         processing_time = time.time() - start_time
 
+        # Convert ObjectId to string in data to avoid serialization errors
+        clean_data = convert_objectid_to_str(result.get("data", []))
+        clean_metadata = convert_objectid_to_str(result.get("metadata", {}))
+
         # Convert result to QueryResponse format
         if result.get("success"):
             return QueryResponse(
                 shop_id=request.shop_id,
                 question=request.question,
                 answer=result.get("answer", "Query completed"),
-                data=result.get("data", []),
+                data=clean_data,
                 query_type="mcp",
                 processing_time=processing_time,
                 cached=False,
-                metadata=result.get("metadata", {})
+                metadata=clean_metadata
             )
         else:
             # Return user-friendly error message without raising exception
@@ -273,12 +275,163 @@ async def mcp_query(request: QueryRequest):
 
 @app.get("/api/models")
 async def list_models(request: Request):
-    """List available Ollama models."""
+    """List available HuggingFace models."""
     try:
-        models = await request.app.state.ollama.list_models()
-        return {"models": models, "current": settings.ollama_model}
+        return {
+            "models": {
+                "semantic_router": settings.embedding_model,
+                "response_generator": "google/flan-t5-base"
+            }
+        }
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to list models: {str(e)}")
+
+
+# ========== Data Sync Endpoints ==========
+
+@app.post("/api/sync/trigger")
+async def trigger_sync(
+    sync_type: str = "incremental",
+    tables: Optional[str] = None
+):
+    """
+    Trigger manual data synchronization from MySQL to MongoDB.
+
+    Args:
+        sync_type: "full" or "incremental" (default: incremental)
+        tables: Comma-separated table names or "all" (default: all)
+
+    Returns:
+        Sync summary with statistics
+    """
+    try:
+        from app.sync.sync_scheduler import sync_scheduler
+
+        logger.info(f"Manual {sync_type} sync triggered via API")
+
+        # Temporarily override sync_tables if specified
+        original_sync_tables = settings.sync_tables
+        if tables:
+            settings.sync_tables = tables
+
+        result = await sync_scheduler.trigger_manual_sync(sync_type=sync_type)
+
+        # Restore original settings
+        settings.sync_tables = original_sync_tables
+
+        return result
+
+    except Exception as e:
+        logger.error(f"Sync trigger failed: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Sync failed: {str(e)}")
+
+
+@app.get("/api/sync/status")
+async def get_sync_status():
+    """
+    Get current sync status and scheduler information.
+
+    Returns:
+        Sync status including last sync times and scheduler status
+    """
+    try:
+        from app.sync.sync_scheduler import sync_scheduler
+        from app.sync.sync_manager import sync_manager
+
+        # Get scheduler status
+        scheduler_status = sync_scheduler.get_status()
+
+        # Get sync metadata for all tables
+        sync_status = await sync_manager.get_sync_status()
+
+        return {
+            "scheduler": scheduler_status,
+            "sync_data": sync_status
+        }
+
+    except Exception as e:
+        logger.error(f"Failed to get sync status: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to get status: {str(e)}")
+
+
+@app.get("/api/sync/test-connection")
+async def test_mysql_connection():
+    """Test MySQL database connection."""
+    try:
+        from app.sync.mysql_connector import mysql_connector
+
+        is_connected = mysql_connector.test_connection()
+
+        if is_connected:
+            tables = mysql_connector.get_all_tables()
+            return {
+                "status": "success",
+                "connected": True,
+                "database": settings.mysql_database,
+                "host": settings.mysql_host,
+                "tables_count": len(tables),
+                "tables": tables[:10]  # Show first 10 tables
+            }
+        else:
+            return {
+                "status": "error",
+                "connected": False,
+                "message": "Failed to connect to MySQL database"
+            }
+
+    except Exception as e:
+        logger.error(f"MySQL connection test failed: {e}")
+        raise HTTPException(status_code=500, detail=f"Connection test failed: {str(e)}")
+
+
+@app.post("/api/sync/scheduler/start")
+async def start_scheduler(interval_seconds: Optional[int] = None):
+    """
+    Start the automatic sync scheduler.
+
+    Args:
+        interval_seconds: Sync interval in seconds (default from settings)
+
+    Returns:
+        Scheduler status
+    """
+    try:
+        from app.sync.sync_scheduler import sync_scheduler
+
+        sync_scheduler.start(interval_seconds=interval_seconds)
+
+        return {
+            "status": "success",
+            "message": "Scheduler started",
+            "interval_seconds": interval_seconds or settings.sync_interval
+        }
+
+    except Exception as e:
+        logger.error(f"Failed to start scheduler: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to start scheduler: {str(e)}")
+
+
+@app.post("/api/sync/scheduler/stop")
+async def stop_scheduler():
+    """
+    Stop the automatic sync scheduler.
+
+    Returns:
+        Scheduler status
+    """
+    try:
+        from app.sync.sync_scheduler import sync_scheduler
+
+        sync_scheduler.stop()
+
+        return {
+            "status": "success",
+            "message": "Scheduler stopped"
+        }
+
+    except Exception as e:
+        logger.error(f"Failed to stop scheduler: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to stop scheduler: {str(e)}")
 
 
 if __name__ == "__main__":

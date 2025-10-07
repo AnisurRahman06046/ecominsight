@@ -1,0 +1,475 @@
+================================================================================
+TESTING 100 E-COMMERCE QUERIES
+Shop ID: 13
+API: http://localhost:8000/api/mcp/ask
+Started: 2025-10-07 10:53:02.804100
+================================================================================
+
+
+[1/100] Testing: How many products do I have?
+  ✓ SUCCESS (1.19s)
+  Answer: There are 971 products.
+
+[2/100] Testing: How many orders?
+  ✓ SUCCESS (1.08s)
+  Answer: There are 35463 orders.
+
+[3/100] Testing: How many customers?
+  ✓ SUCCESS (0.99s)
+  Answer: There are 27848 customers.
+
+[4/100] Testing: Count my products
+  ✓ SUCCESS (0.86s)
+  Answer: There are 971 products.
+
+[5/100] Testing: Count my orders
+  ✓ SUCCESS (1.09s)
+  Answer: There are 35463 orders.
+
+[6/100] Testing: Count my customers
+  ✓ SUCCESS (0.98s)
+  Answer: There are 27848 customers.
+
+[7/100] Testing: Total products
+  ✓ SUCCESS (0.95s)
+  Answer: There are 971 products.
+
+[8/100] Testing: Total orders
+  ✓ SUCCESS (1.07s)
+  Answer: There are 35463 orders.
+
+[9/100] Testing: Total customers
+  ✓ SUCCESS (0.98s)
+  Answer: There are 27848 customers.
+
+[10/100] Testing: Number of products
+  ✓ SUCCESS (0.88s)
+  Answer: There are 971 products.
+
+[11/100] Testing: Number of orders
+  ✓ SUCCESS (1.04s)
+  Answer: There are 35463 orders.
+
+[12/100] Testing: Number of customers
+  ✓ SUCCESS (0.96s)
+  Answer: There are 27848 customers.
+
+[13/100] Testing: Product count
+  ✓ SUCCESS (0.87s)
+  Answer: There are 971 products.
+
+[14/100] Testing: Order count
+  ✓ SUCCESS (1.02s)
+  Answer: There are 35463 orders.
+
+[15/100] Testing: Customer count
+  ✓ SUCCESS (0.99s)
+  Answer: There are 27848 customers.
+
+[16/100] Testing: How many items in catalog?
+  ✓ SUCCESS (1.06s)
+  Answer: There are 35463 items.
+
+[17/100] Testing: How many sales?
+  ✓ SUCCESS (1.35s)
+  Answer: $43,237,876.00
+
+[18/100] Testing: How many buyers?
+  ✓ SUCCESS (3.43s)
+  Answer: Sajib kumar nag None is the top customer. The total spent is $3,801,992.00.
+
+[19/100] Testing: Show product count
+  ✓ SUCCESS (0.89s)
+  Answer: There are 971 products.
+
+[20/100] Testing: Show order count
+  ✓ SUCCESS (1.02s)
+  Answer: There are 35463 orders.
+
+[21/100] Testing: What is my total sales?
+  ✓ SUCCESS (1.33s)
+  Answer: $43,237,876.00
+
+[22/100] Testing: Total revenue?
+  ✓ SUCCESS (1.34s)
+  Answer: $43,237,876.00
+
+[23/100] Testing: Show me revenue
+  ✓ SUCCESS (1.29s)
+  Answer: $43,237,876.00
+
+[24/100] Testing: What is my total revenue?
+  ✓ SUCCESS (1.32s)
+  Answer: $43,237,876.00
+
+[25/100] Testing: How much did I sell?
+  ✓ SUCCESS (0.75s)
+  Answer: There are 10 items.
+
+[26/100] Testing: Total sales amount?
+  ✓ SUCCESS (1.32s)
+  Answer: $43,237,876.00
+
+[27/100] Testing: Give me total sales
+  ✓ SUCCESS (1.38s)
+  Answer: $43,237,876.00
+
+[28/100] Testing: What are my total sales?
+  ✓ SUCCESS (1.35s)
+  Answer: $43,237,876.00
+
+[29/100] Testing: Show total revenue
+  ✓ SUCCESS (1.31s)
+  Answer: $43,237,876.00
+
+[30/100] Testing: How much revenue?
+  ✓ SUCCESS (1.31s)
+  Answer: $43,237,876.00
+
+[31/100] Testing: What's my revenue?
+  ✓ SUCCESS (1.39s)
+  Answer: $43,237,876.00
+
+[32/100] Testing: Total sales
+  ✓ SUCCESS (1.32s)
+  Answer: $43,237,876.00
+
+[33/100] Testing: Revenue
+  ✓ SUCCESS (1.33s)
+  Answer: $43,237,876.00
+
+[34/100] Testing: Sales total
+  ✓ SUCCESS (1.40s)
+  Answer: $43,237,876.00
+
+[35/100] Testing: My revenue
+  ✓ SUCCESS (1.37s)
+  Answer: $43,237,876.00
+
+[36/100] Testing: My sales
+  ✓ SUCCESS (1.32s)
+  Answer: $43,237,876.00
+
+[37/100] Testing: Show sales
+  ✗ TIMEOUT (>60s)
+
+[38/100] Testing: Display revenue
+  ✓ SUCCESS (1.34s)
+  Answer: $43,237,876.00
+
+[39/100] Testing: Total amount
+  ✓ SUCCESS (1.85s)
+  Answer: $43,237,876.00
+
+[40/100] Testing: Sales amount
+  ✓ SUCCESS (1.75s)
+  Answer: $43,237,876.00
+
+[41/100] Testing: What is my yesterday's total sales?
+  ✓ SUCCESS (0.98s)
+  Answer: $23,740.00
+
+[42/100] Testing: Yesterday's revenue?
+  ✓ SUCCESS (1.21s)
+  Answer: $23,740.00
+
+[43/100] Testing: How much did I sell yesterday?
+  ✓ SUCCESS (1.16s)
+  Answer: There are 0 items.
+
+[44/100] Testing: Yesterday sales
+  ✓ SUCCESS (1.53s)
+  Answer: There are 0 items.
+
+[45/100] Testing: Sales from yesterday
+  ✓ SUCCESS (1.26s)
+  Answer: There are 0 items.
+
+[46/100] Testing: What is today's total sales?
+  ✓ SUCCESS (0.65s)
+  Answer: $0.00
+
+[47/100] Testing: Today's revenue?
+  ✓ SUCCESS (0.85s)
+  Answer: $0.00
+
+[48/100] Testing: How much did I sell today?
+  ✓ SUCCESS (1.24s)
+  Answer: There are 0 items.
+
+[49/100] Testing: Today sales
+  ✓ SUCCESS (1.25s)
+  Answer: There are 0 items.
+
+[50/100] Testing: Sales from today
+  ✓ SUCCESS (1.13s)
+  Answer: There are 0 items.
+
+[51/100] Testing: This week sales?
+  ✓ SUCCESS (0.00s)
+  Answer: Hello! I'm your e-commerce analytics assistant. I can help you analyze your sales data, track orders...
+
+[52/100] Testing: This month sales?
+  ✓ SUCCESS (0.00s)
+  Answer: Hi there! I can help you with sales reports, order analysis, customer insights, and revenue tracking...
+
+[53/100] Testing: Last week revenue?
+  ✓ SUCCESS (1.64s)
+  Answer: $43,237,876.00
+
+[54/100] Testing: Last month revenue?
+  ✓ SUCCESS (1.58s)
+  Answer: $2,094,890.00
+
+[55/100] Testing: Sales this week
+  ✓ SUCCESS (0.00s)
+  Answer: Hello! Ask me about your orders, revenue, top products, customer analytics, or any other sales data ...
+
+[56/100] Testing: Sales this month
+  ✓ SUCCESS (0.00s)
+  Answer: Hello! I'm your e-commerce analytics assistant. I can help you analyze your sales data, track orders...
+
+[57/100] Testing: Revenue this week
+  ✓ SUCCESS (0.00s)
+  Answer: Hello! I'm your e-commerce analytics assistant. I can help you analyze your sales data, track orders...
+
+[58/100] Testing: Revenue this month
+  ✓ SUCCESS (0.00s)
+  Answer: Hello! I'm your e-commerce analytics assistant. I can help you analyze your sales data, track orders...
+
+[59/100] Testing: How much yesterday?
+  ✓ SUCCESS (1.18s)
+  Answer: There are 0 items.
+
+[60/100] Testing: How much today?
+  ✓ SUCCESS (1.10s)
+  Answer: There are 0 items.
+
+[61/100] Testing: What are my top products?
+  ✗ TIMEOUT (>60s)
+
+[62/100] Testing: Best selling products?
+  ✗ TIMEOUT (>60s)
+
+[63/100] Testing: Show me top sellers
+  ✗ TIMEOUT (>60s)
+
+[64/100] Testing: Top 5 products?
+  ✗ TIMEOUT (>60s)
+
+[65/100] Testing: Best products?
+  ✗ TIMEOUT (>60s)
+
+[66/100] Testing: Most popular products?
+  ✗ TIMEOUT (>60s)
+
+[67/100] Testing: Top selling items?
+  ✗ TIMEOUT (>60s)
+
+[68/100] Testing: What are my best sellers?
+  ✗ TIMEOUT (>60s)
+
+[69/100] Testing: Show best selling products
+  ✗ TIMEOUT (>60s)
+
+[70/100] Testing: Who are my top customers?
+  ✓ SUCCESS (4.06s)
+  Answer: Sajib kumar nag None is the top customer. The total spent is $3,801,992.00.
+
+[71/100] Testing: Best customers?
+  ✓ SUCCESS (3.43s)
+  Answer: Sajib kumar nag None is the top customer. The total spent is $3,801,992.00.
+
+[72/100] Testing: Show me top spenders
+  ✓ SUCCESS (3.53s)
+  Answer: Sajib kumar nag None is the top customer. The total spent is $3,801,992.00.
+
+[73/100] Testing: Top 5 customers?
+  ✓ SUCCESS (3.39s)
+  Answer: Sajib kumar nag None is the top customer. The total spent is $3,801,992.00.
+
+[74/100] Testing: Best buyers?
+  ✓ SUCCESS (4.15s)
+  Answer: Sajib kumar nag None is the top customer. The total spent is $3,801,992.00.
+
+[75/100] Testing: Most valuable customers?
+  ✓ SUCCESS (3.55s)
+  Answer: Sajib kumar nag None is the top customer. The total spent is $3,801,992.00.
+
+[76/100] Testing: Top spending customers?
+  ✓ SUCCESS (2.92s)
+  Answer: No customers were found.
+
+[77/100] Testing: Who spends the most?
+  ✓ SUCCESS (7.96s)
+  Answer: Sajib kumar nag None is the top customer. The total spent is $3,801,992.00.
+
+[78/100] Testing: Show top customers
+  ✓ SUCCESS (6.13s)
+  Answer: Sajib kumar nag None is the top customer. The total spent is $3,801,992.00.
+
+[79/100] Testing: Top 10 products
+  ✗ TIMEOUT (>60s)
+
+[80/100] Testing: Top 10 customers
+  ✓ SUCCESS (3.79s)
+  Answer: Sajib kumar nag None is the top customer. The total spent is $3,801,992.00.
+
+[81/100] Testing: How many orders did I get this month?
+  ✓ SUCCESS (0.00s)
+  Answer: Hello! I'm your e-commerce analytics assistant. I can help you analyze your sales data, track orders...
+
+[82/100] Testing: What's my average order value?
+  ✓ SUCCESS (0.36s)
+  Answer: I apologize, but I'm having trouble processing your request at the moment. Could you please try reph...
+
+[83/100] Testing: How many pending orders?
+  ✓ SUCCESS (1.34s)
+  Answer: There are 0 orders.
+
+[84/100] Testing: How many completed orders?
+  ✓ SUCCESS (1.24s)
+  Answer: There are 35463 orders.
+
+[85/100] Testing: How many cancelled orders?
+  ✓ SUCCESS (1.23s)
+  Answer: There are 0 orders.
+
+[86/100] Testing: Orders by status
+  ✓ SUCCESS (1.34s)
+  Answer: There are 0 orders.
+
+[87/100] Testing: How many orders today?
+  ✓ SUCCESS (1.27s)
+  Answer: There are 0 orders.
+
+[88/100] Testing: How many new customers this month?
+  ✓ SUCCESS (0.00s)
+  Answer: Hi there! I can help you with sales reports, order analysis, customer insights, and revenue tracking...
+
+[89/100] Testing: Revenue by product category
+  ✓ SUCCESS (1.92s)
+  Answer: You generated $43,237,876.00 in sales across 35463 orders.
+
+[90/100] Testing: Which products are not selling?
+  ✓ SUCCESS (0.00s)
+  Answer: Hello! Ask me about your orders, revenue, top products, customer analytics, or any other sales data ...
+
+[91/100] Testing: Customer with highest spending?
+  ✓ SUCCESS (0.00s)
+  Answer: Hi there! I can help you with sales reports, order analysis, customer insights, and revenue tracking...
+
+[92/100] Testing: Most ordered product?
+  ✗ TIMEOUT (>60s)
+
+[93/100] Testing: Least ordered product?
+  ✓ SUCCESS (0.81s)
+  Answer: There are 10 products.
+
+[94/100] Testing: Orders placed last 7 days?
+  ✓ SUCCESS (1.63s)
+  Answer: There are 0 orders.
+
+[95/100] Testing: Revenue from last 30 days?
+  ✓ SUCCESS (1.46s)
+  Answer: $43,237,876.00
+
+[96/100] Testing: How many repeat customers?
+  ✓ SUCCESS (0.99s)
+  Answer: There are 27848 customers.
+
+[97/100] Testing: Average revenue per customer?
+  ✓ SUCCESS (0.30s)
+  Answer: I apologize, but I'm having trouble processing your request at the moment. Could you please try reph...
+
+[98/100] Testing: Products sold today?
+  ✓ SUCCESS (1.22s)
+  Answer: No products were found.
+
+[99/100] Testing: Revenue per day this week?
+  ✓ SUCCESS (0.00s)
+  Answer: Hello! I'm your e-commerce analytics assistant. I can help you analyze your sales data, track orders...
+
+[100/100] Testing: Customer growth this month?
+  ✓ SUCCESS (0.01s)
+  Answer: Hi there! I can help you with sales reports, order analysis, customer insights, and revenue tracking...
+
+================================================================================
+TEST SUMMARY
+================================================================================
+Total Queries:    100
+Successful:       88 (88.0%)
+Failed:           12 (12.0%)
+Avg Response:     8.43s
+Total Time:       843.27s
+================================================================================
+
+Results saved to: test_100_results_20251007_110706.json
+
+================================================================================
+SAMPLE SUCCESSFUL RESPONSES (first 10):
+================================================================================
+
+Q: How many products do I have?
+A: There are 971 products.
+
+Q: How many orders?
+A: There are 35463 orders.
+
+Q: How many customers?
+A: There are 27848 customers.
+
+Q: Count my products
+A: There are 971 products.
+
+Q: Count my orders
+A: There are 35463 orders.
+
+Q: Count my customers
+A: There are 27848 customers.
+
+Q: Total products
+A: There are 971 products.
+
+Q: Total orders
+A: There are 35463 orders.
+
+Q: Total customers
+A: There are 27848 customers.
+
+Q: Number of products
+A: There are 971 products.
+
+================================================================================
+FAILED QUERIES (12):
+================================================================================
+
+Q: Show sales
+Error: Timeout
+
+Q: What are my top products?
+Error: Timeout
+
+Q: Best selling products?
+Error: Timeout
+
+Q: Show me top sellers
+Error: Timeout
+
+Q: Top 5 products?
+Error: Timeout
+
+Q: Best products?
+Error: Timeout
+
+Q: Most popular products?
+Error: Timeout
+
+Q: Top selling items?
+Error: Timeout
+
+Q: What are my best sellers?
+Error: Timeout
+
+Q: Show best selling products
+Error: Timeout

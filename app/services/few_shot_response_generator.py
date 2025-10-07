@@ -64,21 +64,51 @@ class FewShotResponseGenerator:
     def _build_few_shot_prompt(self, question: str, data_summary: str) -> str:
         """
         Build instruction prompt for Flan-T5.
-        Clear instruction format to prevent echoing.
+        Different prompts for different query types.
         """
-        prompt = f"""Answer the e-commerce question using only the provided data.
+        # Check if this is a count query or a sum/total query
+        if "Count:" in data_summary and "Total:" not in data_summary:
+            # Simple count query
+            question_lower = question.lower()
+            entity = "items"
+            if "product" in question_lower:
+                entity = "products"
+            elif "order" in question_lower:
+                entity = "orders"
+            elif "customer" in question_lower:
+                entity = "customers"
+            elif "categor" in question_lower:
+                entity = "categories"
 
-Data: Count 156
-Answer: You have 156 products in your store.
+            prompt = f"""Answer this e-commerce question naturally using the data provided.
 
-Data: Total $12,345.67 from 42 orders
-Answer: Your total revenue is $12,345.67 from 42 orders.
+Question: How many {entity} are there?
+Data: {data_summary}
+Answer: You have"""
 
-Data: Top customer John Smith spent $5,420.00
-Answer: Your top customer is John Smith, who has spent $5,420.00.
+        elif "Total:" in data_summary:
+            # Sum/Total query - provide the total amount
+            # Extract question context to determine if it's revenue, sales, etc.
+            question_lower = question.lower()
+
+            if "revenue" in question_lower:
+                prompt = f"""Answer this question about total revenue.
 
 Data: {data_summary}
-Answer:"""
+Answer: The total revenue is"""
+            else:
+                prompt = f"""Answer this question about total sales.
+
+Data: {data_summary}
+Answer: The total sales amount is"""
+
+        else:
+            # Generic prompt
+            prompt = f"""Convert this e-commerce data into a natural answer.
+
+Data: {data_summary}
+Natural answer:"""
+
         return prompt
 
     def generate_response(self, question: str, data: Dict[str, Any],
@@ -99,6 +129,13 @@ Answer:"""
             return None
 
         try:
+            # For list-based tools and calculations, return formatted data directly
+            # No need for Flan-T5 to rephrase structured data
+            if tool_name in ["get_best_selling_products", "get_top_customers_by_spending", "calculate_average", "calculate_sum"]:
+                direct_response = self._extract_data_context(data, tool_name)
+                logger.info(f"Direct response (no Flan-T5): '{direct_response[:100]}'")
+                return direct_response
+
             # Extract data context
             data_summary = self._extract_data_context(data, tool_name)
 
@@ -113,15 +150,15 @@ Answer:"""
                 truncation=True
             )
 
-            # Generate with Flan-T5 (seq2seq)
+            # Generate with Flan-T5 using deterministic beam search
             outputs = self.model.generate(
                 inputs.input_ids,
                 max_new_tokens=60,
-                do_sample=True,
-                temperature=0.7,
-                top_p=0.9,
-                repetition_penalty=1.2,
-                no_repeat_ngram_size=2
+                do_sample=False,  # Disable sampling for deterministic output
+                num_beams=4,  # Use beam search for better quality
+                early_stopping=True,
+                no_repeat_ngram_size=3,
+                repetition_penalty=1.2
             )
 
             response = self.tokenizer.decode(outputs[0], skip_special_tokens=True).strip()
@@ -193,36 +230,69 @@ Answer:"""
             if results and len(results) > 0:
                 total = results[0].get("total", 0)
                 count = results[0].get("count", 0)
-                return f"Total: ${total:,.2f}, Item count: {count}"
-            return "Total: $0.00, Item count: 0"
+
+                # Format based on count - more natural language
+                if count > 0:
+                    if count == 1:
+                        return f"Total sales: ${total:,.2f} (1 order)"
+                    else:
+                        return f"Total sales: ${total:,.2f} ({count:,} orders)"
+                else:
+                    return "No sales data found for this period"
+            return "No sales data available"
 
         # Average queries
         elif tool_name == "calculate_average":
             results = data.get("result", [])
             if results and len(results) > 0:
-                avg = results[0].get("average", 0)
-                count = results[0].get("count", 0)
-                return f"Average: ${avg:,.2f}, Item count: {count}"
-            return "Average: $0.00, Item count: 0"
+                avg = results[0].get("average", 0) or 0  # Handle None
+                count = results[0].get("count", 0) or 0
+                if avg > 0:
+                    return f"The average order value is ${avg:,.2f} (based on {count:,} orders)"
+                else:
+                    return f"Unable to calculate average. Found {count:,} orders but average returned ${avg:,.2f}. This may be a data type issue."
+            return "No data available to calculate average"
 
         # Top customers
         elif tool_name == "get_top_customers_by_spending":
             customers = data.get("customers", [])
             if customers:
-                top = customers[0]
-                name = top.get("name", "Unknown")
-                spent = top.get("total_spent", 0)
-                return f"Top customer: {name}, Total spent: ${spent:,.2f}"
+                # Return multiple customers if requested
+                if len(customers) == 1:
+                    top = customers[0]
+                    name = top.get("name", "Unknown")
+                    spent = top.get("total_spent", 0)
+                    return f"Top customer: {name}, Total spent: ${spent:,.2f}"
+                else:
+                    # Format multiple customers as a list
+                    customer_list = []
+                    for i, c in enumerate(customers, 1):
+                        name = c.get("name", "Unknown")
+                        spent = c.get("total_spent", 0)
+                        orders = c.get("order_count", 0)
+                        customer_list.append(f"{i}. {name} - Spent: ${spent:,.2f}, Orders: {orders}")
+                    return "Top customers by spending:\n" + "\n".join(customer_list)
             return "No customers found"
 
         # Best selling products
         elif tool_name == "get_best_selling_products":
             products = data.get("products", [])
             if products:
-                top = products[0]
-                name = top.get("name", "Unknown")
-                quantity = top.get("total_quantity", 0)
-                return f"Top product: {name}, Quantity sold: {quantity}"
+                # Return multiple products if requested
+                if len(products) == 1:
+                    top = products[0]
+                    name = top.get("name", "Unknown")
+                    quantity = top.get("total_quantity", 0)
+                    return f"Top product: {name}, Quantity sold: {quantity}"
+                else:
+                    # Format multiple products as a list
+                    product_list = []
+                    for i, p in enumerate(products, 1):
+                        name = p.get("name", "Unknown")
+                        quantity = p.get("total_quantity", 0)
+                        revenue = p.get("total_revenue", 0)
+                        product_list.append(f"{i}. {name} - Sold: {quantity:.0f} units, Revenue: ${revenue:,.2f}")
+                    return "Top selling products:\n" + "\n".join(product_list)
             return "No products found"
 
         # Generic

@@ -23,7 +23,7 @@ class MongoDBMCPService:
     async def count_documents(
         self,
         collection: str,
-        shop_id: int,
+        shop_id: str,  # Changed from int to str
         filter: Optional[Dict[str, Any]] = None
     ) -> Dict[str, Any]:
         """
@@ -63,7 +63,7 @@ class MongoDBMCPService:
     async def find_documents(
         self,
         collection: str,
-        shop_id: int,
+        shop_id: str,  # Changed from int to str
         filter: Optional[Dict[str, Any]] = None,
         sort_by: Optional[str] = None,
         sort_order: int = -1,
@@ -112,7 +112,7 @@ class MongoDBMCPService:
     async def group_and_count(
         self,
         collection: str,
-        shop_id: int,
+        shop_id: str,
         group_by: str,
         filter: Optional[Dict[str, Any]] = None
     ) -> Dict[str, Any]:
@@ -183,7 +183,7 @@ class MongoDBMCPService:
     async def calculate_sum(
         self,
         collection: str,
-        shop_id: int,
+        shop_id: str,  # Changed from int to str to match database
         sum_field: str,
         group_by: Optional[str] = None,
         filter: Optional[Dict[str, Any]] = None
@@ -205,13 +205,22 @@ class MongoDBMCPService:
             pipeline = [{"$match": {"shop_id": shop_id}}]
 
             if filter:
+                logger.info(f"calculate_sum filter received: {filter}")
+                logger.info(f"Filter types: {[(k, type(v).__name__) for k, v in filter.items()]}")
+                if "created_at" in filter:
+                    logger.info(f"created_at filter: {filter['created_at']}")
+                    if isinstance(filter['created_at'], dict):
+                        for op, val in filter['created_at'].items():
+                            logger.info(f"  {op}: {val} (type: {type(val).__name__})")
                 pipeline[0]["$match"].update(filter)
+
+            logger.info(f"Final pipeline: {pipeline}")
 
             if group_by:
                 pipeline.append({
                     "$group": {
                         "_id": f"${group_by}",
-                        "total": {"$sum": f"${sum_field}"},
+                        "total": {"$sum": {"$toDouble": f"${sum_field}"}},
                         "count": {"$sum": 1}
                     }
                 })
@@ -220,7 +229,7 @@ class MongoDBMCPService:
                 pipeline.append({
                     "$group": {
                         "_id": None,
-                        "total": {"$sum": f"${sum_field}"},
+                        "total": {"$sum": {"$toDouble": f"${sum_field}"}},
                         "count": {"$sum": 1}
                     }
                 })
@@ -242,7 +251,7 @@ class MongoDBMCPService:
     async def calculate_average(
         self,
         collection: str,
-        shop_id: int,
+        shop_id: str,
         avg_field: str,
         group_by: Optional[str] = None,
         filter: Optional[Dict[str, Any]] = None
@@ -270,7 +279,7 @@ class MongoDBMCPService:
                 pipeline.append({
                     "$group": {
                         "_id": f"${group_by}",
-                        "average": {"$avg": f"${avg_field}"},
+                        "average": {"$avg": {"$toDouble": f"${avg_field}"}},  # Convert to double
                         "count": {"$sum": 1}
                     }
                 })
@@ -279,7 +288,7 @@ class MongoDBMCPService:
                 pipeline.append({
                     "$group": {
                         "_id": None,
-                        "average": {"$avg": f"${avg_field}"},
+                        "average": {"$avg": {"$toDouble": f"${avg_field}"}},  # Convert to double
                         "count": {"$sum": 1}
                     }
                 })
@@ -301,7 +310,7 @@ class MongoDBMCPService:
     async def get_top_n(
         self,
         collection: str,
-        shop_id: int,
+        shop_id: str,
         sort_by: str,
         n: int = 5,
         ascending: bool = False,
@@ -351,7 +360,7 @@ class MongoDBMCPService:
     async def get_date_range(
         self,
         collection: str,
-        shop_id: int,
+        shop_id: str,
         date_field: str,
         days_back: int = 7,
         filter: Optional[Dict[str, Any]] = None
@@ -430,13 +439,12 @@ class MongoDBMCPService:
 
     async def get_best_selling_products(
         self,
-        shop_id: int,
+        shop_id: str,
         limit: int = 10,
         filter: Optional[Dict[str, Any]] = None
     ) -> Dict[str, Any]:
         """
-        Get best selling products by analyzing order_product collection.
-        Joins with order collection to filter by shop_id.
+        Get best selling products - FAST aggregation using shop_id filter on orders first.
 
         Args:
             shop_id: Shop ID to filter by
@@ -447,88 +455,51 @@ class MongoDBMCPService:
             Dict with top selling products
         """
         try:
-            # First approach: Try direct aggregation on order_product if it has shop_id
-            pipeline = []
-
-            # Try to filter by shop_id if field exists
-            match_stage = {"shop_id": shop_id} if shop_id else {}
+            # Step 1: Get order IDs for this shop (fast with index)
+            order_match = {"shop_id": shop_id}
             if filter:
-                match_stage.update(filter)
+                order_match.update(filter)
 
-            if match_stage:
-                pipeline.append({"$match": match_stage})
+            order_pipeline = [
+                {"$match": order_match},
+                {"$project": {"id": 1, "_id": 0}}
+            ]
 
-            # Group by product_id and count/sum
-            pipeline.extend([
+            shop_orders = await mongodb.execute_aggregation("order", order_pipeline)
+            order_ids = [o["id"] for o in shop_orders]
+
+            if not order_ids:
+                return {
+                    "success": True,
+                    "products": [],
+                    "count": 0,
+                    "message": "No orders found for this shop"
+                }
+
+            # Step 2: Aggregate order_product for these orders only
+            pipeline = [
+                {"$match": {"order_id": {"$in": order_ids}}},
                 {
                     "$group": {
                         "_id": "$product_id",
-                        "total_quantity": {"$sum": "$quantity"},
-                        "total_revenue": {"$sum": {"$multiply": ["$price", "$quantity"]}},
+                        "total_quantity": {"$sum": {"$toDouble": "$quantity"}},
+                        "total_revenue": {"$sum": {"$multiply": [{"$toDouble": "$price"}, {"$toDouble": "$quantity"}]}},
                         "order_count": {"$sum": 1}
                     }
                 },
                 {"$sort": {"total_quantity": -1}},
-                {"$limit": limit}
-            ])
-
-            # Try to get product details
-            pipeline.append({
-                "$lookup": {
-                    "from": "product",
-                    "localField": "_id",
-                    "foreignField": "id",
-                    "as": "product_info"
+                {"$limit": limit},
+                {
+                    "$lookup": {
+                        "from": "product",
+                        "localField": "_id",
+                        "foreignField": "id",
+                        "as": "product_info"
+                    }
                 }
-            })
+            ]
 
             result = await mongodb.execute_aggregation("order_product", pipeline)
-
-            # If no results, try alternative approach with join
-            if not result:
-                # Alternative: Join order_product with order first
-                pipeline = [
-                    # First get orders for this shop
-                    {"$match": {"shop_id": shop_id}},
-
-                    # Lookup order products
-                    {
-                        "$lookup": {
-                            "from": "order_product",
-                            "localField": "id",
-                            "foreignField": "order_id",
-                            "as": "products"
-                        }
-                    },
-
-                    # Unwind products
-                    {"$unwind": "$products"},
-
-                    # Group by product_id
-                    {
-                        "$group": {
-                            "_id": "$products.product_id",
-                            "total_quantity": {"$sum": "$products.quantity"},
-                            "total_revenue": {"$sum": {"$multiply": ["$products.price", "$products.quantity"]}},
-                            "order_count": {"$sum": 1}
-                        }
-                    },
-
-                    {"$sort": {"total_quantity": -1}},
-                    {"$limit": limit},
-
-                    # Get product details
-                    {
-                        "$lookup": {
-                            "from": "product",
-                            "localField": "_id",
-                            "foreignField": "id",
-                            "as": "product_info"
-                        }
-                    }
-                ]
-
-                result = await mongodb.execute_aggregation("order", pipeline)
 
             # Format results
             formatted_result = []
@@ -564,7 +535,7 @@ class MongoDBMCPService:
 
     async def get_top_customers_by_spending(
         self,
-        shop_id: int,
+        shop_id: str,
         limit: int = 10,
         filter: Optional[Dict[str, Any]] = None
     ) -> Dict[str, Any]:
@@ -589,7 +560,7 @@ class MongoDBMCPService:
                 {
                     "$group": {
                         "_id": "$user_id",
-                        "total_spent": {"$sum": "$grand_total"},
+                        "total_spent": {"$sum": {"$toDouble": "$grand_total"}},
                         "order_count": {"$sum": 1}
                     }
                 },

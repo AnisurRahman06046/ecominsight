@@ -25,11 +25,6 @@ class Settings(BaseSettings):
     redis_url: Optional[str] = "redis://localhost:6379"
     cache_ttl: int = 3600  # 1 hour default
 
-    # Ollama config
-    ollama_host: str = "http://localhost:11434"
-    ollama_model: str = "mistral:7b-instruct"
-    ollama_timeout: int = 60
-
     # Hugging Face models
     intent_model: str = "facebook/bart-large-mnli"
     embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
@@ -55,6 +50,19 @@ class Settings(BaseSettings):
     log_level: str = "INFO"
     log_format: str = "json"
     log_file: Optional[str] = "logs/app.log"
+
+    # MySQL Source Database (for data sync)
+    mysql_host: str = "localhost"
+    mysql_port: int = 3306
+    mysql_user: str = "root"
+    mysql_password: str = ""
+    mysql_database: str = "ecommerce"
+
+    # Data Sync Settings
+    sync_interval: int = 300  # seconds (5 minutes default)
+    sync_batch_size: int = 1000  # records per batch
+    sync_enabled: bool = True
+    sync_tables: str = "all"  # comma-separated table names or "all"
 
     class Config:
         env_file = ".env"

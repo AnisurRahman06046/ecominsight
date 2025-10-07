@@ -28,8 +28,6 @@ class LLMMCPOrchestrator:
     """
 
     def __init__(self):
-        self.base_url = settings.ollama_host
-        self.model = settings.ollama_model
         self.client = httpx.AsyncClient(timeout=30)
 
     def _get_generic_error_message(self, error_type: str = "general") -> str:
@@ -91,9 +89,11 @@ class LLMMCPOrchestrator:
         }
 
         # Check if query matches any conversational pattern
+        # Use exact match or word boundary matching to avoid false positives
         import random
         for patterns, responses in conversational_responses.items():
-            if question_lower in patterns or any(pattern in question_lower for pattern in patterns):
+            # Check for exact match first
+            if question_lower in patterns:
                 response = random.choice(responses)
                 response_time = time.time() - start_time
 
@@ -144,13 +144,13 @@ class LLMMCPOrchestrator:
         # Generic clarification
         return f"I'm not sure what you meant by '{question}'. Could you be more specific? For example:\n• 'What is my total revenue?'\n• 'How many orders do I have?'\n• 'Who are my top customers?'\n• 'What are my best selling products?'"
 
-    async def process_query(self, question: str, shop_id: int) -> Dict[str, Any]:
+    async def process_query(self, question: str, shop_id: str) -> Dict[str, Any]:
         """
         Process a natural language query using MCP tools.
 
         Args:
             question: User's natural language question
-            shop_id: Shop ID for filtering
+            shop_id: Shop ID for filtering (as string to match database)
 
         Returns:
             Dict with answer and data
@@ -170,14 +170,14 @@ class LLMMCPOrchestrator:
 
             # Standard processing: Try semantic router first (most reliable)
             logger.info(f"Trying semantic router for: {question}")
-            tool_decision = semantic_router.route_query(question, min_confidence=0.65)
+            tool_decision = semantic_router.route_query(question, min_confidence=0.75)
 
             # Track confidence for logging
             semantic_confidence = tool_decision.get("confidence", 0.0) if tool_decision else 0.0
-            routing_method = "semantic" if tool_decision and semantic_confidence >= 0.65 else "fallback"
+            routing_method = "semantic" if tool_decision and semantic_confidence >= 0.75 else "fallback"
 
             # If semantic router succeeded, enhance parameters using LLM
-            if tool_decision and semantic_confidence >= 0.65:
+            if tool_decision and semantic_confidence >= 0.75:
                 logger.info(f"Semantic router matched: {tool_decision.get('tool')} (confidence: {semantic_confidence:.3f})")
                 logger.info("Enhancing parameters with LLM extraction...")
 
@@ -197,7 +197,7 @@ class LLMMCPOrchestrator:
                     # Continue with basic params from semantic router
 
             # If semantic router fails or low confidence, try keyword matching
-            if not tool_decision or semantic_confidence < 0.65:
+            if not tool_decision or semantic_confidence < 0.75:
                 logger.info(f"Semantic router failed/uncertain (confidence: {semantic_confidence:.3f}), trying keyword matching")
                 tool_decision = self._keyword_tool_selection(question)
 
@@ -232,16 +232,8 @@ class LLMMCPOrchestrator:
                             }
                         }
 
-                    # For slightly better confidence, try Ollama then LLM
-                    logger.info("Keyword matching uncertain, trying Ollama quick generation")
-
-                    # Try Ollama with short timeout (10s)
-                    ollama_result = await self._try_ollama_generation(question, shop_id, start_time)
-                    if ollama_result and ollama_result.get("success"):
-                        return ollama_result
-
-                    # If Ollama fails/times out, use fallback LLM decision
-                    logger.info("Ollama failed, trying LLM tool decision")
+                    # Low confidence - use LLM tool decision
+                    logger.info("Keyword matching uncertain, trying LLM tool decision")
                     tool_decision = await self._get_tool_decision(question, shop_id)
                     routing_method = "llm_fallback"
 
@@ -993,83 +985,6 @@ class LLMMCPOrchestrator:
 
         return None
 
-    async def _try_ollama_generation(
-        self,
-        question: str,
-        shop_id: int,
-        start_time: float
-    ) -> Optional[Dict[str, Any]]:
-        """
-        Try to use Ollama to generate MongoDB pipeline for unseen queries.
-        Uses a simple, fast approach with minimal prompting.
-        """
-        try:
-            schema_context = """
-Collections: order (shop_id, user_id, grand_total, delivery_charge, status, payment_status, created_at)
-            product (id, shop_id, name, price, category_id)
-            order_product (order_id, product_id, quantity, price)
-            customer (id, shop_id, first_name, last_name, email)
-"""
-
-            prompt = f"""{schema_context}
-
-Question: {question}
-Shop ID: {shop_id}
-
-Generate MongoDB aggregation pipeline as JSON array. Start with [{{"$match": {{"shop_id": {shop_id}}}}}]
-Pipeline:"""
-
-            response = await self.client.post(
-                f"{self.base_url}/api/generate",
-                json={
-                    "model": "tinyllama:1.1b",
-                    "prompt": prompt,
-                    "stream": False,
-                    "temperature": 0.1
-                },
-                timeout=10.0  # 10 second timeout
-            )
-
-            if response.status_code == 200:
-                result = response.json()
-                generated = result.get("response", "")
-
-                # Try to extract JSON array
-                import re
-                import json as json_lib
-
-                if "[" in generated:
-                    start = generated.find("[")
-                    end = generated.rfind("]") + 1
-                    pipeline_str = generated[start:end]
-
-                    try:
-                        pipeline = json_lib.loads(pipeline_str)
-                        if isinstance(pipeline, list) and len(pipeline) > 0:
-                            logger.info(f"Ollama generated pipeline: {pipeline}")
-
-                            # Execute pipeline
-                            exec_result = await mongodb.execute_aggregation("order", pipeline)
-
-                            response_time = time.time() - start_time
-
-                            return {
-                                "success": True,
-                                "answer": f"Found {len(exec_result)} results",
-                                "data": exec_result,
-                                "metadata": {
-                                    "tool_used": "ollama_pipeline",
-                                    "pipeline": pipeline,
-                                    "confidence": 0.6
-                                }
-                            }
-                    except:
-                        pass
-
-        except Exception as e:
-            logger.warning(f"Ollama generation failed: {e}")
-
-        return None
 
     async def _get_tool_decision(self, question: str, shop_id: int) -> Dict[str, Any]:
         """
@@ -1451,29 +1366,18 @@ Example for "total revenue": {{"tool": "calculate_sum", "parameters": {{"collect
         }
 
     def _convert_datetime_to_string(self, filter_dict: Dict[str, Any]) -> Dict[str, Any]:
-        """Convert datetime objects to ISO strings for MongoDB string comparison."""
+        """
+        Keep datetime objects as-is for MongoDB datetime comparison.
+        MongoDB stores created_at/updated_at as datetime objects, not strings.
+        """
         from datetime import datetime
 
         if not filter_dict:
             return filter_dict
 
-        converted = {}
-        for key, value in filter_dict.items():
-            if isinstance(value, datetime):
-                # Convert datetime to ISO string
-                converted[key] = value.isoformat()
-            elif isinstance(value, dict):
-                # Recursively convert nested dicts (like $gte, $lt)
-                converted[key] = {}
-                for op, val in value.items():
-                    if isinstance(val, datetime):
-                        converted[key][op] = val.isoformat()
-                    else:
-                        converted[key][op] = val
-            else:
-                converted[key] = value
-
-        return converted
+        # Return as-is - no conversion needed
+        # MongoDB will handle datetime comparisons natively
+        return filter_dict
 
     async def _execute_tool(self, tool_decision: Dict[str, Any], shop_id: int) -> Dict[str, Any]:
         """
