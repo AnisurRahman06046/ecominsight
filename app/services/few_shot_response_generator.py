@@ -322,15 +322,15 @@ Natural answer:"""
 
                     # Format based on group type
                     if isinstance(group_id, dict):
-                        # Time-based grouping (month/day)
-                        if "month" in group_id and "year" in group_id:
+                        # Time-based grouping (check day FIRST before month, since day includes month+year)
+                        if "day" in group_id and "month" in group_id and "year" in group_id:
+                            return f"{group_id['year']}-{group_id['month']:02d}-{group_id['day']:02d} has the {superlative} orders with {count:,}."
+                        elif "month" in group_id and "year" in group_id:
                             month_names = ["", "January", "February", "March", "April", "May", "June",
                                          "July", "August", "September", "October", "November", "December"]
                             month_name = month_names[group_id["month"]]
                             year = group_id["year"]
                             return f"{month_name} {year} has the {superlative} orders with {count:,} orders."
-                        elif "day" in group_id:
-                            return f"{group_id['year']}-{group_id['month']:02d}-{group_id['day']:02d} has the {superlative} orders with {count:,}."
                     else:
                         # Simple field grouping
                         return f"{group_id} has the {superlative} with {count:,} orders."
@@ -342,14 +342,14 @@ Natural answer:"""
                         count = g.get("count", 0)
 
                         if isinstance(group_id, dict):
-                            # Time-based
-                            if "month" in group_id and "year" in group_id:
+                            # Time-based (check day FIRST)
+                            if "day" in group_id and "month" in group_id and "year" in group_id:
+                                result_list.append(f"{i}. {group_id['year']}-{group_id['month']:02d}-{group_id['day']:02d}: {count:,} orders")
+                            elif "month" in group_id and "year" in group_id:
                                 month_names = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun",
                                              "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
                                 month_name = month_names[group_id["month"]]
                                 result_list.append(f"{i}. {month_name} {group_id['year']}: {count:,} orders")
-                            elif "day" in group_id:
-                                result_list.append(f"{i}. {group_id['year']}-{group_id['month']:02d}-{group_id['day']:02d}: {count:,} orders")
                         else:
                             result_list.append(f"{i}. {group_id}: {count:,}")
 

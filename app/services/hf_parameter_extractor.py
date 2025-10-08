@@ -123,17 +123,24 @@ class HFParameterExtractor:
             start_of_today = datetime(now.year, now.month, now.day)
             return {"$gte": start_of_today}
 
-        # Yesterday
-        if "yesterday" in query:
+        # Yesterday (match "yesterday", "yesterday's", "yesterdays")
+        if re.search(r'\byesterday', query):
             yesterday = now - timedelta(days=1)
             start_of_yesterday = datetime(yesterday.year, yesterday.month, yesterday.day)
             start_of_today = datetime(now.year, now.month, now.day)
             return {"$gte": start_of_yesterday, "$lt": start_of_today}
 
-        # Last N days
-        days_match = re.search(r'last (\d+) days?', query)
+        # Last N days (including "last 30 days", "last 7 days", etc.)
+        days_match = re.search(r'(?:last|past)\s+(\d+)\s+days?', query)
         if days_match:
             days = int(days_match.group(1))
+            start_date = now - timedelta(days=days)
+            return {"$gte": start_date}
+
+        # "from last N days" or "from past N days"
+        from_days_match = re.search(r'from\s+(?:last|past)\s+(\d+)\s+days?', query)
+        if from_days_match:
+            days = int(from_days_match.group(1))
             start_date = now - timedelta(days=days)
             return {"$gte": start_date}
 
@@ -203,15 +210,17 @@ class HFParameterExtractor:
         """Extract status filters from query."""
         filters = {}
 
-        # Order status
+        # Order status (database uses Title Case: "Pending", "Canceled", etc.)
         if "pending" in query and "payment" not in query:
-            filters["status"] = "pending"
-        elif "confirmed" in query:
-            filters["status"] = "confirmed"
+            filters["status"] = "Pending"  # Capital P to match database
+        elif "confirmed" in query or "approved" in query:
+            filters["status"] = "Approved"  # Capital A
         elif "delivered" in query:
-            filters["status"] = "delivered"
+            filters["status"] = "Delivered"  # Capital D
         elif "cancelled" in query or "canceled" in query:
-            filters["status"] = "canceled"
+            filters["status"] = "Canceled"  # Capital C
+        elif "on shipment" in query or "shipping" in query:
+            filters["status"] = "On Shipment"
 
         # Payment status
         if "paid" in query and "unpaid" not in query:

@@ -1,0 +1,981 @@
+{
+  "metadata": {
+    "total_queries": 86,
+    "successful": 86,
+    "failed": 0,
+    "success_rate": 100.0,
+    "avg_response_time": 0.6825634268827216,
+    "total_time": 58.70045471191406,
+    "timestamp": "2025-10-07T16:47:15.989284"
+  },
+  "category_stats": {
+    "COUNT_QUERIES": {
+      "total": 8,
+      "successful": 8,
+      "failed": 0,
+      "success_rate": 100.0,
+      "avg_time": 3.2754337787628174
+    },
+    "REVENUE_QUERIES": {
+      "total": 8,
+      "successful": 8,
+      "failed": 0,
+      "success_rate": 100.0,
+      "avg_time": 0.22520899772644043
+    },
+    "DATE_BASED_QUERIES": {
+      "total": 11,
+      "successful": 11,
+      "failed": 0,
+      "success_rate": 100.0,
+      "avg_time": 0.19806250658902255
+    },
+    "TOP_PRODUCTS_QUERIES": {
+      "total": 9,
+      "successful": 9,
+      "failed": 0,
+      "success_rate": 100.0,
+      "avg_time": 0.6121209197574191
+    },
+    "TOP_CUSTOMERS_QUERIES": {
+      "total": 9,
+      "successful": 9,
+      "failed": 0,
+      "success_rate": 100.0,
+      "avg_time": 0.5963617430792915
+    },
+    "AVERAGE_QUERIES": {
+      "total": 5,
+      "successful": 5,
+      "failed": 0,
+      "success_rate": 100.0,
+      "avg_time": 0.21454792022705077
+    },
+    "TIME_GROUPING_QUERIES_HIGH": {
+      "total": 6,
+      "successful": 6,
+      "failed": 0,
+      "success_rate": 100.0,
+      "avg_time": 0.23248902956644693
+    },
+    "TIME_GROUPING_QUERIES_LOW": {
+      "total": 6,
+      "successful": 6,
+      "failed": 0,
+      "success_rate": 100.0,
+      "avg_time": 0.353440801302592
+    },
+    "BREAKDOWN_QUERIES": {
+      "total": 7,
+      "successful": 7,
+      "failed": 0,
+      "success_rate": 100.0,
+      "avg_time": 0.2258943489619664
+    },
+    "STATUS_QUERIES": {
+      "total": 5,
+      "successful": 5,
+      "failed": 0,
+      "success_rate": 100.0,
+      "avg_time": 0.9318262100219726
+    },
+    "COMPLEX_QUERIES": {
+      "total": 6,
+      "successful": 6,
+      "failed": 0,
+      "success_rate": 100.0,
+      "avg_time": 1.0183475414911907
+    },
+    "EDGE_CASES": {
+      "total": 6,
+      "successful": 6,
+      "failed": 0,
+      "success_rate": 100.0,
+      "avg_time": 0.11691427230834961
+    }
+  },
+  "tool_usage": {
+    "count_documents": 14,
+    "calculate_sum": 23,
+    "get_best_selling_products": 9,
+    "get_top_customers_by_spending": 9,
+    "calculate_average": 5,
+    "group_and_count": 19,
+    "find_documents": 3,
+    "get_date_range": 1,
+    "conversational": 2,
+    "clarification": 1
+  },
+  "routing_usage": {
+    "semantic": 0,
+    "llm_fallback": 1,
+    "conversational": 0,
+    "unknown": 0,
+    "semantic_router": 75,
+    "fallback": 7,
+    "conversational_detection": 2,
+    "clarification_needed": 1
+  },
+  "detailed_results": [
+    {
+      "category": "COUNT_QUERIES",
+      "query": "How many products do I have?",
+      "success": true,
+      "answer": "There are 971 products.",
+      "tool_used": "count_documents",
+      "confidence": 0.8777823448181152,
+      "routing_method": "semantic_router",
+      "response_time": 19.124710083007812
+    },
+    {
+      "category": "COUNT_QUERIES",
+      "query": "How many orders?",
+      "success": true,
+      "answer": "There are 35502 orders.",
+      "tool_used": "count_documents",
+      "confidence": 0.9632319211959839,
+      "routing_method": "semantic_router",
+      "response_time": 1.2787516117095947
+    },
+    {
+      "category": "COUNT_QUERIES",
+      "query": "How many customers?",
+      "success": true,
+      "answer": "There are 27886 customers.",
+      "tool_used": "count_documents",
+      "confidence": 0.9623632431030273,
+      "routing_method": "semantic_router",
+      "response_time": 1.0914208889007568
+    },
+    {
+      "category": "COUNT_QUERIES",
+      "query": "Count my products",
+      "success": true,
+      "answer": "There are 971 products.",
+      "tool_used": "count_documents",
+      "confidence": 0.8765296936035156,
+      "routing_method": "semantic_router",
+      "response_time": 1.0561504364013672
+    },
+    {
+      "category": "COUNT_QUERIES",
+      "query": "Total number of orders",
+      "success": true,
+      "answer": "There are 35502 orders.",
+      "tool_used": "count_documents",
+      "confidence": 1.0,
+      "routing_method": "semantic_router",
+      "response_time": 1.1438653469085693
+    },
+    {
+      "category": "COUNT_QUERIES",
+      "query": "Customer count",
+      "success": true,
+      "answer": "There are 27886 customers.",
+      "tool_used": "count_documents",
+      "confidence": 1.0000001192092896,
+      "routing_method": "semantic_router",
+      "response_time": 1.097198247909546
+    },
+    {
+      "category": "COUNT_QUERIES",
+      "query": "How many items in catalog?",
+      "success": true,
+      "answer": "There are 35502 items.",
+      "tool_used": "count_documents",
+      "confidence": 0.8011069893836975,
+      "routing_method": "semantic_router",
+      "response_time": 1.1625149250030518
+    },
+    {
+      "category": "COUNT_QUERIES",
+      "query": "Number of sales",
+      "success": true,
+      "answer": "Total sales: $43,279,436.00 (35,502 orders)",
+      "tool_used": "calculate_sum",
+      "confidence": 0.8183832168579102,
+      "routing_method": "semantic_router",
+      "response_time": 0.24885869026184082
+    },
+    {
+      "category": "REVENUE_QUERIES",
+      "query": "What is my total sales?",
+      "success": true,
+      "answer": "Total sales: $43,279,436.00 (35,502 orders)",
+      "tool_used": "calculate_sum",
+      "confidence": 0.8942661285400391,
+      "routing_method": "semantic_router",
+      "response_time": 0.25026869773864746
+    },
+    {
+      "category": "REVENUE_QUERIES",
+      "query": "Total revenue?",
+      "success": true,
+      "answer": "Total sales: $43,279,436.00 (35,502 orders)",
+      "tool_used": "calculate_sum",
+      "confidence": 0.9556602239608765,
+      "routing_method": "semantic_router",
+      "response_time": 0.22076177597045898
+    },
+    {
+      "category": "REVENUE_QUERIES",
+      "query": "Show me revenue",
+      "success": true,
+      "answer": "Total sales: $43,279,436.00 (35,502 orders)",
+      "tool_used": "calculate_sum",
+      "confidence": 0.95,
+      "routing_method": "fallback",
+      "response_time": 0.2313098907470703
+    },
+    {
+      "category": "REVENUE_QUERIES",
+      "query": "How much did I sell?",
+      "success": true,
+      "answer": "Total sales: $43,279,436.00 (35,502 orders)",
+      "tool_used": "calculate_sum",
+      "confidence": 0.8545405268669128,
+      "routing_method": "semantic_router",
+      "response_time": 0.23527979850769043
+    },
+    {
+      "category": "REVENUE_QUERIES",
+      "query": "What are my total sales?",
+      "success": true,
+      "answer": "Total sales: $43,279,436.00 (35,502 orders)",
+      "tool_used": "calculate_sum",
+      "confidence": 0.8871889114379883,
+      "routing_method": "semantic_router",
+      "response_time": 0.2175920009613037
+    },
+    {
+      "category": "REVENUE_QUERIES",
+      "query": "My revenue",
+      "success": true,
+      "answer": "Total sales: $43,279,436.00 (35,502 orders)",
+      "tool_used": "calculate_sum",
+      "confidence": 0.95,
+      "routing_method": "fallback",
+      "response_time": 0.21018552780151367
+    },
+    {
+      "category": "REVENUE_QUERIES",
+      "query": "Give me total sales",
+      "success": true,
+      "answer": "Total sales: $43,279,436.00 (35,502 orders)",
+      "tool_used": "calculate_sum",
+      "confidence": 0.8799629211425781,
+      "routing_method": "semantic_router",
+      "response_time": 0.20285844802856445
+    },
+    {
+      "category": "REVENUE_QUERIES",
+      "query": "Sales amount",
+      "success": true,
+      "answer": "Total sales: $43,279,436.00 (35,502 orders)",
+      "tool_used": "calculate_sum",
+      "confidence": 0.7890839576721191,
+      "routing_method": "semantic_router",
+      "response_time": 0.23341584205627441
+    },
+    {
+      "category": "DATE_BASED_QUERIES",
+      "query": "What is yesterday's total sales?",
+      "success": true,
+      "answer": "Total sales: $48,560.00 (40 orders)",
+      "tool_used": "calculate_sum",
+      "confidence": 0.8391335606575012,
+      "routing_method": "semantic_router",
+      "response_time": 0.1967144012451172
+    },
+    {
+      "category": "DATE_BASED_QUERIES",
+      "query": "Yesterday's revenue?",
+      "success": true,
+      "answer": "Total sales: $43,279,436.00 (35,502 orders)",
+      "tool_used": "calculate_sum",
+      "confidence": 0.95,
+      "routing_method": "fallback",
+      "response_time": 0.21485328674316406
+    },
+    {
+      "category": "DATE_BASED_QUERIES",
+      "query": "How much did I sell yesterday?",
+      "success": true,
+      "answer": "Total sales: $48,560.00 (40 orders)",
+      "tool_used": "calculate_sum",
+      "confidence": 0.9732811450958252,
+      "routing_method": "semantic_router",
+      "response_time": 0.20211291313171387
+    },
+    {
+      "category": "DATE_BASED_QUERIES",
+      "query": "Today's sales?",
+      "success": true,
+      "answer": "Total sales: $16,740.00 (17 orders)",
+      "tool_used": "calculate_sum",
+      "confidence": 0.8695176839828491,
+      "routing_method": "semantic_router",
+      "response_time": 0.17491579055786133
+    },
+    {
+      "category": "DATE_BASED_QUERIES",
+      "query": "This week sales?",
+      "success": true,
+      "answer": "Total sales: $65,300.00 (57 orders)",
+      "tool_used": "calculate_sum",
+      "confidence": 0.9312155842781067,
+      "routing_method": "semantic_router",
+      "response_time": 0.17093515396118164
+    },
+    {
+      "category": "DATE_BASED_QUERIES",
+      "query": "This month sales?",
+      "success": true,
+      "answer": "Total sales: $415,187.00 (340 orders)",
+      "tool_used": "calculate_sum",
+      "confidence": 0.9324308633804321,
+      "routing_method": "semantic_router",
+      "response_time": 0.18873190879821777
+    },
+    {
+      "category": "DATE_BASED_QUERIES",
+      "query": "Last week revenue?",
+      "success": true,
+      "answer": "Total sales: $473,437.00 (382 orders)",
+      "tool_used": "calculate_sum",
+      "confidence": 0.8918315172195435,
+      "routing_method": "semantic_router",
+      "response_time": 0.18112587928771973
+    },
+    {
+      "category": "DATE_BASED_QUERIES",
+      "query": "Last month revenue?",
+      "success": true,
+      "answer": "Total sales: $2,094,890.00 (1,563 orders)",
+      "tool_used": "calculate_sum",
+      "confidence": 0.8897576332092285,
+      "routing_method": "semantic_router",
+      "response_time": 0.1914527416229248
+    },
+    {
+      "category": "DATE_BASED_QUERIES",
+      "query": "Revenue from last 30 days?",
+      "success": true,
+      "answer": "Total sales: $43,279,436.00 (35,502 orders)",
+      "tool_used": "calculate_sum",
+      "confidence": 0.95,
+      "routing_method": "fallback",
+      "response_time": 0.25785255432128906
+    },
+    {
+      "category": "DATE_BASED_QUERIES",
+      "query": "Sales from today",
+      "success": true,
+      "answer": "Total sales: $16,740.00 (17 orders)",
+      "tool_used": "calculate_sum",
+      "confidence": 1.0000001192092896,
+      "routing_method": "semantic_router",
+      "response_time": 0.22082114219665527
+    },
+    {
+      "category": "DATE_BASED_QUERIES",
+      "query": "How much today?",
+      "success": true,
+      "answer": "Total sales: $16,740.00 (17 orders)",
+      "tool_used": "calculate_sum",
+      "confidence": 0.9579106569290161,
+      "routing_method": "semantic_router",
+      "response_time": 0.17917180061340332
+    },
+    {
+      "category": "TOP_PRODUCTS_QUERIES",
+      "query": "What are my top products?",
+      "success": true,
+      "answer": "Top selling products:\n1. Designer Edition Calligraphy T Shirt For Men\u0964 MF-536 - Sold: 1029 units, Revenue: $565,950.00\n2. Summer Denim Shirts for Men I MS-09 - Sold: 920 units, Revenue: $1,224,200.00\n3. Summer Friendly Premium Zipper Polo For Men | MFP-31 - Sold: 876 units, Revenue: $876,000.00\n4. Summer Friendly Premium Zipper Polo For Men | MFP-32 - Sold: 871 units, Revenue: $871,000.00\n5. Summer Denim Shirts for Men I MS-13 - Sold: 866 units, Revenue: $1,161,400.00\n6. Summer Friendly Premium Zipper Polo For Men | MFP-28 - Sold: 837 units, Revenue: $837,000.00\n7. Summer Friendly Premium Zipper Polo For Men | MFP-29 - Sold: 742 units, Revenue: $742,000.00\n8. Summer Denim Shirts for Men I MS-10 - Sold: 592 units, Revenue: $791,800.00\n9. Designer Edition Calligraphy T Shirt For Men\u0964 MF-535 - Sold: 546 units, Revenue: $300,300.00\n10. Summer Friendly Premium Zipper Polo For Men | MFP-30 - Sold: 542 units, Revenue: $542,000.00",
+      "tool_used": "get_best_selling_products",
+      "confidence": 0.9875441789627075,
+      "routing_method": "semantic_router",
+      "response_time": 0.6781141757965088
+    },
+    {
+      "category": "TOP_PRODUCTS_QUERIES",
+      "query": "Best selling products?",
+      "success": true,
+      "answer": "Top selling products:\n1. Designer Edition Calligraphy T Shirt For Men\u0964 MF-536 - Sold: 1029 units, Revenue: $565,950.00\n2. Summer Denim Shirts for Men I MS-09 - Sold: 920 units, Revenue: $1,224,200.00\n3. Summer Friendly Premium Zipper Polo For Men | MFP-31 - Sold: 876 units, Revenue: $876,000.00\n4. Summer Friendly Premium Zipper Polo For Men | MFP-32 - Sold: 871 units, Revenue: $871,000.00\n5. Summer Denim Shirts for Men I MS-13 - Sold: 866 units, Revenue: $1,161,400.00\n6. Summer Friendly Premium Zipper Polo For Men | MFP-28 - Sold: 837 units, Revenue: $837,000.00\n7. Summer Friendly Premium Zipper Polo For Men | MFP-29 - Sold: 742 units, Revenue: $742,000.00\n8. Summer Denim Shirts for Men I MS-10 - Sold: 592 units, Revenue: $791,800.00\n9. Designer Edition Calligraphy T Shirt For Men\u0964 MF-535 - Sold: 546 units, Revenue: $300,300.00\n10. Summer Friendly Premium Zipper Polo For Men | MFP-30 - Sold: 542 units, Revenue: $542,000.00",
+      "tool_used": "get_best_selling_products",
+      "confidence": 0.9579439163208008,
+      "routing_method": "semantic_router",
+      "response_time": 0.619704008102417
+    },
+    {
+      "category": "TOP_PRODUCTS_QUERIES",
+      "query": "Show me top sellers",
+      "success": true,
+      "answer": "Top selling products:\n1. Designer Edition Calligraphy T Shirt For Men\u0964 MF-536 - Sold: 1029 units, Revenue: $565,950.00\n2. Summer Denim Shirts for Men I MS-09 - Sold: 920 units, Revenue: $1,224,200.00\n3. Summer Friendly Premium Zipper Polo For Men | MFP-31 - Sold: 876 units, Revenue: $876,000.00\n4. Summer Friendly Premium Zipper Polo For Men | MFP-32 - Sold: 871 units, Revenue: $871,000.00\n5. Summer Denim Shirts for Men I MS-13 - Sold: 866 units, Revenue: $1,161,400.00\n6. Summer Friendly Premium Zipper Polo For Men | MFP-28 - Sold: 837 units, Revenue: $837,000.00\n7. Summer Friendly Premium Zipper Polo For Men | MFP-29 - Sold: 742 units, Revenue: $742,000.00\n8. Summer Denim Shirts for Men I MS-10 - Sold: 592 units, Revenue: $791,800.00\n9. Designer Edition Calligraphy T Shirt For Men\u0964 MF-535 - Sold: 546 units, Revenue: $300,300.00\n10. Summer Friendly Premium Zipper Polo For Men | MFP-30 - Sold: 542 units, Revenue: $542,000.00",
+      "tool_used": "get_best_selling_products",
+      "confidence": 1.0,
+      "routing_method": "semantic_router",
+      "response_time": 0.6170494556427002
+    },
+    {
+      "category": "TOP_PRODUCTS_QUERIES",
+      "query": "Top 5 products?",
+      "success": true,
+      "answer": "Top selling products:\n1. Designer Edition Calligraphy T Shirt For Men\u0964 MF-536 - Sold: 1029 units, Revenue: $565,950.00\n2. Summer Denim Shirts for Men I MS-09 - Sold: 920 units, Revenue: $1,224,200.00\n3. Summer Friendly Premium Zipper Polo For Men | MFP-31 - Sold: 876 units, Revenue: $876,000.00\n4. Summer Friendly Premium Zipper Polo For Men | MFP-32 - Sold: 871 units, Revenue: $871,000.00\n5. Summer Denim Shirts for Men I MS-13 - Sold: 866 units, Revenue: $1,161,400.00",
+      "tool_used": "get_best_selling_products",
+      "confidence": 0.9706560969352722,
+      "routing_method": "semantic_router",
+      "response_time": 0.522193431854248
+    },
+    {
+      "category": "TOP_PRODUCTS_QUERIES",
+      "query": "Top 10 products",
+      "success": true,
+      "answer": "Top selling products:\n1. Designer Edition Calligraphy T Shirt For Men\u0964 MF-536 - Sold: 1029 units, Revenue: $565,950.00\n2. Summer Denim Shirts for Men I MS-09 - Sold: 920 units, Revenue: $1,224,200.00\n3. Summer Friendly Premium Zipper Polo For Men | MFP-31 - Sold: 876 units, Revenue: $876,000.00\n4. Summer Friendly Premium Zipper Polo For Men | MFP-32 - Sold: 871 units, Revenue: $871,000.00\n5. Summer Denim Shirts for Men I MS-13 - Sold: 866 units, Revenue: $1,161,400.00\n6. Summer Friendly Premium Zipper Polo For Men | MFP-28 - Sold: 837 units, Revenue: $837,000.00\n7. Summer Friendly Premium Zipper Polo For Men | MFP-29 - Sold: 742 units, Revenue: $742,000.00\n8. Summer Denim Shirts for Men I MS-10 - Sold: 592 units, Revenue: $791,800.00\n9. Designer Edition Calligraphy T Shirt For Men\u0964 MF-535 - Sold: 546 units, Revenue: $300,300.00\n10. Summer Friendly Premium Zipper Polo For Men | MFP-30 - Sold: 542 units, Revenue: $542,000.00",
+      "tool_used": "get_best_selling_products",
+      "confidence": 1.0,
+      "routing_method": "semantic_router",
+      "response_time": 0.6042053699493408
+    },
+    {
+      "category": "TOP_PRODUCTS_QUERIES",
+      "query": "Most popular products?",
+      "success": true,
+      "answer": "Top selling products:\n1. Designer Edition Calligraphy T Shirt For Men\u0964 MF-536 - Sold: 1029 units, Revenue: $565,950.00\n2. Summer Denim Shirts for Men I MS-09 - Sold: 920 units, Revenue: $1,224,200.00\n3. Summer Friendly Premium Zipper Polo For Men | MFP-31 - Sold: 876 units, Revenue: $876,000.00\n4. Summer Friendly Premium Zipper Polo For Men | MFP-32 - Sold: 871 units, Revenue: $871,000.00\n5. Summer Denim Shirts for Men I MS-13 - Sold: 866 units, Revenue: $1,161,400.00\n6. Summer Friendly Premium Zipper Polo For Men | MFP-28 - Sold: 837 units, Revenue: $837,000.00\n7. Summer Friendly Premium Zipper Polo For Men | MFP-29 - Sold: 742 units, Revenue: $742,000.00\n8. Summer Denim Shirts for Men I MS-10 - Sold: 592 units, Revenue: $791,800.00\n9. Designer Edition Calligraphy T Shirt For Men\u0964 MF-535 - Sold: 546 units, Revenue: $300,300.00\n10. Summer Friendly Premium Zipper Polo For Men | MFP-30 - Sold: 542 units, Revenue: $542,000.00",
+      "tool_used": "get_best_selling_products",
+      "confidence": 0.9525235295295715,
+      "routing_method": "semantic_router",
+      "response_time": 0.6474261283874512
+    },
+    {
+      "category": "TOP_PRODUCTS_QUERIES",
+      "query": "Best products?",
+      "success": true,
+      "answer": "Top selling products:\n1. Designer Edition Calligraphy T Shirt For Men\u0964 MF-536 - Sold: 1029 units, Revenue: $565,950.00\n2. Summer Denim Shirts for Men I MS-09 - Sold: 920 units, Revenue: $1,224,200.00\n3. Summer Friendly Premium Zipper Polo For Men | MFP-31 - Sold: 876 units, Revenue: $876,000.00\n4. Summer Friendly Premium Zipper Polo For Men | MFP-32 - Sold: 871 units, Revenue: $871,000.00\n5. Summer Denim Shirts for Men I MS-13 - Sold: 866 units, Revenue: $1,161,400.00\n6. Summer Friendly Premium Zipper Polo For Men | MFP-28 - Sold: 837 units, Revenue: $837,000.00\n7. Summer Friendly Premium Zipper Polo For Men | MFP-29 - Sold: 742 units, Revenue: $742,000.00\n8. Summer Denim Shirts for Men I MS-10 - Sold: 592 units, Revenue: $791,800.00\n9. Designer Edition Calligraphy T Shirt For Men\u0964 MF-535 - Sold: 546 units, Revenue: $300,300.00\n10. Summer Friendly Premium Zipper Polo For Men | MFP-30 - Sold: 542 units, Revenue: $542,000.00",
+      "tool_used": "get_best_selling_products",
+      "confidence": 0.9350289106369019,
+      "routing_method": "semantic_router",
+      "response_time": 0.6010680198669434
+    },
+    {
+      "category": "TOP_PRODUCTS_QUERIES",
+      "query": "What are my best sellers?",
+      "success": true,
+      "answer": "Top selling products:\n1. Designer Edition Calligraphy T Shirt For Men\u0964 MF-536 - Sold: 1029 units, Revenue: $565,950.00\n2. Summer Denim Shirts for Men I MS-09 - Sold: 920 units, Revenue: $1,224,200.00\n3. Summer Friendly Premium Zipper Polo For Men | MFP-31 - Sold: 876 units, Revenue: $876,000.00\n4. Summer Friendly Premium Zipper Polo For Men | MFP-32 - Sold: 871 units, Revenue: $871,000.00\n5. Summer Denim Shirts for Men I MS-13 - Sold: 866 units, Revenue: $1,161,400.00\n6. Summer Friendly Premium Zipper Polo For Men | MFP-28 - Sold: 837 units, Revenue: $837,000.00\n7. Summer Friendly Premium Zipper Polo For Men | MFP-29 - Sold: 742 units, Revenue: $742,000.00\n8. Summer Denim Shirts for Men I MS-10 - Sold: 592 units, Revenue: $791,800.00\n9. Designer Edition Calligraphy T Shirt For Men\u0964 MF-535 - Sold: 546 units, Revenue: $300,300.00\n10. Summer Friendly Premium Zipper Polo For Men | MFP-30 - Sold: 542 units, Revenue: $542,000.00",
+      "tool_used": "get_best_selling_products",
+      "confidence": 0.9759913682937622,
+      "routing_method": "semantic_router",
+      "response_time": 0.6324377059936523
+    },
+    {
+      "category": "TOP_PRODUCTS_QUERIES",
+      "query": "Which products are selling most?",
+      "success": true,
+      "answer": "Top selling products:\n1. Designer Edition Calligraphy T Shirt For Men\u0964 MF-536 - Sold: 1029 units, Revenue: $565,950.00\n2. Summer Denim Shirts for Men I MS-09 - Sold: 920 units, Revenue: $1,224,200.00\n3. Summer Friendly Premium Zipper Polo For Men | MFP-31 - Sold: 876 units, Revenue: $876,000.00\n4. Summer Friendly Premium Zipper Polo For Men | MFP-32 - Sold: 871 units, Revenue: $871,000.00\n5. Summer Denim Shirts for Men I MS-13 - Sold: 866 units, Revenue: $1,161,400.00\n6. Summer Friendly Premium Zipper Polo For Men | MFP-28 - Sold: 837 units, Revenue: $837,000.00\n7. Summer Friendly Premium Zipper Polo For Men | MFP-29 - Sold: 742 units, Revenue: $742,000.00\n8. Summer Denim Shirts for Men I MS-10 - Sold: 592 units, Revenue: $791,800.00\n9. Designer Edition Calligraphy T Shirt For Men\u0964 MF-535 - Sold: 546 units, Revenue: $300,300.00\n10. Summer Friendly Premium Zipper Polo For Men | MFP-30 - Sold: 542 units, Revenue: $542,000.00",
+      "tool_used": "get_best_selling_products",
+      "confidence": 0.9217461347579956,
+      "routing_method": "semantic_router",
+      "response_time": 0.5868899822235107
+    },
+    {
+      "category": "TOP_CUSTOMERS_QUERIES",
+      "query": "Who are my top customers?",
+      "success": true,
+      "answer": "Top customers by spending:\n1. Sajib kumar nag None - Spent: $3,801,992.00, Orders: 2924\n2. None None - Spent: $132,897.00, Orders: 72\n3. None None - Spent: $75,260.00, Orders: 71\n4. None None - Spent: $74,960.00, Orders: 3\n5. None None - Spent: $67,210.00, Orders: 11\n6. None None - Spent: $60,480.00, Orders: 54\n7. Munim Hridoy - Spent: $57,826.00, Orders: 57\n8. Nurul Amin - Spent: $44,070.00, Orders: 30\n9. None None - Spent: $42,680.00, Orders: 54\n10. None None - Spent: $42,020.00, Orders: 13",
+      "tool_used": "get_top_customers_by_spending",
+      "confidence": 0.9814268946647644,
+      "routing_method": "semantic_router",
+      "response_time": 0.6381263732910156
+    },
+    {
+      "category": "TOP_CUSTOMERS_QUERIES",
+      "query": "Best customers?",
+      "success": true,
+      "answer": "Top customers by spending:\n1. Sajib kumar nag None - Spent: $3,801,992.00, Orders: 2924\n2. None None - Spent: $132,897.00, Orders: 72\n3. None None - Spent: $75,260.00, Orders: 71\n4. None None - Spent: $74,960.00, Orders: 3\n5. None None - Spent: $67,210.00, Orders: 11\n6. None None - Spent: $60,480.00, Orders: 54\n7. Munim Hridoy - Spent: $57,826.00, Orders: 57\n8. Nurul Amin - Spent: $44,070.00, Orders: 30\n9. None None - Spent: $42,680.00, Orders: 54\n10. None None - Spent: $42,020.00, Orders: 13",
+      "tool_used": "get_top_customers_by_spending",
+      "confidence": 0.9316964745521545,
+      "routing_method": "semantic_router",
+      "response_time": 0.5976698398590088
+    },
+    {
+      "category": "TOP_CUSTOMERS_QUERIES",
+      "query": "Show me top spenders",
+      "success": true,
+      "answer": "Top customers by spending:\n1. Sajib kumar nag None - Spent: $3,801,992.00, Orders: 2924\n2. None None - Spent: $132,897.00, Orders: 72\n3. None None - Spent: $75,260.00, Orders: 71\n4. None None - Spent: $74,960.00, Orders: 3\n5. None None - Spent: $67,210.00, Orders: 11\n6. None None - Spent: $60,480.00, Orders: 54\n7. Munim Hridoy - Spent: $57,826.00, Orders: 57\n8. Nurul Amin - Spent: $44,070.00, Orders: 30\n9. None None - Spent: $42,680.00, Orders: 54\n10. None None - Spent: $42,020.00, Orders: 13",
+      "tool_used": "get_top_customers_by_spending",
+      "confidence": 1.0000001192092896,
+      "routing_method": "semantic_router",
+      "response_time": 0.613530158996582
+    },
+    {
+      "category": "TOP_CUSTOMERS_QUERIES",
+      "query": "Top 5 customers?",
+      "success": true,
+      "answer": "Top customers by spending:\n1. Sajib kumar nag None - Spent: $3,801,992.00, Orders: 2924\n2. None None - Spent: $132,897.00, Orders: 72\n3. None None - Spent: $75,260.00, Orders: 71\n4. None None - Spent: $74,960.00, Orders: 3\n5. None None - Spent: $67,210.00, Orders: 11",
+      "tool_used": "get_top_customers_by_spending",
+      "confidence": 0.965736985206604,
+      "routing_method": "semantic_router",
+      "response_time": 0.43920207023620605
+    },
+    {
+      "category": "TOP_CUSTOMERS_QUERIES",
+      "query": "Top 10 customers",
+      "success": true,
+      "answer": "Top customers by spending:\n1. Sajib kumar nag None - Spent: $3,801,992.00, Orders: 2924\n2. None None - Spent: $132,897.00, Orders: 72\n3. None None - Spent: $75,260.00, Orders: 71\n4. None None - Spent: $74,960.00, Orders: 3\n5. None None - Spent: $67,210.00, Orders: 11\n6. None None - Spent: $60,480.00, Orders: 54\n7. Munim Hridoy - Spent: $57,826.00, Orders: 57\n8. Nurul Amin - Spent: $44,070.00, Orders: 30\n9. None None - Spent: $42,680.00, Orders: 54\n10. None None - Spent: $42,020.00, Orders: 13",
+      "tool_used": "get_top_customers_by_spending",
+      "confidence": 1.0000001192092896,
+      "routing_method": "semantic_router",
+      "response_time": 0.6399569511413574
+    },
+    {
+      "category": "TOP_CUSTOMERS_QUERIES",
+      "query": "Most valuable customers?",
+      "success": true,
+      "answer": "Top customers by spending:\n1. Sajib kumar nag None - Spent: $3,801,992.00, Orders: 2924\n2. None None - Spent: $132,897.00, Orders: 72\n3. None None - Spent: $75,260.00, Orders: 71\n4. None None - Spent: $74,960.00, Orders: 3\n5. None None - Spent: $67,210.00, Orders: 11\n6. None None - Spent: $60,480.00, Orders: 54\n7. Munim Hridoy - Spent: $57,826.00, Orders: 57\n8. Nurul Amin - Spent: $44,070.00, Orders: 30\n9. None None - Spent: $42,680.00, Orders: 54\n10. None None - Spent: $42,020.00, Orders: 13",
+      "tool_used": "get_top_customers_by_spending",
+      "confidence": 0.9710593223571777,
+      "routing_method": "semantic_router",
+      "response_time": 0.6132993698120117
+    },
+    {
+      "category": "TOP_CUSTOMERS_QUERIES",
+      "query": "Who spends the most?",
+      "success": true,
+      "answer": "Top customers by spending:\n1. Sajib kumar nag None - Spent: $3,801,992.00, Orders: 2924\n2. None None - Spent: $132,897.00, Orders: 72\n3. None None - Spent: $75,260.00, Orders: 71\n4. None None - Spent: $74,960.00, Orders: 3\n5. None None - Spent: $67,210.00, Orders: 11\n6. None None - Spent: $60,480.00, Orders: 54\n7. Munim Hridoy - Spent: $57,826.00, Orders: 57\n8. Nurul Amin - Spent: $44,070.00, Orders: 30\n9. None None - Spent: $42,680.00, Orders: 54\n10. None None - Spent: $42,020.00, Orders: 13",
+      "tool_used": "get_top_customers_by_spending",
+      "confidence": 0.9674389362335205,
+      "routing_method": "semantic_router",
+      "response_time": 0.5890014171600342
+    },
+    {
+      "category": "TOP_CUSTOMERS_QUERIES",
+      "query": "Show top customers",
+      "success": true,
+      "answer": "Top customers by spending:\n1. Sajib kumar nag None - Spent: $3,801,992.00, Orders: 2924\n2. None None - Spent: $132,897.00, Orders: 72\n3. None None - Spent: $75,260.00, Orders: 71\n4. None None - Spent: $74,960.00, Orders: 3\n5. None None - Spent: $67,210.00, Orders: 11\n6. None None - Spent: $60,480.00, Orders: 54\n7. Munim Hridoy - Spent: $57,826.00, Orders: 57\n8. Nurul Amin - Spent: $44,070.00, Orders: 30\n9. None None - Spent: $42,680.00, Orders: 54\n10. None None - Spent: $42,020.00, Orders: 13",
+      "tool_used": "get_top_customers_by_spending",
+      "confidence": 1.0000001192092896,
+      "routing_method": "semantic_router",
+      "response_time": 0.6503725051879883
+    },
+    {
+      "category": "TOP_CUSTOMERS_QUERIES",
+      "query": "Best buyers?",
+      "success": true,
+      "answer": "Top customers by spending:\n1. Sajib kumar nag None - Spent: $3,801,992.00, Orders: 2924\n2. None None - Spent: $132,897.00, Orders: 72\n3. None None - Spent: $75,260.00, Orders: 71\n4. None None - Spent: $74,960.00, Orders: 3\n5. None None - Spent: $67,210.00, Orders: 11\n6. None None - Spent: $60,480.00, Orders: 54\n7. Munim Hridoy - Spent: $57,826.00, Orders: 57\n8. Nurul Amin - Spent: $44,070.00, Orders: 30\n9. None None - Spent: $42,680.00, Orders: 54\n10. None None - Spent: $42,020.00, Orders: 13",
+      "tool_used": "get_top_customers_by_spending",
+      "confidence": 0.9422881603240967,
+      "routing_method": "semantic_router",
+      "response_time": 0.586097002029419
+    },
+    {
+      "category": "AVERAGE_QUERIES",
+      "query": "What's my average order value?",
+      "success": true,
+      "answer": "The average order value is $1,219.07 (based on 35,502 orders)",
+      "tool_used": "calculate_average",
+      "confidence": 0.9902793765068054,
+      "routing_method": "semantic_router",
+      "response_time": 0.19207215309143066
+    },
+    {
+      "category": "AVERAGE_QUERIES",
+      "query": "Average order amount?",
+      "success": true,
+      "answer": "The average order value is $1,219.07 (based on 35,502 orders)",
+      "tool_used": "calculate_average",
+      "confidence": 0.8244435787200928,
+      "routing_method": "semantic_router",
+      "response_time": 0.2040257453918457
+    },
+    {
+      "category": "AVERAGE_QUERIES",
+      "query": "Mean order value?",
+      "success": true,
+      "answer": "The average order value is $1,219.07 (based on 35,502 orders)",
+      "tool_used": "calculate_average",
+      "confidence": 0.9818075299263,
+      "routing_method": "semantic_router",
+      "response_time": 0.20621609687805176
+    },
+    {
+      "category": "AVERAGE_QUERIES",
+      "query": "Average sale per order?",
+      "success": true,
+      "answer": "The average order value is $1,219.07 (based on 35,502 orders)",
+      "tool_used": "calculate_average",
+      "confidence": 0.7632418870925903,
+      "routing_method": "semantic_router",
+      "response_time": 0.22545933723449707
+    },
+    {
+      "category": "AVERAGE_QUERIES",
+      "query": "What is the average revenue per order?",
+      "success": true,
+      "answer": "The average order value is $1,219.07 (based on 35,502 orders)",
+      "tool_used": "calculate_average",
+      "confidence": 0.8265577554702759,
+      "routing_method": "semantic_router",
+      "response_time": 0.2449662685394287
+    },
+    {
+      "category": "TIME_GROUPING_QUERIES_HIGH",
+      "query": "Which month has the highest order?",
+      "success": true,
+      "answer": "April 2024 has the highest orders with 2,665 orders.",
+      "tool_used": "group_and_count",
+      "confidence": 0.986903965473175,
+      "routing_method": "semantic_router",
+      "response_time": 0.25664472579956055
+    },
+    {
+      "category": "TIME_GROUPING_QUERIES_HIGH",
+      "query": "Which month has the most orders?",
+      "success": true,
+      "answer": "April 2024 has the highest orders with 2,665 orders.",
+      "tool_used": "group_and_count",
+      "confidence": 0.9853198528289795,
+      "routing_method": "semantic_router",
+      "response_time": 0.22826671600341797
+    },
+    {
+      "category": "TIME_GROUPING_QUERIES_HIGH",
+      "query": "Best performing month?",
+      "success": true,
+      "answer": "April 2024 has the highest orders with 2,665 orders.",
+      "tool_used": "group_and_count",
+      "confidence": 0.9668358564376831,
+      "routing_method": "semantic_router",
+      "response_time": 0.21208643913269043
+    },
+    {
+      "category": "TIME_GROUPING_QUERIES_HIGH",
+      "query": "Top month by orders?",
+      "success": true,
+      "answer": "April 2024 has the highest orders with 2,665 orders.",
+      "tool_used": "group_and_count",
+      "confidence": 0.8460867404937744,
+      "routing_method": "semantic_router",
+      "response_time": 0.2354128360748291
+    },
+    {
+      "category": "TIME_GROUPING_QUERIES_HIGH",
+      "query": "Which day has most orders?",
+      "success": true,
+      "answer": "June 2025 has the highest orders with 166 orders.",
+      "tool_used": "group_and_count",
+      "confidence": 0.9832087755203247,
+      "routing_method": "semantic_router",
+      "response_time": 0.25350308418273926
+    },
+    {
+      "category": "TIME_GROUPING_QUERIES_HIGH",
+      "query": "Highest sales month?",
+      "success": true,
+      "answer": "April 2024 has the highest orders with 2,665 orders.",
+      "tool_used": "group_and_count",
+      "confidence": 0.9299894571304321,
+      "routing_method": "semantic_router",
+      "response_time": 0.20902037620544434
+    },
+    {
+      "category": "TIME_GROUPING_QUERIES_LOW",
+      "query": "Which month has the lowest order?",
+      "success": true,
+      "answer": "February 2024 has the lowest orders with 157 orders.",
+      "tool_used": "group_and_count",
+      "confidence": 0.9874081611633301,
+      "routing_method": "semantic_router",
+      "response_time": 0.255908727645874
+    },
+    {
+      "category": "TIME_GROUPING_QUERIES_LOW",
+      "query": "Which month has fewest orders?",
+      "success": true,
+      "answer": "February 2024 has the lowest orders with 157 orders.",
+      "tool_used": "group_and_count",
+      "confidence": 0.9795555472373962,
+      "routing_method": "semantic_router",
+      "response_time": 0.24388742446899414
+    },
+    {
+      "category": "TIME_GROUPING_QUERIES_LOW",
+      "query": "Worst performing month?",
+      "success": true,
+      "answer": "February 2024 has the lowest orders with 157 orders.",
+      "tool_used": "group_and_count",
+      "confidence": 0.9736261963844299,
+      "routing_method": "semantic_router",
+      "response_time": 0.27126431465148926
+    },
+    {
+      "category": "TIME_GROUPING_QUERIES_LOW",
+      "query": "Bottom month by orders?",
+      "success": true,
+      "answer": "February 2024 has the lowest orders with 157 orders.",
+      "tool_used": "group_and_count",
+      "confidence": 0.8403087854385376,
+      "routing_method": "semantic_router",
+      "response_time": 0.22221755981445312
+    },
+    {
+      "category": "TIME_GROUPING_QUERIES_LOW",
+      "query": "Least orders month?",
+      "success": true,
+      "answer": "February 2024 has the lowest orders with 157 orders.",
+      "tool_used": "group_and_count",
+      "confidence": 0.8577388525009155,
+      "routing_method": "semantic_router",
+      "response_time": 0.26008129119873047
+    },
+    {
+      "category": "TIME_GROUPING_QUERIES_LOW",
+      "query": "Smallest sales month?",
+      "success": true,
+      "answer": "There are 10 items.",
+      "tool_used": "find_documents",
+      "confidence": 0.3,
+      "routing_method": "llm_fallback",
+      "response_time": 0.8672854900360107
+    },
+    {
+      "category": "BREAKDOWN_QUERIES",
+      "query": "Orders by status",
+      "success": true,
+      "answer": "Breakdown:\n1. Pending: 21,315\n2. On Shipment: 8,302\n3. Canceled: 3,060\n4. Approved: 1,893\n5. Delivered: 734\n6. Ready for Shipment: 195\n7. Delivered : 2\n8. Ongoing: 1",
+      "tool_used": "group_and_count",
+      "confidence": 0.9999999403953552,
+      "routing_method": "semantic_router",
+      "response_time": 0.21630001068115234
+    },
+    {
+      "category": "BREAKDOWN_QUERIES",
+      "query": "Monthly order breakdown",
+      "success": true,
+      "answer": "Breakdown:\n1. Apr 2024: 2,665 orders\n2. Aug 2025: 2,222 orders\n3. Jun 2024: 2,221 orders\n4. May 2024: 2,117 orders\n5. Sep 2024: 2,107 orders\n6. Dec 2024: 2,044 orders\n7. May 2025: 1,950 orders\n8. Jul 2024: 1,930 orders\n9. Nov 2024: 1,918 orders\n10. Apr 2025: 1,851 orders",
+      "tool_used": "group_and_count",
+      "confidence": 1.0,
+      "routing_method": "semantic_router",
+      "response_time": 0.23346447944641113
+    },
+    {
+      "category": "BREAKDOWN_QUERIES",
+      "query": "Show me breakdown by month",
+      "success": true,
+      "answer": "Breakdown:\n1. Apr 2024: 2,665 orders\n2. Aug 2025: 2,222 orders\n3. Jun 2024: 2,221 orders\n4. May 2024: 2,117 orders\n5. Sep 2024: 2,107 orders\n6. Dec 2024: 2,044 orders\n7. May 2025: 1,950 orders\n8. Jul 2024: 1,930 orders\n9. Nov 2024: 1,918 orders\n10. Apr 2025: 1,851 orders",
+      "tool_used": "group_and_count",
+      "confidence": 0.9355872273445129,
+      "routing_method": "semantic_router",
+      "response_time": 0.23251795768737793
+    },
+    {
+      "category": "BREAKDOWN_QUERIES",
+      "query": "Order distribution",
+      "success": true,
+      "answer": "Breakdown:\n1. Pending: 21,315\n2. On Shipment: 8,302\n3. Canceled: 3,060\n4. Approved: 1,893\n5. Delivered: 734\n6. Ready for Shipment: 195\n7. Delivered : 2\n8. Ongoing: 1",
+      "tool_used": "group_and_count",
+      "confidence": 1.0,
+      "routing_method": "semantic_router",
+      "response_time": 0.20155954360961914
+    },
+    {
+      "category": "BREAKDOWN_QUERIES",
+      "query": "Sales by month",
+      "success": true,
+      "answer": "Breakdown:\n1. Apr 2024: 2,665 orders\n2. Aug 2025: 2,222 orders\n3. Jun 2024: 2,221 orders\n4. May 2024: 2,117 orders\n5. Sep 2024: 2,107 orders\n6. Dec 2024: 2,044 orders\n7. May 2025: 1,950 orders\n8. Jul 2024: 1,930 orders\n9. Nov 2024: 1,918 orders\n10. Apr 2025: 1,851 orders",
+      "tool_used": "group_and_count",
+      "confidence": 1.0,
+      "routing_method": "semantic_router",
+      "response_time": 0.21512508392333984
+    },
+    {
+      "category": "BREAKDOWN_QUERIES",
+      "query": "Payment status breakdown",
+      "success": true,
+      "answer": "Breakdown:\n1. unpaid: 35,171\n2. paid: 331",
+      "tool_used": "group_and_count",
+      "confidence": 1.0,
+      "routing_method": "semantic_router",
+      "response_time": 0.23853278160095215
+    },
+    {
+      "category": "BREAKDOWN_QUERIES",
+      "query": "Order count by month",
+      "success": true,
+      "answer": "Breakdown:\n1. Apr 2024: 2,665 orders\n2. Aug 2025: 2,222 orders\n3. Jun 2024: 2,221 orders\n4. May 2024: 2,117 orders\n5. Sep 2024: 2,107 orders\n6. Dec 2024: 2,044 orders\n7. May 2025: 1,950 orders\n8. Jul 2024: 1,930 orders\n9. Nov 2024: 1,918 orders\n10. Apr 2025: 1,851 orders",
+      "tool_used": "group_and_count",
+      "confidence": 1.0000001192092896,
+      "routing_method": "semantic_router",
+      "response_time": 0.2437605857849121
+    },
+    {
+      "category": "STATUS_QUERIES",
+      "query": "How many pending orders?",
+      "success": true,
+      "answer": "There are 0 orders.",
+      "tool_used": "find_documents",
+      "confidence": 0.8257328271865845,
+      "routing_method": "semantic_router",
+      "response_time": 1.2011351585388184
+    },
+    {
+      "category": "STATUS_QUERIES",
+      "query": "How many completed orders?",
+      "success": true,
+      "answer": "There are 35502 orders.",
+      "tool_used": "count_documents",
+      "confidence": 0.7985972166061401,
+      "routing_method": "semantic_router",
+      "response_time": 1.1070363521575928
+    },
+    {
+      "category": "STATUS_QUERIES",
+      "query": "How many cancelled orders?",
+      "success": true,
+      "answer": "There are 3060 orders.",
+      "tool_used": "count_documents",
+      "confidence": 0.9,
+      "routing_method": "fallback",
+      "response_time": 0.9963581562042236
+    },
+    {
+      "category": "STATUS_QUERIES",
+      "query": "Orders by status",
+      "success": true,
+      "answer": "Breakdown:\n1. Pending: 21,315\n2. On Shipment: 8,302\n3. Canceled: 3,060\n4. Approved: 1,893\n5. Delivered: 734\n6. Ready for Shipment: 195\n7. Delivered : 2\n8. Ongoing: 1",
+      "tool_used": "group_and_count",
+      "confidence": 0.9999999403953552,
+      "routing_method": "semantic_router",
+      "response_time": 0.20857858657836914
+    },
+    {
+      "category": "STATUS_QUERIES",
+      "query": "Show me pending orders count",
+      "success": true,
+      "answer": "There are 0 orders.",
+      "tool_used": "find_documents",
+      "confidence": 0.793668806552887,
+      "routing_method": "semantic_router",
+      "response_time": 1.1460227966308594
+    },
+    {
+      "category": "COMPLEX_QUERIES",
+      "query": "How many orders did I get this month?",
+      "success": true,
+      "answer": "There are 340 orders.",
+      "tool_used": "count_documents",
+      "confidence": 0.9801844358444214,
+      "routing_method": "semantic_router",
+      "response_time": 1.1185762882232666
+    },
+    {
+      "category": "COMPLEX_QUERIES",
+      "query": "How many new customers this month?",
+      "success": true,
+      "answer": "There are 321 customers.",
+      "tool_used": "count_documents",
+      "confidence": 0.9715873003005981,
+      "routing_method": "semantic_router",
+      "response_time": 1.022470235824585
+    },
+    {
+      "category": "COMPLEX_QUERIES",
+      "query": "Orders placed last 7 days?",
+      "success": true,
+      "answer": "There are 382 orders.",
+      "tool_used": "count_documents",
+      "confidence": 0.7629438638687134,
+      "routing_method": "semantic_router",
+      "response_time": 1.132455587387085
+    },
+    {
+      "category": "COMPLEX_QUERIES",
+      "query": "How many orders today?",
+      "success": true,
+      "answer": "There are 17 orders.",
+      "tool_used": "count_documents",
+      "confidence": 0.8261500597000122,
+      "routing_method": "semantic_router",
+      "response_time": 0.9521138668060303
+    },
+    {
+      "category": "COMPLEX_QUERIES",
+      "query": "Products sold today?",
+      "success": true,
+      "answer": "There are 0 products",
+      "tool_used": "get_date_range",
+      "confidence": 0.9,
+      "routing_method": "fallback",
+      "response_time": 0.913139820098877
+    },
+    {
+      "category": "COMPLEX_QUERIES",
+      "query": "Customer growth this month?",
+      "success": true,
+      "answer": "There are 321 customers.",
+      "tool_used": "count_documents",
+      "confidence": 0.9748085737228394,
+      "routing_method": "semantic_router",
+      "response_time": 0.9713294506072998
+    },
+    {
+      "category": "EDGE_CASES",
+      "query": "Hello",
+      "success": true,
+      "answer": "Hello! I'm your e-commerce analytics assistant. I can help you analyze your sales data, track orders, understand customer behavior, and much more. What would you like to know?",
+      "tool_used": "conversational",
+      "confidence": 1.0,
+      "routing_method": "conversational_detection",
+      "response_time": 0.004767656326293945
+    },
+    {
+      "category": "EDGE_CASES",
+      "query": "Help me",
+      "success": true,
+      "answer": "I can help you with:\n\u2022 Sales analytics (total revenue, average orders)\n\u2022 Product insights (best sellers, inventory counts)\n\u2022 Customer analysis (top customers, spending patterns)\n\u2022 Order tracking (by status, date, payment)\n\u2022 Complex queries (multi-condition filters, trends)\n\nTry asking: 'What is my total revenue?' or 'Who are my top customers?'",
+      "tool_used": "conversational",
+      "confidence": 1.0,
+      "routing_method": "conversational_detection",
+      "response_time": 0.004448652267456055
+    },
+    {
+      "category": "EDGE_CASES",
+      "query": "My sales",
+      "success": true,
+      "answer": "I'm not sure what you meant by 'My sales'. Could you be more specific? For example:\n\u2022 'What is my total revenue?'\n\u2022 'How many orders do I have?'\n\u2022 'Who are my top customers?'\n\u2022 'What are my best selling products?'",
+      "tool_used": "clarification",
+      "confidence": 0.0,
+      "routing_method": "clarification_needed",
+      "response_time": 0.03021836280822754
+    },
+    {
+      "category": "EDGE_CASES",
+      "query": "Revenue",
+      "success": true,
+      "answer": "Total sales: $43,279,436.00 (35,502 orders)",
+      "tool_used": "calculate_sum",
+      "confidence": 0.8580508232116699,
+      "routing_method": "semantic_router",
+      "response_time": 0.22571063041687012
+    },
+    {
+      "category": "EDGE_CASES",
+      "query": "what is the total sales of yestarday?",
+      "success": true,
+      "answer": "Total sales: $43,279,436.00 (35,502 orders)",
+      "tool_used": "calculate_sum",
+      "confidence": 0.95,
+      "routing_method": "fallback",
+      "response_time": 0.2132246494293213
+    },
+    {
+      "category": "EDGE_CASES",
+      "query": "Total",
+      "success": true,
+      "answer": "Total sales: $43,279,436.00 (35,502 orders)",
+      "tool_used": "calculate_sum",
+      "confidence": 0.8164008855819702,
+      "routing_method": "semantic_router",
+      "response_time": 0.2231156826019287
+    }
+  ]
+}

@@ -1,0 +1,663 @@
+================================================================================
+COMPREHENSIVE SYSTEM TEST
+================================================================================
+API: http://localhost:8000/api/mcp/ask
+Shop ID: 13
+Started: 2025-10-07 16:46:17.278807
+================================================================================
+
+
+================================================================================
+CATEGORY: COUNT_QUERIES
+================================================================================
+
+[1/8] Testing: How many products do I have?
+  ✓ SUCCESS (19.12s)
+  Answer: There are 971 products.
+  Tool: count_documents | Confidence: 0.878 | Routing: semantic_router
+
+[2/8] Testing: How many orders?
+  ✓ SUCCESS (1.28s)
+  Answer: There are 35502 orders.
+  Tool: count_documents | Confidence: 0.963 | Routing: semantic_router
+
+[3/8] Testing: How many customers?
+  ✓ SUCCESS (1.09s)
+  Answer: There are 27886 customers.
+  Tool: count_documents | Confidence: 0.962 | Routing: semantic_router
+
+[4/8] Testing: Count my products
+  ✓ SUCCESS (1.06s)
+  Answer: There are 971 products.
+  Tool: count_documents | Confidence: 0.877 | Routing: semantic_router
+
+[5/8] Testing: Total number of orders
+  ✓ SUCCESS (1.14s)
+  Answer: There are 35502 orders.
+  Tool: count_documents | Confidence: 1.000 | Routing: semantic_router
+
+[6/8] Testing: Customer count
+  ✓ SUCCESS (1.10s)
+  Answer: There are 27886 customers.
+  Tool: count_documents | Confidence: 1.000 | Routing: semantic_router
+
+[7/8] Testing: How many items in catalog?
+  ✓ SUCCESS (1.16s)
+  Answer: There are 35502 items.
+  Tool: count_documents | Confidence: 0.801 | Routing: semantic_router
+
+[8/8] Testing: Number of sales
+  ✓ SUCCESS (0.25s)
+  Answer: Total sales: $43,279,436.00 (35,502 orders)
+  Tool: calculate_sum | Confidence: 0.818 | Routing: semantic_router
+
+Category Summary: 8/8 successful (100.0%)
+Average time: 3.28s
+
+================================================================================
+CATEGORY: REVENUE_QUERIES
+================================================================================
+
+[1/8] Testing: What is my total sales?
+  ✓ SUCCESS (0.25s)
+  Answer: Total sales: $43,279,436.00 (35,502 orders)
+  Tool: calculate_sum | Confidence: 0.894 | Routing: semantic_router
+
+[2/8] Testing: Total revenue?
+  ✓ SUCCESS (0.22s)
+  Answer: Total sales: $43,279,436.00 (35,502 orders)
+  Tool: calculate_sum | Confidence: 0.956 | Routing: semantic_router
+
+[3/8] Testing: Show me revenue
+  ✓ SUCCESS (0.23s)
+  Answer: Total sales: $43,279,436.00 (35,502 orders)
+  Tool: calculate_sum | Confidence: 0.950 | Routing: fallback
+
+[4/8] Testing: How much did I sell?
+  ✓ SUCCESS (0.24s)
+  Answer: Total sales: $43,279,436.00 (35,502 orders)
+  Tool: calculate_sum | Confidence: 0.855 | Routing: semantic_router
+
+[5/8] Testing: What are my total sales?
+  ✓ SUCCESS (0.22s)
+  Answer: Total sales: $43,279,436.00 (35,502 orders)
+  Tool: calculate_sum | Confidence: 0.887 | Routing: semantic_router
+
+[6/8] Testing: My revenue
+  ✓ SUCCESS (0.21s)
+  Answer: Total sales: $43,279,436.00 (35,502 orders)
+  Tool: calculate_sum | Confidence: 0.950 | Routing: fallback
+
+[7/8] Testing: Give me total sales
+  ✓ SUCCESS (0.20s)
+  Answer: Total sales: $43,279,436.00 (35,502 orders)
+  Tool: calculate_sum | Confidence: 0.880 | Routing: semantic_router
+
+[8/8] Testing: Sales amount
+  ✓ SUCCESS (0.23s)
+  Answer: Total sales: $43,279,436.00 (35,502 orders)
+  Tool: calculate_sum | Confidence: 0.789 | Routing: semantic_router
+
+Category Summary: 8/8 successful (100.0%)
+Average time: 0.23s
+
+================================================================================
+CATEGORY: DATE_BASED_QUERIES
+================================================================================
+
+[1/11] Testing: What is yesterday's total sales?
+  ✓ SUCCESS (0.20s)
+  Answer: Total sales: $48,560.00 (40 orders)
+  Tool: calculate_sum | Confidence: 0.839 | Routing: semantic_router
+
+[2/11] Testing: Yesterday's revenue?
+  ✓ SUCCESS (0.21s)
+  Answer: Total sales: $43,279,436.00 (35,502 orders)
+  Tool: calculate_sum | Confidence: 0.950 | Routing: fallback
+
+[3/11] Testing: How much did I sell yesterday?
+  ✓ SUCCESS (0.20s)
+  Answer: Total sales: $48,560.00 (40 orders)
+  Tool: calculate_sum | Confidence: 0.973 | Routing: semantic_router
+
+[4/11] Testing: Today's sales?
+  ✓ SUCCESS (0.17s)
+  Answer: Total sales: $16,740.00 (17 orders)
+  Tool: calculate_sum | Confidence: 0.870 | Routing: semantic_router
+
+[5/11] Testing: This week sales?
+  ✓ SUCCESS (0.17s)
+  Answer: Total sales: $65,300.00 (57 orders)
+  Tool: calculate_sum | Confidence: 0.931 | Routing: semantic_router
+
+[6/11] Testing: This month sales?
+  ✓ SUCCESS (0.19s)
+  Answer: Total sales: $415,187.00 (340 orders)
+  Tool: calculate_sum | Confidence: 0.932 | Routing: semantic_router
+
+[7/11] Testing: Last week revenue?
+  ✓ SUCCESS (0.18s)
+  Answer: Total sales: $473,437.00 (382 orders)
+  Tool: calculate_sum | Confidence: 0.892 | Routing: semantic_router
+
+[8/11] Testing: Last month revenue?
+  ✓ SUCCESS (0.19s)
+  Answer: Total sales: $2,094,890.00 (1,563 orders)
+  Tool: calculate_sum | Confidence: 0.890 | Routing: semantic_router
+
+[9/11] Testing: Revenue from last 30 days?
+  ✓ SUCCESS (0.26s)
+  Answer: Total sales: $43,279,436.00 (35,502 orders)
+  Tool: calculate_sum | Confidence: 0.950 | Routing: fallback
+
+[10/11] Testing: Sales from today
+  ✓ SUCCESS (0.22s)
+  Answer: Total sales: $16,740.00 (17 orders)
+  Tool: calculate_sum | Confidence: 1.000 | Routing: semantic_router
+
+[11/11] Testing: How much today?
+  ✓ SUCCESS (0.18s)
+  Answer: Total sales: $16,740.00 (17 orders)
+  Tool: calculate_sum | Confidence: 0.958 | Routing: semantic_router
+
+Category Summary: 11/11 successful (100.0%)
+Average time: 0.20s
+
+================================================================================
+CATEGORY: TOP_PRODUCTS_QUERIES
+================================================================================
+
+[1/9] Testing: What are my top products?
+  ✓ SUCCESS (0.68s)
+  Answer: Top selling products:
+1. Designer Edition Calligraphy T Shirt For Men। MF-536 - Sold: 1029 units, Re...
+  Tool: get_best_selling_products | Confidence: 0.988 | Routing: semantic_router
+
+[2/9] Testing: Best selling products?
+  ✓ SUCCESS (0.62s)
+  Answer: Top selling products:
+1. Designer Edition Calligraphy T Shirt For Men। MF-536 - Sold: 1029 units, Re...
+  Tool: get_best_selling_products | Confidence: 0.958 | Routing: semantic_router
+
+[3/9] Testing: Show me top sellers
+  ✓ SUCCESS (0.62s)
+  Answer: Top selling products:
+1. Designer Edition Calligraphy T Shirt For Men। MF-536 - Sold: 1029 units, Re...
+  Tool: get_best_selling_products | Confidence: 1.000 | Routing: semantic_router
+
+[4/9] Testing: Top 5 products?
+  ✓ SUCCESS (0.52s)
+  Answer: Top selling products:
+1. Designer Edition Calligraphy T Shirt For Men। MF-536 - Sold: 1029 units, Re...
+  Tool: get_best_selling_products | Confidence: 0.971 | Routing: semantic_router
+
+[5/9] Testing: Top 10 products
+  ✓ SUCCESS (0.60s)
+  Answer: Top selling products:
+1. Designer Edition Calligraphy T Shirt For Men। MF-536 - Sold: 1029 units, Re...
+  Tool: get_best_selling_products | Confidence: 1.000 | Routing: semantic_router
+
+[6/9] Testing: Most popular products?
+  ✓ SUCCESS (0.65s)
+  Answer: Top selling products:
+1. Designer Edition Calligraphy T Shirt For Men। MF-536 - Sold: 1029 units, Re...
+  Tool: get_best_selling_products | Confidence: 0.953 | Routing: semantic_router
+
+[7/9] Testing: Best products?
+  ✓ SUCCESS (0.60s)
+  Answer: Top selling products:
+1. Designer Edition Calligraphy T Shirt For Men। MF-536 - Sold: 1029 units, Re...
+  Tool: get_best_selling_products | Confidence: 0.935 | Routing: semantic_router
+
+[8/9] Testing: What are my best sellers?
+  ✓ SUCCESS (0.63s)
+  Answer: Top selling products:
+1. Designer Edition Calligraphy T Shirt For Men। MF-536 - Sold: 1029 units, Re...
+  Tool: get_best_selling_products | Confidence: 0.976 | Routing: semantic_router
+
+[9/9] Testing: Which products are selling most?
+  ✓ SUCCESS (0.59s)
+  Answer: Top selling products:
+1. Designer Edition Calligraphy T Shirt For Men। MF-536 - Sold: 1029 units, Re...
+  Tool: get_best_selling_products | Confidence: 0.922 | Routing: semantic_router
+
+Category Summary: 9/9 successful (100.0%)
+Average time: 0.61s
+
+================================================================================
+CATEGORY: TOP_CUSTOMERS_QUERIES
+================================================================================
+
+[1/9] Testing: Who are my top customers?
+  ✓ SUCCESS (0.64s)
+  Answer: Top customers by spending:
+1. Sajib kumar nag None - Spent: $3,801,992.00, Orders: 2924
+2. None None...
+  Tool: get_top_customers_by_spending | Confidence: 0.981 | Routing: semantic_router
+
+[2/9] Testing: Best customers?
+  ✓ SUCCESS (0.60s)
+  Answer: Top customers by spending:
+1. Sajib kumar nag None - Spent: $3,801,992.00, Orders: 2924
+2. None None...
+  Tool: get_top_customers_by_spending | Confidence: 0.932 | Routing: semantic_router
+
+[3/9] Testing: Show me top spenders
+  ✓ SUCCESS (0.61s)
+  Answer: Top customers by spending:
+1. Sajib kumar nag None - Spent: $3,801,992.00, Orders: 2924
+2. None None...
+  Tool: get_top_customers_by_spending | Confidence: 1.000 | Routing: semantic_router
+
+[4/9] Testing: Top 5 customers?
+  ✓ SUCCESS (0.44s)
+  Answer: Top customers by spending:
+1. Sajib kumar nag None - Spent: $3,801,992.00, Orders: 2924
+2. None None...
+  Tool: get_top_customers_by_spending | Confidence: 0.966 | Routing: semantic_router
+
+[5/9] Testing: Top 10 customers
+  ✓ SUCCESS (0.64s)
+  Answer: Top customers by spending:
+1. Sajib kumar nag None - Spent: $3,801,992.00, Orders: 2924
+2. None None...
+  Tool: get_top_customers_by_spending | Confidence: 1.000 | Routing: semantic_router
+
+[6/9] Testing: Most valuable customers?
+  ✓ SUCCESS (0.61s)
+  Answer: Top customers by spending:
+1. Sajib kumar nag None - Spent: $3,801,992.00, Orders: 2924
+2. None None...
+  Tool: get_top_customers_by_spending | Confidence: 0.971 | Routing: semantic_router
+
+[7/9] Testing: Who spends the most?
+  ✓ SUCCESS (0.59s)
+  Answer: Top customers by spending:
+1. Sajib kumar nag None - Spent: $3,801,992.00, Orders: 2924
+2. None None...
+  Tool: get_top_customers_by_spending | Confidence: 0.967 | Routing: semantic_router
+
+[8/9] Testing: Show top customers
+  ✓ SUCCESS (0.65s)
+  Answer: Top customers by spending:
+1. Sajib kumar nag None - Spent: $3,801,992.00, Orders: 2924
+2. None None...
+  Tool: get_top_customers_by_spending | Confidence: 1.000 | Routing: semantic_router
+
+[9/9] Testing: Best buyers?
+  ✓ SUCCESS (0.59s)
+  Answer: Top customers by spending:
+1. Sajib kumar nag None - Spent: $3,801,992.00, Orders: 2924
+2. None None...
+  Tool: get_top_customers_by_spending | Confidence: 0.942 | Routing: semantic_router
+
+Category Summary: 9/9 successful (100.0%)
+Average time: 0.60s
+
+================================================================================
+CATEGORY: AVERAGE_QUERIES
+================================================================================
+
+[1/5] Testing: What's my average order value?
+  ✓ SUCCESS (0.19s)
+  Answer: The average order value is $1,219.07 (based on 35,502 orders)
+  Tool: calculate_average | Confidence: 0.990 | Routing: semantic_router
+
+[2/5] Testing: Average order amount?
+  ✓ SUCCESS (0.20s)
+  Answer: The average order value is $1,219.07 (based on 35,502 orders)
+  Tool: calculate_average | Confidence: 0.824 | Routing: semantic_router
+
+[3/5] Testing: Mean order value?
+  ✓ SUCCESS (0.21s)
+  Answer: The average order value is $1,219.07 (based on 35,502 orders)
+  Tool: calculate_average | Confidence: 0.982 | Routing: semantic_router
+
+[4/5] Testing: Average sale per order?
+  ✓ SUCCESS (0.23s)
+  Answer: The average order value is $1,219.07 (based on 35,502 orders)
+  Tool: calculate_average | Confidence: 0.763 | Routing: semantic_router
+
+[5/5] Testing: What is the average revenue per order?
+  ✓ SUCCESS (0.24s)
+  Answer: The average order value is $1,219.07 (based on 35,502 orders)
+  Tool: calculate_average | Confidence: 0.827 | Routing: semantic_router
+
+Category Summary: 5/5 successful (100.0%)
+Average time: 0.21s
+
+================================================================================
+CATEGORY: TIME_GROUPING_QUERIES_HIGH
+================================================================================
+
+[1/6] Testing: Which month has the highest order?
+  ✓ SUCCESS (0.26s)
+  Answer: April 2024 has the highest orders with 2,665 orders.
+  Tool: group_and_count | Confidence: 0.987 | Routing: semantic_router
+
+[2/6] Testing: Which month has the most orders?
+  ✓ SUCCESS (0.23s)
+  Answer: April 2024 has the highest orders with 2,665 orders.
+  Tool: group_and_count | Confidence: 0.985 | Routing: semantic_router
+
+[3/6] Testing: Best performing month?
+  ✓ SUCCESS (0.21s)
+  Answer: April 2024 has the highest orders with 2,665 orders.
+  Tool: group_and_count | Confidence: 0.967 | Routing: semantic_router
+
+[4/6] Testing: Top month by orders?
+  ✓ SUCCESS (0.24s)
+  Answer: April 2024 has the highest orders with 2,665 orders.
+  Tool: group_and_count | Confidence: 0.846 | Routing: semantic_router
+
+[5/6] Testing: Which day has most orders?
+  ✓ SUCCESS (0.25s)
+  Answer: June 2025 has the highest orders with 166 orders.
+  Tool: group_and_count | Confidence: 0.983 | Routing: semantic_router
+
+[6/6] Testing: Highest sales month?
+  ✓ SUCCESS (0.21s)
+  Answer: April 2024 has the highest orders with 2,665 orders.
+  Tool: group_and_count | Confidence: 0.930 | Routing: semantic_router
+
+Category Summary: 6/6 successful (100.0%)
+Average time: 0.23s
+
+================================================================================
+CATEGORY: TIME_GROUPING_QUERIES_LOW
+================================================================================
+
+[1/6] Testing: Which month has the lowest order?
+  ✓ SUCCESS (0.26s)
+  Answer: February 2024 has the lowest orders with 157 orders.
+  Tool: group_and_count | Confidence: 0.987 | Routing: semantic_router
+
+[2/6] Testing: Which month has fewest orders?
+  ✓ SUCCESS (0.24s)
+  Answer: February 2024 has the lowest orders with 157 orders.
+  Tool: group_and_count | Confidence: 0.980 | Routing: semantic_router
+
+[3/6] Testing: Worst performing month?
+  ✓ SUCCESS (0.27s)
+  Answer: February 2024 has the lowest orders with 157 orders.
+  Tool: group_and_count | Confidence: 0.974 | Routing: semantic_router
+
+[4/6] Testing: Bottom month by orders?
+  ✓ SUCCESS (0.22s)
+  Answer: February 2024 has the lowest orders with 157 orders.
+  Tool: group_and_count | Confidence: 0.840 | Routing: semantic_router
+
+[5/6] Testing: Least orders month?
+  ✓ SUCCESS (0.26s)
+  Answer: February 2024 has the lowest orders with 157 orders.
+  Tool: group_and_count | Confidence: 0.858 | Routing: semantic_router
+
+[6/6] Testing: Smallest sales month?
+  ✓ SUCCESS (0.87s)
+  Answer: There are 10 items.
+  Tool: find_documents | Confidence: 0.300 | Routing: llm_fallback
+
+Category Summary: 6/6 successful (100.0%)
+Average time: 0.35s
+
+================================================================================
+CATEGORY: BREAKDOWN_QUERIES
+================================================================================
+
+[1/7] Testing: Orders by status
+  ✓ SUCCESS (0.22s)
+  Answer: Breakdown:
+1. Pending: 21,315
+2. On Shipment: 8,302
+3. Canceled: 3,060
+4. Approved: 1,893
+5. Deliver...
+  Tool: group_and_count | Confidence: 1.000 | Routing: semantic_router
+
+[2/7] Testing: Monthly order breakdown
+  ✓ SUCCESS (0.23s)
+  Answer: Breakdown:
+1. Apr 2024: 2,665 orders
+2. Aug 2025: 2,222 orders
+3. Jun 2024: 2,221 orders
+4. May 2024...
+  Tool: group_and_count | Confidence: 1.000 | Routing: semantic_router
+
+[3/7] Testing: Show me breakdown by month
+  ✓ SUCCESS (0.23s)
+  Answer: Breakdown:
+1. Apr 2024: 2,665 orders
+2. Aug 2025: 2,222 orders
+3. Jun 2024: 2,221 orders
+4. May 2024...
+  Tool: group_and_count | Confidence: 0.936 | Routing: semantic_router
+
+[4/7] Testing: Order distribution
+  ✓ SUCCESS (0.20s)
+  Answer: Breakdown:
+1. Pending: 21,315
+2. On Shipment: 8,302
+3. Canceled: 3,060
+4. Approved: 1,893
+5. Deliver...
+  Tool: group_and_count | Confidence: 1.000 | Routing: semantic_router
+
+[5/7] Testing: Sales by month
+  ✓ SUCCESS (0.22s)
+  Answer: Breakdown:
+1. Apr 2024: 2,665 orders
+2. Aug 2025: 2,222 orders
+3. Jun 2024: 2,221 orders
+4. May 2024...
+  Tool: group_and_count | Confidence: 1.000 | Routing: semantic_router
+
+[6/7] Testing: Payment status breakdown
+  ✓ SUCCESS (0.24s)
+  Answer: Breakdown:
+1. unpaid: 35,171
+2. paid: 331
+  Tool: group_and_count | Confidence: 1.000 | Routing: semantic_router
+
+[7/7] Testing: Order count by month
+  ✓ SUCCESS (0.24s)
+  Answer: Breakdown:
+1. Apr 2024: 2,665 orders
+2. Aug 2025: 2,222 orders
+3. Jun 2024: 2,221 orders
+4. May 2024...
+  Tool: group_and_count | Confidence: 1.000 | Routing: semantic_router
+
+Category Summary: 7/7 successful (100.0%)
+Average time: 0.23s
+
+================================================================================
+CATEGORY: STATUS_QUERIES
+================================================================================
+
+[1/5] Testing: How many pending orders?
+  ✓ SUCCESS (1.20s)
+  Answer: There are 0 orders.
+  Tool: find_documents | Confidence: 0.826 | Routing: semantic_router
+
+[2/5] Testing: How many completed orders?
+  ✓ SUCCESS (1.11s)
+  Answer: There are 35502 orders.
+  Tool: count_documents | Confidence: 0.799 | Routing: semantic_router
+
+[3/5] Testing: How many cancelled orders?
+  ✓ SUCCESS (1.00s)
+  Answer: There are 3060 orders.
+  Tool: count_documents | Confidence: 0.900 | Routing: fallback
+
+[4/5] Testing: Orders by status
+  ✓ SUCCESS (0.21s)
+  Answer: Breakdown:
+1. Pending: 21,315
+2. On Shipment: 8,302
+3. Canceled: 3,060
+4. Approved: 1,893
+5. Deliver...
+  Tool: group_and_count | Confidence: 1.000 | Routing: semantic_router
+
+[5/5] Testing: Show me pending orders count
+  ✓ SUCCESS (1.15s)
+  Answer: There are 0 orders.
+  Tool: find_documents | Confidence: 0.794 | Routing: semantic_router
+
+Category Summary: 5/5 successful (100.0%)
+Average time: 0.93s
+
+================================================================================
+CATEGORY: COMPLEX_QUERIES
+================================================================================
+
+[1/6] Testing: How many orders did I get this month?
+  ✓ SUCCESS (1.12s)
+  Answer: There are 340 orders.
+  Tool: count_documents | Confidence: 0.980 | Routing: semantic_router
+
+[2/6] Testing: How many new customers this month?
+  ✓ SUCCESS (1.02s)
+  Answer: There are 321 customers.
+  Tool: count_documents | Confidence: 0.972 | Routing: semantic_router
+
+[3/6] Testing: Orders placed last 7 days?
+  ✓ SUCCESS (1.13s)
+  Answer: There are 382 orders.
+  Tool: count_documents | Confidence: 0.763 | Routing: semantic_router
+
+[4/6] Testing: How many orders today?
+  ✓ SUCCESS (0.95s)
+  Answer: There are 17 orders.
+  Tool: count_documents | Confidence: 0.826 | Routing: semantic_router
+
+[5/6] Testing: Products sold today?
+  ✓ SUCCESS (0.91s)
+  Answer: There are 0 products
+  Tool: get_date_range | Confidence: 0.900 | Routing: fallback
+
+[6/6] Testing: Customer growth this month?
+  ✓ SUCCESS (0.97s)
+  Answer: There are 321 customers.
+  Tool: count_documents | Confidence: 0.975 | Routing: semantic_router
+
+Category Summary: 6/6 successful (100.0%)
+Average time: 1.02s
+
+================================================================================
+CATEGORY: EDGE_CASES
+================================================================================
+
+[1/6] Testing: Hello
+  ✓ SUCCESS (0.00s)
+  Answer: Hello! I'm your e-commerce analytics assistant. I can help you analyze your sales data, track orders...
+  Tool: conversational | Confidence: 1.000 | Routing: conversational_detection
+
+[2/6] Testing: Help me
+  ✓ SUCCESS (0.00s)
+  Answer: I can help you with:
+• Sales analytics (total revenue, average orders)
+• Product insights (best sell...
+  Tool: conversational | Confidence: 1.000 | Routing: conversational_detection
+
+[3/6] Testing: My sales
+  ✓ SUCCESS (0.03s)
+  Answer: I'm not sure what you meant by 'My sales'. Could you be more specific? For example:
+• 'What is my to...
+  Tool: clarification | Confidence: 0.000 | Routing: clarification_needed
+
+[4/6] Testing: Revenue
+  ✓ SUCCESS (0.23s)
+  Answer: Total sales: $43,279,436.00 (35,502 orders)
+  Tool: calculate_sum | Confidence: 0.858 | Routing: semantic_router
+
+[5/6] Testing: what is the total sales of yestarday?
+  ✓ SUCCESS (0.21s)
+  Answer: Total sales: $43,279,436.00 (35,502 orders)
+  Tool: calculate_sum | Confidence: 0.950 | Routing: fallback
+
+[6/6] Testing: Total
+  ✓ SUCCESS (0.22s)
+  Answer: Total sales: $43,279,436.00 (35,502 orders)
+  Tool: calculate_sum | Confidence: 0.816 | Routing: semantic_router
+
+Category Summary: 6/6 successful (100.0%)
+Average time: 0.12s
+
+================================================================================
+FINAL TEST SUMMARY
+================================================================================
+Total Queries:    86
+Successful:       86 (100.0%)
+Failed:           0 (0.0%)
+Avg Response:     0.68s
+Total Time:       58.70s
+================================================================================
+
+CATEGORY BREAKDOWN:
+--------------------------------------------------------------------------------
+Category                            Success Rate    Avg Time       
+--------------------------------------------------------------------------------
+COUNT_QUERIES                       8/8 (100.0%)     3.28s
+REVENUE_QUERIES                     8/8 (100.0%)     0.23s
+DATE_BASED_QUERIES                  11/11 (100.0%)     0.20s
+TOP_PRODUCTS_QUERIES                9/9 (100.0%)     0.61s
+TOP_CUSTOMERS_QUERIES               9/9 (100.0%)     0.60s
+AVERAGE_QUERIES                     5/5 (100.0%)     0.21s
+TIME_GROUPING_QUERIES_HIGH          6/6 (100.0%)     0.23s
+TIME_GROUPING_QUERIES_LOW           6/6 (100.0%)     0.35s
+BREAKDOWN_QUERIES                   7/7 (100.0%)     0.23s
+STATUS_QUERIES                      5/5 (100.0%)     0.93s
+COMPLEX_QUERIES                     6/6 (100.0%)     1.02s
+EDGE_CASES                          6/6 (100.0%)     0.12s
+================================================================================
+
+TOOL USAGE DISTRIBUTION:
+--------------------------------------------------------------------------------
+calculate_sum                          23 (26.7%)
+group_and_count                        19 (22.1%)
+count_documents                        14 (16.3%)
+get_best_selling_products               9 (10.5%)
+get_top_customers_by_spending           9 (10.5%)
+calculate_average                       5 (5.8%)
+find_documents                          3 (3.5%)
+conversational                          2 (2.3%)
+get_date_range                          1 (1.2%)
+clarification                           1 (1.2%)
+
+ROUTING METHOD DISTRIBUTION:
+--------------------------------------------------------------------------------
+semantic_router                        75 (87.2%)
+fallback                                7 (8.1%)
+conversational_detection                2 (2.3%)
+llm_fallback                            1 (1.2%)
+clarification_needed                    1 (1.2%)
+semantic                                0 (0.0%)
+conversational                          0 (0.0%)
+unknown                                 0 (0.0%)
+================================================================================
+
+Detailed results saved to: comprehensive_test_results_20251007_164715.json
+
+================================================================================
+SAMPLE SUCCESSFUL RESPONSES (First 5):
+================================================================================
+
+Q: How many products do I have?
+A: There are 971 products.
+
+Q: How many orders?
+A: There are 35502 orders.
+
+Q: How many customers?
+A: There are 27886 customers.
+
+Q: Count my products
+A: There are 971 products.
+
+Q: Total number of orders
+A: There are 35502 orders.
+
+================================================================================
+TEST COMPLETED
+================================================================================
