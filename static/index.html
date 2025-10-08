@@ -338,6 +338,14 @@
                 <span class="example-query" onclick="setQuery('Which products generated the most revenue in orders with delivery charges above 15, and what percentage of those orders were paid versus unpaid, but only considering customers who have placed at least 3 orders?')">Complex query</span>
             </div>
 
+            <div class="input-group">
+                <label for="apiSelect">API Endpoint</label>
+                <select id="apiSelect" style="width: 100%; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px;">
+                    <option value="/api/mcp/ask">Current System (MCP - HuggingFace)</option>
+                    <option value="/api/openrouter/ask">OpenRouter Testing (Free Gemini/Llama)</option>
+                </select>
+            </div>
+
             <div class="button-group" style="margin-top: 20px;">
                 <button class="btn-primary" onclick="submitQuery()" id="submitBtn">
                     🚀 Ask Question
@@ -393,6 +401,7 @@
         async function submitQuery() {
             const shopId = document.getElementById('shopSelect').value;
             const query = document.getElementById('query').value;
+            const apiEndpoint = document.getElementById('apiSelect').value;
 
             if (!shopId || !query) {
                 alert('Please select a shop and enter a query');
@@ -406,7 +415,7 @@
             document.getElementById('submitBtn').disabled = true;
 
             try {
-                const response = await fetch('/api/mcp/ask', {
+                const response = await fetch(apiEndpoint, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -423,7 +432,7 @@
                 document.getElementById('submitBtn').disabled = false;
 
                 if (response.ok) {
-                    displayResults(data);
+                    displayResults(data, apiEndpoint);
                 } else {
                     displayError(data.detail || 'An error occurred');
                 }
@@ -434,7 +443,7 @@
             }
         }
 
-        function displayResults(data) {
+        function displayResults(data, apiEndpoint) {
             document.getElementById('resultSection').style.display = 'block';
 
             // Status badge
@@ -444,22 +453,24 @@
 
             // Metadata
             const metadata = document.getElementById('metadata');
-            const tool = data.metadata?.tool_used || 'N/A';
+            const tool = data.metadata?.tool_used || data.metadata?.tool_name || 'N/A';
             const confidence = data.metadata?.confidence || 0;
             const time = data.processing_time ? data.processing_time.toFixed(2) + 's' : 'N/A';
+            const model = data.metadata?.model || 'N/A';
+            const apiType = apiEndpoint.includes('openrouter') ? 'OpenRouter' : 'MCP (HuggingFace)';
 
             let confidenceClass = 'confidence-low';
             if (confidence >= 0.8) confidenceClass = 'confidence-high';
             else if (confidence >= 0.6) confidenceClass = 'confidence-medium';
 
-            metadata.innerHTML = `
+            let metadataHtml = `
+                <div class="meta-item">
+                    <span class="meta-label">API:</span>
+                    <span class="meta-value">${apiType}</span>
+                </div>
                 <div class="meta-item">
                     <span class="meta-label">Tool:</span>
                     <span class="meta-value">${tool}</span>
-                </div>
-                <div class="meta-item">
-                    <span class="meta-label">Confidence:</span>
-                    <span class="meta-value ${confidenceClass}">${(confidence * 100).toFixed(0)}%</span>
                 </div>
                 <div class="meta-item">
                     <span class="meta-label">Time:</span>
@@ -470,6 +481,25 @@
                     <span class="meta-value">${data.query_type || 'mcp'}</span>
                 </div>
             `;
+
+            // Add confidence only for MCP
+            if (!apiEndpoint.includes('openrouter')) {
+                metadataHtml += `
+                    <div class="meta-item">
+                        <span class="meta-label">Confidence:</span>
+                        <span class="meta-value ${confidenceClass}">${(confidence * 100).toFixed(0)}%</span>
+                    </div>
+                `;
+            } else {
+                metadataHtml += `
+                    <div class="meta-item">
+                        <span class="meta-label">Model:</span>
+                        <span class="meta-value">${model}</span>
+                    </div>
+                `;
+            }
+
+            metadata.innerHTML = metadataHtml;
 
             // Answer
             document.getElementById('answerText').textContent = data.answer || 'No answer provided';

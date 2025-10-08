@@ -273,6 +273,92 @@ async def mcp_query(request: QueryRequest):
         raise HTTPException(status_code=500, detail=f"MCP query failed: {str(e)}")
 
 
+@app.post("/api/openrouter/ask", response_model=QueryResponse)
+async def openrouter_query(request: QueryRequest):
+    """
+    Process natural language query using OpenRouter API (Testing).
+
+    This is a separate testing endpoint that uses:
+    1. OpenRouter API to generate MongoDB queries from natural language
+    2. Local MongoDB execution (data never leaves your system)
+    3. OpenRouter API to convert results to natural language
+
+    Data Privacy: Only schema and results are sent to OpenRouter, not raw data.
+    """
+    start_time = time.time()
+
+    try:
+        import sys
+        import os
+        sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../..'))
+
+        from openai_testing.orchestrator import openrouter_orchestrator
+
+        # Initialize if needed
+        await openrouter_orchestrator.initialize()
+
+        # Process using OpenRouter orchestrator
+        result = await openrouter_orchestrator.process_query(
+            user_question=request.question,
+            shop_id=request.shop_id
+        )
+
+        processing_time = time.time() - start_time
+
+        # Convert ObjectId to string in data
+        clean_data = convert_objectid_to_str(result.get("data", []))
+
+        # Convert result to QueryResponse format
+        if result.get("success"):
+            metadata = result.get("query", {})
+            metadata["model"] = "google/gemini-2.0-flash-exp:free"
+
+            return QueryResponse(
+                shop_id=request.shop_id,
+                question=request.question,
+                answer=result.get("answer", "Query completed"),
+                data=clean_data,
+                query_type="openrouter",
+                processing_time=processing_time,
+                cached=False,
+                metadata=convert_objectid_to_str(metadata)
+            )
+        else:
+            return QueryResponse(
+                shop_id=request.shop_id,
+                question=request.question,
+                answer=result.get("answer", "I apologize, but I'm having trouble processing your request."),
+                data=[],
+                query_type="openrouter",
+                processing_time=processing_time,
+                cached=False,
+                metadata={"error": True, "message": result.get("error", "Query failed")}
+            )
+
+    except Exception as e:
+        logger.error(f"OpenRouter query failed: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"OpenRouter query failed: {str(e)}")
+
+
+@app.get("/api/openrouter/status")
+async def openrouter_status():
+    """Check OpenRouter configuration status."""
+    try:
+        from openai_testing.config import openrouter_config
+
+        api_key_set = bool(openrouter_config.api_key)
+        api_key_preview = openrouter_config.api_key[:20] + "..." if openrouter_config.api_key else "NOT SET"
+
+        return {
+            "api_key_configured": api_key_set,
+            "api_key_preview": api_key_preview,
+            "model": openrouter_config.query_generation_model,
+            "api_url": openrouter_config.api_base_url
+        }
+    except Exception as e:
+        return {"error": str(e)}
+
+
 @app.get("/api/models")
 async def list_models(request: Request):
     """List available HuggingFace models."""

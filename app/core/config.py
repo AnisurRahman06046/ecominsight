@@ -64,6 +64,9 @@ class Settings(BaseSettings):
     sync_enabled: bool = True
     sync_tables: str = "all"  # comma-separated table names or "all"
 
+    # OpenRouter API (for testing)
+    openrouter_api_key: Optional[str] = None
+
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"

@@ -1,29 +1,29 @@
 """
 Few-Shot Response Generator
-Uses Flan-T5 for accurate data-to-text generation
+Uses conversational LLM for natural language generation with role-based prompting
 """
 
 import logging
-from typing import Dict, Any, Optional
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+from typing import Dict, Any, Optional, List
+from transformers import AutoTokenizer, AutoModelForCausalLM
+import torch
 
 logger = logging.getLogger(__name__)
 
 
 class FewShotResponseGenerator:
-    """Generate natural language responses using Flan-T5 (instruction-tuned model)."""
+    """Generate natural language responses using conversational models with few-shot prompting."""
 
-    def __init__(self, model_name: str = "google/flan-t5-base"):
+    def __init__(self, model_name: str = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"):
         """
-        Initialize with instruction-tuned model.
+        Initialize with conversational model.
 
         Options (all open-source, no auth):
-        - google/flan-t5-base (250MB, BEST for data-to-text - RECOMMENDED)
-        - google/flan-t5-large (780MB, slightly better quality)
+        - TinyLlama/TinyLlama-1.1B-Chat-v1.0 (~2.2GB, FAST - RECOMMENDED for quick responses)
+        - microsoft/phi-2 (~5GB, Better quality)
+        - HuggingFaceH4/zephyr-7b-beta (~15GB, Best quality but slow)
 
-        Flan-T5 is instruction-tuned for following prompts accurately,
-        perfect for converting structured data to natural language!
-        Note: GPT-2 hallucinates, don't use for factual data.
+        These models support proper chat format with system/user/assistant roles!
         """
         self.model_name = model_name
         self.tokenizer = None
@@ -32,26 +32,42 @@ class FewShotResponseGenerator:
         self._initialize_model()
 
     def _initialize_model(self):
-        """Initialize the Flan-T5 model for data-to-text."""
+        """Initialize the conversational model."""
         try:
-            logger.info(f"Loading Flan-T5 model: {self.model_name}...")
+            logger.info(f"Loading conversational model: {self.model_name}...")
 
             self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
-            self.model = AutoModelForSeq2SeqLM.from_pretrained(self.model_name)
+            self.model = AutoModelForCausalLM.from_pretrained(
+                self.model_name,
+                torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
+                device_map="auto" if torch.cuda.is_available() else None,
+                low_cpu_mem_usage=True
+            )
+
+            # Set pad token if not set
+            if self.tokenizer.pad_token is None:
+                self.tokenizer.pad_token = self.tokenizer.eos_token
 
             self.initialized = True
-            logger.info(f"✓ Flan-T5 loaded successfully: {self.model_name}")
+            logger.info(f"✓ Conversational model loaded successfully: {self.model_name}")
 
         except Exception as e:
             logger.error(f"Failed to load {self.model_name}: {e}")
 
-            # Fallback to base model
-            if self.model_name != "google/flan-t5-base":
+            # Fallback to TinyLlama
+            if self.model_name != "TinyLlama/TinyLlama-1.1B-Chat-v1.0":
                 try:
-                    logger.info("Falling back to google/flan-t5-base...")
-                    self.model_name = "google/flan-t5-base"
+                    logger.info("Falling back to TinyLlama/TinyLlama-1.1B-Chat-v1.0...")
+                    self.model_name = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
                     self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
-                    self.model = AutoModelForSeq2SeqLM.from_pretrained(self.model_name)
+                    self.model = AutoModelForCausalLM.from_pretrained(
+                        self.model_name,
+                        torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
+                        low_cpu_mem_usage=True
+                    )
+
+                    if self.tokenizer.pad_token is None:
+                        self.tokenizer.pad_token = self.tokenizer.eos_token
 
                     self.initialized = True
                     logger.info(f"✓ Fallback model loaded: {self.model_name}")
@@ -61,60 +77,62 @@ class FewShotResponseGenerator:
             else:
                 self.initialized = False
 
-    def _build_few_shot_prompt(self, question: str, data_summary: str) -> str:
+    def _build_chat_messages(self, question: str, data_summary: str) -> List[Dict[str, str]]:
         """
-        Build instruction prompt for Flan-T5.
-        Different prompts for different query types.
+        Build chat messages with system prompt and few-shot examples.
+        This is the proper way to do few-shot prompting with conversational models!
         """
-        # Check if this is a count query or a sum/total query
-        if "Count:" in data_summary and "Total:" not in data_summary:
-            # Simple count query
-            question_lower = question.lower()
-            entity = "items"
-            if "product" in question_lower:
-                entity = "products"
-            elif "order" in question_lower:
-                entity = "orders"
-            elif "customer" in question_lower:
-                entity = "customers"
-            elif "categor" in question_lower:
-                entity = "categories"
+        messages = [
+            {
+                "role": "system",
+                "content": "You are a helpful e-commerce analytics assistant. Answer queries about sales data in natural, varied language. Be concise and include specific numbers from the data."
+            },
+            # Few-shot examples as conversation history
+            {
+                "role": "user",
+                "content": "What is my total sales today? Data: Total sales: $1,850.00 (2 orders)"
+            },
+            {
+                "role": "assistant",
+                "content": "Today you received 2 orders totaling $1,850.00."
+            },
+            {
+                "role": "user",
+                "content": "What is my total sales yesterday? Data: Total sales: $33,210.00 (32 orders)"
+            },
+            {
+                "role": "assistant",
+                "content": "You had 32 orders yesterday, bringing in $33,210.00 in revenue."
+            },
+            {
+                "role": "user",
+                "content": "What is my total revenue this week? Data: Total sales: $5,430.00 (15 orders)"
+            },
+            {
+                "role": "assistant",
+                "content": "This week's performance: 15 orders worth $5,430.00."
+            },
+            {
+                "role": "user",
+                "content": "What are my sales today? Data: Total sales: $950.00 (3 orders)"
+            },
+            {
+                "role": "assistant",
+                "content": "Your store generated $950.00 from 3 orders today."
+            },
+            # The actual user query
+            {
+                "role": "user",
+                "content": f"{question} Data: {data_summary}"
+            }
+        ]
 
-            prompt = f"""Answer this e-commerce question naturally using the data provided.
-
-Question: How many {entity} are there?
-Data: {data_summary}
-Answer: You have"""
-
-        elif "Total:" in data_summary:
-            # Sum/Total query - provide the total amount
-            # Extract question context to determine if it's revenue, sales, etc.
-            question_lower = question.lower()
-
-            if "revenue" in question_lower:
-                prompt = f"""Answer this question about total revenue.
-
-Data: {data_summary}
-Answer: The total revenue is"""
-            else:
-                prompt = f"""Answer this question about total sales.
-
-Data: {data_summary}
-Answer: The total sales amount is"""
-
-        else:
-            # Generic prompt
-            prompt = f"""Convert this e-commerce data into a natural answer.
-
-Data: {data_summary}
-Natural answer:"""
-
-        return prompt
+        return messages
 
     def generate_response(self, question: str, data: Dict[str, Any],
                          tool_name: str) -> Optional[str]:
         """
-        Generate natural language response using Flan-T5.
+        Generate natural language response using conversational model.
 
         Args:
             question: User's question
@@ -129,39 +147,60 @@ Natural answer:"""
             return None
 
         try:
-            # For list-based tools and calculations, return formatted data directly
-            # No need for Flan-T5 to rephrase structured data
-            if tool_name in ["get_best_selling_products", "get_top_customers_by_spending", "calculate_average", "calculate_sum", "group_and_count"]:
+            # For list-based tools with multiple items, return formatted data directly
+            # Only use LLM for simple single-value responses (calculate_sum, calculate_average)
+            if tool_name in ["get_best_selling_products", "get_top_customers_by_spending", "group_and_count"]:
                 direct_response = self._extract_data_context(data, tool_name, question)
-                logger.info(f"Direct response (no Flan-T5): '{direct_response[:100]}'")
+                logger.info(f"Direct response (no LLM): '{direct_response[:100]}'")
                 return direct_response
 
             # Extract data context
             data_summary = self._extract_data_context(data, tool_name, question)
 
-            # Build instruction prompt (improved to prevent echoing)
-            prompt = self._build_few_shot_prompt(question, data_summary)
+            # Check if no data
+            if "No" in data_summary and ("found" in data_summary or "available" in data_summary):
+                return data_summary
 
-            # Tokenize with Flan-T5
+            # Build chat messages with few-shot examples
+            messages = self._build_chat_messages(question, data_summary)
+
+            # Format using chat template (proper way for conversational models)
+            formatted_prompt = self.tokenizer.apply_chat_template(
+                messages,
+                tokenize=False,
+                add_generation_prompt=True
+            )
+
+            # Tokenize
             inputs = self.tokenizer(
-                prompt,
+                formatted_prompt,
                 return_tensors="pt",
-                max_length=512,
-                truncation=True
+                truncation=True,
+                max_length=1024
             )
 
-            # Generate with Flan-T5 using deterministic beam search
+            # Move to same device as model
+            if torch.cuda.is_available():
+                inputs = {k: v.to(self.model.device) for k, v in inputs.items()}
+
+            # Generate with sampling for variation
             outputs = self.model.generate(
-                inputs.input_ids,
-                max_new_tokens=60,
-                do_sample=False,  # Disable sampling for deterministic output
-                num_beams=4,  # Use beam search for better quality
-                early_stopping=True,
-                no_repeat_ngram_size=3,
-                repetition_penalty=1.2
+                **inputs,
+                max_new_tokens=80,
+                do_sample=True,
+                temperature=0.9,  # Good balance of creativity and coherence
+                top_p=0.95,
+                top_k=50,
+                repetition_penalty=1.2,
+                pad_token_id=self.tokenizer.pad_token_id,
+                eos_token_id=self.tokenizer.eos_token_id
             )
 
-            response = self.tokenizer.decode(outputs[0], skip_special_tokens=True).strip()
+            # Decode only the new tokens (not the prompt)
+            response = self.tokenizer.decode(
+                outputs[0][inputs['input_ids'].shape[1]:],
+                skip_special_tokens=True
+            ).strip()
 
             logger.info(f"Generated response: '{response[:100]}'")
 
@@ -179,7 +218,6 @@ Natural answer:"""
     def _validate_response(self, response: str, question: str, data_summary: str) -> bool:
         """
         Validate that the generated response makes sense.
-        Prevents nonsense like "Thanks 10 times" or "Hello how are you" for analytics.
         """
         # Basic validation
         if len(response) < 3:
@@ -194,18 +232,18 @@ Natural answer:"""
 
         # Check for nonsense patterns
         nonsense_patterns = [
-            # Conversational responses to analytics questions
-            ("revenue" in question_lower or "sales" in question_lower or "total" in question_lower) and ("hello" in response_lower or "how are you" in response_lower),
-            ("how many" in question_lower or "count" in question_lower) and ("thanks" in response_lower and "times" in response_lower),
-            ("customer" in question_lower or "product" in question_lower) and len(response.split()) < 4,  # Too short for analytics
+            "as an ai" in response_lower,
+            "i cannot" in response_lower,
+            "i don't have access" in response_lower,
+            len(response.split()) < 4,  # Too short
         ]
 
         if any(nonsense_patterns):
             logger.warning(f"Nonsense pattern detected in response: {response[:50]}")
             return False
 
-        # Must contain data-related keywords for analytics questions
-        analytics_keywords = ["revenue", "sales", "order", "customer", "product", "count", "total", "average", "$"]
+        # Must contain data-related content for analytics questions
+        analytics_keywords = ["revenue", "sales", "order", "customer", "product", "count", "total", "$"]
         is_analytics_query = any(kw in question_lower for kw in ["how many", "total", "revenue", "sales", "average", "top", "customer", "product", "order"])
 
         if is_analytics_query:
@@ -231,7 +269,7 @@ Natural answer:"""
                 total = results[0].get("total", 0)
                 count = results[0].get("count", 0)
 
-                # Format based on count - more natural language
+                # Format based on count
                 if count > 0:
                     if count == 1:
                         return f"Total sales: ${total:,.2f} (1 order)"
@@ -245,26 +283,24 @@ Natural answer:"""
         elif tool_name == "calculate_average":
             results = data.get("result", [])
             if results and len(results) > 0:
-                avg = results[0].get("average", 0) or 0  # Handle None
+                avg = results[0].get("average", 0) or 0
                 count = results[0].get("count", 0) or 0
                 if avg > 0:
-                    return f"The average order value is ${avg:,.2f} (based on {count:,} orders)"
+                    return f"Average: ${avg:,.2f} ({count:,} orders)"
                 else:
-                    return f"Unable to calculate average. Found {count:,} orders but average returned ${avg:,.2f}. This may be a data type issue."
+                    return f"Unable to calculate average from {count:,} orders"
             return "No data available to calculate average"
 
         # Top customers
         elif tool_name == "get_top_customers_by_spending":
             customers = data.get("customers", [])
             if customers:
-                # Return multiple customers if requested
                 if len(customers) == 1:
                     top = customers[0]
                     name = top.get("name", "Unknown")
                     spent = top.get("total_spent", 0)
                     return f"Top customer: {name}, Total spent: ${spent:,.2f}"
                 else:
-                    # Format multiple customers as a list
                     customer_list = []
                     for i, c in enumerate(customers, 1):
                         name = c.get("name", "Unknown")
@@ -278,14 +314,12 @@ Natural answer:"""
         elif tool_name == "get_best_selling_products":
             products = data.get("products", [])
             if products:
-                # Return multiple products if requested
                 if len(products) == 1:
                     top = products[0]
                     name = top.get("name", "Unknown")
                     quantity = top.get("total_quantity", 0)
                     return f"Top product: {name}, Quantity sold: {quantity}"
                 else:
-                    # Format multiple products as a list
                     product_list = []
                     for i, p in enumerate(products, 1):
                         name = p.get("name", "Unknown")
@@ -295,11 +329,10 @@ Natural answer:"""
                     return "Top selling products:\n" + "\n".join(product_list)
             return "No products found"
 
-        # Group and count (time-based or field-based grouping)
+        # Group and count
         elif tool_name == "group_and_count":
             groups = data.get("groups", [])
             if groups:
-                # Check if user wants just the top result ("which X has highest Y")
                 question_lower = question.lower()
                 wants_top_only = any(pattern in question_lower for pattern in [
                     "which", "what", "highest", "most", "best", "top", "largest", "biggest",
@@ -309,20 +342,16 @@ Natural answer:"""
                 ])
 
                 if wants_top_only and len(groups) > 0:
-                    # Return only the top result
                     top_group = groups[0]
                     group_id = top_group.get("_id")
                     count = top_group.get("count", 0)
 
-                    # Determine if user asked for lowest/highest
                     is_lowest_query = any(kw in question_lower for kw in [
                         "lowest", "least", "minimum", "fewest", "smallest", "worst", "bottom"
                     ])
                     superlative = "lowest" if is_lowest_query else "highest"
 
-                    # Format based on group type
                     if isinstance(group_id, dict):
-                        # Time-based grouping (check day FIRST before month, since day includes month+year)
                         if "day" in group_id and "month" in group_id and "year" in group_id:
                             return f"{group_id['year']}-{group_id['month']:02d}-{group_id['day']:02d} has the {superlative} orders with {count:,}."
                         elif "month" in group_id and "year" in group_id:
@@ -332,17 +361,14 @@ Natural answer:"""
                             year = group_id["year"]
                             return f"{month_name} {year} has the {superlative} orders with {count:,} orders."
                     else:
-                        # Simple field grouping
                         return f"{group_id} has the {superlative} with {count:,} orders."
                 else:
-                    # Show full breakdown
                     result_list = []
-                    for i, g in enumerate(groups[:10], 1):  # Limit to top 10
+                    for i, g in enumerate(groups[:10], 1):
                         group_id = g.get("_id")
                         count = g.get("count", 0)
 
                         if isinstance(group_id, dict):
-                            # Time-based (check day FIRST)
                             if "day" in group_id and "month" in group_id and "year" in group_id:
                                 result_list.append(f"{i}. {group_id['year']}-{group_id['month']:02d}-{group_id['day']:02d}: {count:,} orders")
                             elif "month" in group_id and "year" in group_id:
