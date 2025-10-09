@@ -85,16 +85,27 @@ class FewShotResponseGenerator:
         messages = [
             {
                 "role": "system",
-                "content": "You are a helpful e-commerce analytics assistant. Answer queries about sales data in natural, varied language. Be concise and include specific numbers from the data. IMPORTANT: Match the time period from the user's question exactly - if they ask about 'today', say 'today' in your response, if 'yesterday', say 'yesterday', etc. Never mix up time periods."
+                "content": """You are a helpful e-commerce analytics assistant.
+
+STRICT RULES - YOU MUST FOLLOW THESE:
+1. Answer in ONE SHORT SENTENCE ONLY.
+2. Use the EXACT time period from the question (today = today, yesterday = yesterday).
+3. Do NOT add explanations, context, or extra details.
+4. Do NOT mention previous days unless explicitly asked.
+5. Do NOT repeat numbers in multiple ways.
+6. Do NOT say things like "as of now", "however", "according to our data", "please let me know".
+7. Format: "[Time period] [metric] is/are $X from Y orders." OR "[Time period] you have/had N orders."
+8. If no data: "No [metric] recorded [time period]."
+9. Stay under 20 words total."""
             },
-            # Few-shot examples as conversation history
+            # Few-shot examples with controlled variation (stay concise but vary phrasing)
             {
                 "role": "user",
                 "content": "What is my total sales today? Data: Total sales: $1,850.00 (2 orders)"
             },
             {
                 "role": "assistant",
-                "content": "Today you received 2 orders totaling $1,850.00."
+                "content": "Today's sales are $1,850.00 from 2 orders."
             },
             {
                 "role": "user",
@@ -102,7 +113,7 @@ class FewShotResponseGenerator:
             },
             {
                 "role": "assistant",
-                "content": "You've made $4,960.00 in sales today from 5 orders."
+                "content": "You made $4,960.00 in sales today from 5 orders."
             },
             {
                 "role": "user",
@@ -110,7 +121,15 @@ class FewShotResponseGenerator:
             },
             {
                 "role": "assistant",
-                "content": "Yesterday you had 32 orders, bringing in $33,210.00 in revenue."
+                "content": "Yesterday's sales reached $33,210.00 from 32 orders."
+            },
+            {
+                "role": "user",
+                "content": "Total revenue yesterday? Data: Total sales: $45,600.00 (28 orders)"
+            },
+            {
+                "role": "assistant",
+                "content": "Yesterday's revenue is $45,600.00 from 28 orders."
             },
             {
                 "role": "user",
@@ -118,7 +137,7 @@ class FewShotResponseGenerator:
             },
             {
                 "role": "assistant",
-                "content": "This week's performance: 15 orders worth $5,430.00."
+                "content": "This week you generated $5,430.00 in revenue from 15 orders."
             },
             {
                 "role": "user",
@@ -126,15 +145,31 @@ class FewShotResponseGenerator:
             },
             {
                 "role": "assistant",
-                "content": "Your store generated $950.00 from 3 orders today."
+                "content": "Today's total sales are $950.00 from 3 orders."
             },
             {
                 "role": "user",
-                "content": "How much revenue today? Data: Total sales: $12,340.00 (8 orders)"
+                "content": "What is the total orders today? Data: Count: 5"
             },
             {
                 "role": "assistant",
-                "content": "Today's revenue is $12,340.00 from 8 orders."
+                "content": "You have 5 orders today."
+            },
+            {
+                "role": "user",
+                "content": "How many orders yesterday? Data: Count: 32"
+            },
+            {
+                "role": "assistant",
+                "content": "Yesterday you had 32 orders."
+            },
+            {
+                "role": "user",
+                "content": "What are my sales today? Data: No sales data found for this period"
+            },
+            {
+                "role": "assistant",
+                "content": "No sales recorded today."
             },
             # The actual user query
             {
@@ -199,15 +234,14 @@ class FewShotResponseGenerator:
             if torch.cuda.is_available():
                 inputs = {k: v.to(self.model.device) for k, v in inputs.items()}
 
-            # Generate with sampling for variation
+            # Generate with low-temperature sampling for natural variation without chaos
             outputs = self.model.generate(
                 **inputs,
-                max_new_tokens=80,
-                do_sample=True,
-                temperature=0.9,  # Good balance of creativity and coherence
-                top_p=0.95,
-                top_k=50,
-                repetition_penalty=1.2,
+                max_new_tokens=30,  # Force brevity
+                do_sample=True,  # Enable sampling for variety
+                temperature=0.3,  # Very low: slight variation, no hallucinations
+                top_p=0.9,  # Nucleus sampling: only high-probability tokens
+                repetition_penalty=1.2,  # Discourage exact repeats
                 pad_token_id=self.tokenizer.pad_token_id,
                 eos_token_id=self.tokenizer.eos_token_id
             )
