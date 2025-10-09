@@ -25,8 +25,8 @@ class OpenRouterConfig:
         # - "google/gemini-2.0-flash-exp:free" (may have rate limits)
 
         # Using Gemini - best free model for query generation
-        self.query_generation_model = "z-ai/glm-4.5-air:free"
-        self.response_generation_model = "z-ai/glm-4.5-air:free"
+        self.query_generation_model = "google/gemma-3-12b-it:free"
+        self.response_generation_model = "google/gemma-3-12b-it:free"
 
         # API settings
         self.temperature = 0.1  # Low temperature for consistent query generation

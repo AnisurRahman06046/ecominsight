@@ -85,7 +85,7 @@ class FewShotResponseGenerator:
         messages = [
             {
                 "role": "system",
-                "content": "You are a helpful e-commerce analytics assistant. Answer queries about sales data in natural, varied language. Be concise and include specific numbers from the data."
+                "content": "You are a helpful e-commerce analytics assistant. Answer queries about sales data in natural, varied language. Be concise and include specific numbers from the data. IMPORTANT: Match the time period from the user's question exactly - if they ask about 'today', say 'today' in your response, if 'yesterday', say 'yesterday', etc. Never mix up time periods."
             },
             # Few-shot examples as conversation history
             {
@@ -98,11 +98,19 @@ class FewShotResponseGenerator:
             },
             {
                 "role": "user",
+                "content": "What are my sales today? Data: Total sales: $4,960.00 (5 orders)"
+            },
+            {
+                "role": "assistant",
+                "content": "You've made $4,960.00 in sales today from 5 orders."
+            },
+            {
+                "role": "user",
                 "content": "What is my total sales yesterday? Data: Total sales: $33,210.00 (32 orders)"
             },
             {
                 "role": "assistant",
-                "content": "You had 32 orders yesterday, bringing in $33,210.00 in revenue."
+                "content": "Yesterday you had 32 orders, bringing in $33,210.00 in revenue."
             },
             {
                 "role": "user",
@@ -114,11 +122,19 @@ class FewShotResponseGenerator:
             },
             {
                 "role": "user",
-                "content": "What are my sales today? Data: Total sales: $950.00 (3 orders)"
+                "content": "Total sales today? Data: Total sales: $950.00 (3 orders)"
             },
             {
                 "role": "assistant",
                 "content": "Your store generated $950.00 from 3 orders today."
+            },
+            {
+                "role": "user",
+                "content": "How much revenue today? Data: Total sales: $12,340.00 (8 orders)"
+            },
+            {
+                "role": "assistant",
+                "content": "Today's revenue is $12,340.00 from 8 orders."
             },
             # The actual user query
             {
